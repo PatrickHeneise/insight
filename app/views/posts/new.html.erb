@@ -1,0 +1,8 @@
+<h1>New Post</h1>
+
+<%= error_messages_for :post %>
+
+<%= render :partial => @post, 
+  :locals => { :button_name => "Create"} %>
+
+<%= link_to 'Back', [@forum, @topic] %>

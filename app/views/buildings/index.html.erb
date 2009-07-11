@@ -1,0 +1,22 @@
+<h1><%= t('buildings.overview') %></h1>
+
+<table>
+	<thead>
+		<tr>
+			<th width="10" class="accent">Code</th>
+			<th class="accent"><%= t 'address.address' %></th>
+			<th width="150" class="accent"><%= t 'buildings.opening_hours' %></th>
+		</tr>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody>
+	<% @buildings.each do |building| %>
+		<tr>
+			<td><span class="building_code"><%= link_to building.code, building %></span></td>
+			<td><%= building.address.national %></td>
+			<td><%= building.open_from.to_s(:time) + " - " + building.open_to.to_s(:time) rescue "" %>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

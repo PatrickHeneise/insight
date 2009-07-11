@@ -1,0 +1,16 @@
+<p>
+  <b>Content:</b>
+  <%=h @comment.content %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @comment.user %>
+</p>
+
+<p>
+  <b>Article:</b>
+  <%=h @comment.article %>
+</p>
+<%= link_to 'Edit', [:edit, @article, @comment] %> |
+<%= link_to 'Back', article_comments_path(@article) %>

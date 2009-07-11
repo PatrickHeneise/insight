@@ -1,0 +1,208 @@
+/* === GENERAL ===*/
+*{color:#000;font-family:"Lucida Grande",Lucida,Verdana,sans-serif !important;}
+div#header{height:54px;background-color:#00844d;}
+div#header div#logo{height:54px;}
+div#header div#logo h1{width:100px;height:45px;background:url(../images/logo.png) no-repeat;}
+div#logo h1 a{display:block;width:100px;height:45px;}
+div#logo h1 a span{display:none;}
+div#footer{background-color:#00844d;}
+.clear{clear:both;}
+div.even{background-color: rgb(218,220,220);}
+tr.even td {
+	background-color: rgb(218,220,220) !important;
+}
+a.undecorated {
+	text-decoration: none;
+}
+.delete {
+	font-variant: small-caps;
+	font-size: 1em;
+	text-decoration: none;
+	border: 2px solid #7a0c00;
+	padding-right: 2px !important;
+	background-color: #c91c00;
+	color: #fff;
+}
+.ss_decorated {
+	font-variant: small-caps;
+	font-size: 1em;
+	text-decoration: none;
+	border: 2px solid rgb(114,120,121);
+	padding-right: 2px !important;
+	background-color: rgb(165,196,0);
+	color: #fff;
+}
+.ss_sprite {
+	padding-bottom: 0 !important;
+}
+/* === BLOG ===*/
+div.article_content {
+	text-align: justify;
+}
+/* === COURSES ===*/
+table.overview th#semester{width:10px;}
+table.overview td.lecture{padding-left:2em;}
+/* === LECTURES ===*/
+div#lecture_info{background-color: rgb(218,220,220);}
+table#bullets tr td{vertical-align:top;}
+/* === BULLETS ===*/
+div#bullet {
+	background-color: rgb(218,220,220);
+}
+div.bullet_reply_footer{text-align:right;font-style:italic;}
+/* === TABLE REPLACEMENT === */
+div.row {
+	height: 20px;
+}
+div.column {
+	width: 20px;
+	float: left;
+	text-align: center;
+}
+/* ==== FORUM POSTS ==== */
+div#post_user {
+	
+}
+div#post_content {
+	
+}
+div#post_meta {
+	
+}
+/* ==== USER ==== */
+div#user_profile_avatar {
+	-moz-border-radius-bottomright: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+}
+div#user_profile_avatar img {
+	margin: 10px;
+	border: 1px solid black;
+}
+div#user_profile_contact {
+	border: 1px solid rgb(218,220,220);
+	background-color: #e7eaea;
+	font-size: 0.8em;
+	color: rgb(114,120,121) !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+}
+/* ==== BUILDINGS ==== */
+.building_code {
+	font-size: 1em;
+	text-decoration: none;
+	text-align: center;
+}
+.building_code a {
+	font-variant: small-caps;
+	border: 2px solid rgb(114,120,121);
+	display: block;
+	width: 50px;
+	background-color: #00844d;
+	color: #fff;
+	text-decoration: none;
+}
+div#building_profile_code {
+	background-color:#00844d;
+	-moz-border-radius-bottomright: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+}
+div#building_profile_code h1 {
+	color: #fff;
+	font-size: 4em;
+	font-variant: small-caps;
+	font-weight: bold;
+	margin-left: 10px;
+}
+div#building_profile_code span {
+	font-size: 0.5em;
+	color: #fff;
+	padding: 2px;
+}
+div#building_profile_info {
+	border: 1px solid rgb(218,220,220);
+	background-color: #e7eaea;
+	color: rgb(114,120,121) !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+}
+/* ==== MEDIACENTER ==== */
+div.flickr_photo {
+	width: 240px;
+	height: 240px;
+	display: block;
+	float: left;
+	margin: 5px;
+}
+div#flickr_gallery_pagination span {}
+h1#youtube a {
+	background: url(/images/youtube.gif) no-repeat;
+	width: 73px;
+	height: 35px;
+	display: block;
+}
+h1#flickr a span{
+	display: none;
+}
+h1#flickr a {
+	background: url(/images/flickr.jpg) no-repeat;
+	width: 57px;
+	height: 15px;
+	display: block;
+}
+h1#youtube a span{
+	display: none;
+}
+/* ==== HFU COLOURS ==== */
+.brick {
+	-moz-border-radius-bottomright: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	height: 75px;
+}
+.brick h1 {
+	color: #fff;
+	font-size: 4em;
+	font-variant: small-caps;
+	font-weight: bold;
+	margin-left: 10px;
+}
+.hfu {
+	background-color: rgb(0,132,77);
+}
+.accent {
+	background-color: rgb(165,196,0);
+}
+.decoration {
+	background-color: rgb(114,120,121);
+}
+.tidy {
+	background-color: rgb(218,220,220);
+}
+.black {
+	background-color: black;
+}
+.cee {
+	background-color: rgb(255,230,0);
+}
+.in {
+	background-color: rgb(227,163,41);
+}
+.dm {
+	background-color: rgb(204,36,28);
+}
+.wi {
+	background-color: rgb(105,15,20);
+}
+.muv {
+	background-color: rgb(0,15,117);
+}
+.w {
+	background-color: rgb(23,97,171);
+}
+.pe {
+	background-color: rgb(26,122,99);
+}
+.int {
+	background-color: rgb(56,10,46);
+}

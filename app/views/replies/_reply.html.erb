@@ -1,0 +1,10 @@
+<% form_for([@department,@lecture,@board,@bullet,@reply]) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.tinymce :content %>
+  </p>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

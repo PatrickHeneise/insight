@@ -1,0 +1,2 @@
+class DataItemsController < ApplicationController
+end

@@ -1,0 +1,22 @@
+<table>
+	<thead>
+		<tr>
+			<th class="accent">Number</th>
+			<% permitted_to? :manage, :buildings do %>
+			<th class="accent" width="150">&nbsp;</th>
+			<% end %>
+		</tr>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody>
+	<% rooms.each do |room| %>
+		<tr>
+			<td><%= link_to room.building.code + " " + room.number.to_s, [@building, room] %>
+			<% permitted_to? :manage, :buildings do %>
+			<td><%= link_to '<span class="ss_sprite ss_decorated ss_building_delete">' + t('edit.edit') + '</span>', [:edit, :admin, @building, room] %> <%= link_to '<span class="ss_sprite ss_decorated ss_building_delete">' + t('delete.delete') + '</span>', [:admin, @building, room], :confirm => 'Are you sure?', :method => :delete %></td>
+			<% end %>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

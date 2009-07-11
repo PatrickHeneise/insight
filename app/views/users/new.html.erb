@@ -1,0 +1,19 @@
+<h1>Register</h1>
+
+<% form_for @user, :url => account_path do |f| %>
+  <%= f.error_messages %>
+	<%= f.label :login %><br />
+	<%= f.text_field :login %><br />
+	<br />
+	<%= f.label :email %><br />
+	<%= f.text_field :email %>
+  </p>
+	<%= f.label :password %><br />
+	<%= f.password_field :password %><br />
+	<br />
+	<%= f.label :password_confirmation %><br />
+	<%= f.password_field :password_confirmation %><br />
+
+  <%= f.submit "Register" %>
+<% end %>
+<%= link_to 'Back', users_path %>

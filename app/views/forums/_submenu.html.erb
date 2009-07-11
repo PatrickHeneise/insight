@@ -1,0 +1,10 @@
+<% permitted_to? :create, :forums do %>
+<%= navigation [{:new_forum => new_admin_forum_path}, t('create.forums')],
+								:link_text => true -%>
+<% end %>
+<% if @forum.nil? == false %>
+	<% permitted_to? :edit, :forums do %>
+	<%= navigation [{:edit_forum => edit_admin_forum_path(@forum)}, t('edit.forums')],
+									:link_text => true -%>
+	<% end %>
+<% end %>

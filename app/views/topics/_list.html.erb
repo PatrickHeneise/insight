@@ -1,0 +1,40 @@
+<table id="topics">
+	<thead>
+		<tr>
+			<td colspan="5"><%= will_paginate @topics %></td>
+		</tr>
+		<tr>
+			<th class="accent" width="10">&nbsp;</th>
+			<th class="accent"><%= t 'forums.topics.title' %></th>
+			<th class="accent" width="150"><%= t 'forums.author' %></th>
+			<th class="accent" width="250"><%= t 'forums.recent_answer' %></th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr><td colspan="5"><%= will_paginate @topics %></td></tr>
+		<tr><td colspan="5"><%= t 'forums.recent_activity' %> <%= h(time_ago_in_words(@forum.posts.last.created_at)) rescue '' %></td></tr>
+	</tfoot>
+	<tbody>
+<% @topics.each do |topic| %>
+		<tr class="<%= cycle('odd', 'even') %>">
+			<td width="20">
+			<% if recent_topic_activity(topic) %>
+				<span class="ss_sprite ss_email_open">&nbsp;</span>
+      <% else %>
+				<span class="ss_sprite ss_email">&nbsp;</span>
+      <% end %>
+			</td>
+			<td><%= link_to topic.title, [@forum, topic] %></td>
+			<td width="150"><%= link_to topic.user.fullname, user_path(topic.user) %></td>
+			<td width="250"><% if(topic.posts.last.nil?) %>
+				&nbsp;
+			<% else %>
+				<%= link_to(truncate(strip_tags(topic.posts.last.content), :length => 20), forum_topic_path(topic, :anchor => topic.posts.last.id)) %>
+				<span class="small"><%= t 'support.before' %> <%= h time_ago_in_words(topic.replied_at) %></span><br />
+				<span class="small">(<%= t 'support.of' %> <%= link_to(topic.posts.last.user.fullname, users_path(topic.posts.last.user)) %>)</span>
+			<% end %>
+			</td>
+		</tr>
+<% end %>
+	</tbody>
+</table>

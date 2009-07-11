@@ -1,0 +1,24 @@
+<div id="posts" class="span-20">
+<%= will_paginate @posts %>
+<% @posts.each do |post| %>
+	<div id="<%= post.id %>" class="span-20">
+		<div id="post_meta" class="span-20 accent">
+			<%= link_to post.user.fullname, user_path(post.user) %>
+			(<%= h post.user.status %>) <span class="small"><%= t 'support.before' %> <%= time_ago_in_words(post.created_at) %></span>
+		</div>
+		<div id="post_user" class="span-4 decoration">
+			<%= image_tag post.user.avatar.url(:medium)  %>
+		</div>
+		<div id="post_content" class="span-16 last">
+			<%= Sanitize.clean(post.content, Sanitize::Config::BASIC) %>
+			<% if post.updated_at != post.created_at %>
+				<em class="small"><%= t 'forums.post.edited_at' %> <%= post.updated_at.to_s(:long) %> <%= t 'support.of' %> <%= link_to post.editor.fullname, user_path(post.editor) %></em>
+			<% end %>
+		</div>
+		<div id="post_actions" class="span-20 tidy">
+			<%= link_to 'Edit', [:edit, @forum, @topic, post] %>
+			<%= link_to 'Destroy', [@forum, @topic, post], :confirm => 'Are you sure?', :method => :delete %>
+		</div>
+	</div>
+<% end %>
+</div>

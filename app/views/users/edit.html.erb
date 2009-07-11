@@ -1,0 +1,54 @@
+<h1>Edit My Account</h1>
+
+<h1>Editing user</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+	<p>
+		<b>Login:</b>
+		<%=h @user.login %>
+	</p>
+  <p>
+    <%= f.label :crypted_password %><br />
+    <%= f.text_field :crypted_password %>
+  </p>
+	<p>
+		<b>Email:</b>
+		<%=h @user.email %>
+		    <%= f.text_field :email %>
+	</p>
+  <p>
+    <%= f.label :private_email %><br />
+    <%= f.text_field :private_email %>
+  </p>
+  <p>
+    <%= f.label :icq %><br />
+    <%= f.text_field :icq %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :activities %><br />
+    <%= f.text_area :activities %>
+  </p>
+  <p>
+    <%= f.label :publications %><br />
+    <%= f.text_area :publications %>
+  </p>
+  <p>
+    <%= f.label :presentations %><br />
+    <%= f.text_area :presentations %>
+  </p>
+  <p>
+    <%= f.label :biography %><br />
+    <%= f.text_area :biography %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+<%= link_to 'Back', users_path %>
+<br /><%= link_to "My Profile", account_path %>

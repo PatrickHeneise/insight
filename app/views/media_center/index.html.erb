@@ -1,0 +1,29 @@
+<div id="youtube_gallery" class="span-20">
+	<h1 id="youtube"><a href="http://www.youtube.com/results?search_query=furtwangen" alt="YouTube"><span>YouTube</span></a></h1>
+	<% for video in @videos %>
+		<div class="span-20">
+			<div class="span-7">
+					<%= video.embed_html(212,175) %>
+			</div>
+			<div class="span-13 last">
+				<h2><%= link_to video.title, video.embed_url %></h2>
+				<p><%= video.html_content %></p>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<div id="flickr_gallery" class="span-20 prepend-top">
+	<h1 id="flickr"><a href="http://www.flickr.com/groups/hochschule_furtwangen_university/" alt="flickr"><span>Flickr</span></a></h1>
+	<% @photos.each_with_index do |photo, index| -%>
+		<div class="flickr_photo">
+			<%= link_to(image_tag(photo.url(:small), :alt =>  photo.title),photo.url_photopage) %>
+		</div>
+		<% if (index+1).modulo(3) == 0 %>
+			<br class="clear" />
+		<% end %>
+	<% end %>
+	<div id="flickr_gallery_pagination">
+		<span><%= link_to "<<", media_path(:page => (@page.to_i - 1)), :class => "ss_decorated" %> <%= link_to ">>", media_path(:page => (@page.to_i + 1)), :class => "ss_decorated" %></span>
+	</div>
+</div>

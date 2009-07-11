@@ -1,0 +1,16 @@
+<% form_for([@department,@lecture,@board,@bullet]) do |f| %>
+  <%= f.error_messages %>
+<%=h @board.lecture.title %><br />
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.tinymce :content %>
+  </p>
+	<%= f.hidden_field :board_id %>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

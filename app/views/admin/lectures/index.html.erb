@@ -1,0 +1,36 @@
+<h1>Listing lectures</h1>
+
+<table>
+  <tr>
+    <th>Department</th>
+    <th>Title</th>
+    <th>Short</th>
+    <th>Description</th>
+    <th>Visible</th>
+    <th>Active</th>
+    <th>Credits</th>
+    <th>Number</th>
+    <th>User</th>
+  </tr>
+
+<% @lectures.each do |lecture| %>
+  <tr>
+    <td><%=h lecture.department %></td>
+    <td><%=h lecture.title %></td>
+    <td><%=h lecture.short %></td>
+    <td><%=h lecture.description %></td>
+    <td><%=h lecture.visible %></td>
+    <td><%=h lecture.active %></td>
+    <td><%=h lecture.credits %></td>
+    <td><%=h lecture.number %></td>
+    <td><%=h lecture.user %></td>
+    <td><%= link_to 'Show', lecture %></td>
+    <td><%= link_to 'Edit', edit_admin_lecture_path(lecture) %></td>
+    <td><%= link_to 'Destroy', [:admin, lecture], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New lecture', new_admin_lecture_path %>

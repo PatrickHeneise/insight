@@ -1,0 +1,6 @@
+<h1>Editing bullet</h1>
+
+<%= error_messages_for :reply %>
+<%= render :partial => @bullet, :locals => { :button_name => "Update"} %>
+
+<%= link_to 'Show', department_lecture_board_bullet_path(@department, @lecture, @board, @bullet) %> |

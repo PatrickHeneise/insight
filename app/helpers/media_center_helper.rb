@@ -1,0 +1,2 @@
+module MediaCenterHelper
+end

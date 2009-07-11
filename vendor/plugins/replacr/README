@@ -1,0 +1,19 @@
+Replacr
+=======
+
+This is a very simple plugin to replace text with other text out of a YAML-file.
+
+Installation
+=======
+
+Please create replace.yml in your config-directory.
+
+Usage
+=======
+
+r 'read'
+replace 'read'
+
+Example for key 'read': <img src="images/read.png" alt="read" />
+
+Copyright (c) 2009 Patrick Heneise, released under the MIT license

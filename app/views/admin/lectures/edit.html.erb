@@ -1,0 +1,7 @@
+<h1><%= t 'view.editing' %> "<%=@lecture.title %>"</h1>
+
+<%= error_messages_for :lecture %>
+<%= render :partial => @lecture, :locals => { :button_name => "Update"} %>
+
+<%= link_to 'Show', department_lecture_path(@lecture.department, @lecture) %> |
+<%= link_to 'Back', department_lectures_path(@lecture.department) %>

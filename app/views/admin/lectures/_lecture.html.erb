@@ -1,0 +1,53 @@
+<div class="form_container">
+	<% form_for([:admin,@lecture]) do |f| %>
+		<%= f.error_messages %>
+
+		<p>
+			<%= f.label :title %><br />
+			<%= f.text_field :title %>
+		</p>
+		<p>
+			<%= f.label :short %><br />
+			<%= f.text_field :short %>
+		</p>
+		<p>
+			<%= f.label :description %><br />
+			<%= f.tinymce :description %>
+		</p>
+		<p>
+			<%= f.label :visible %> 
+			<%= f.check_box :visible %>
+			<%= f.label :active %> 
+			<%= f.check_box :active %>
+		</p>
+		<p>
+			<%= f.label :credits %><br />
+			<%= f.text_field :credits %>
+		</p>
+		<p>
+			<%= f.label :number %><br />
+			<%= f.text_field :number %>
+		</p>
+		<p>
+			<%= f.label :user %><br />
+			<%= f.select :user_id, User.find(:all).collect {|u| ["#{u.surname}, #{u.name}", u.id]} %>
+		</p>
+		<p>
+			<strong>Kurs:</strong><br />
+			<%= select 'lecture','course_module_ids', CourseModule.find(:all).collect {|c| ["#{c.title} (#{c.short}, #{c.course.department.title})", c.id]} %>
+		</p>
+		<hr />
+		<div id="events">
+			<h2><%= t 'view.events.title' %></h2>
+			<% f.fields_for :events do |e| %>
+				<%= render :partial => "event", :locals => {:form => e, :fid => e.id} %>
+			<% end %>
+		</div>
+		<p>
+			<%= add_link(f, :events) %>
+		</p>
+		<p>
+			<%= f.submit button_name %>
+		</p>
+	<% end %>
+</div>

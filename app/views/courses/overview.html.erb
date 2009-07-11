@@ -1,0 +1,60 @@
+<h1>Veranstaltungen</h1>
+<h2>Vorlesungs&uuml;bersicht</h2>
+<table class="overview" summary="This table gives an overview of lectures.">
+	<thead>
+		<tr>
+			<th class="accent" colspan="2"><%=h @course.title %></th>
+			<th class="accent">ECTS</th>
+			<th class="accent">Aktionen</th>
+		</tr>
+	</thead>
+	<tfoot><tr><td colspan="4">Vorlesungen basierend auf den in der SPO angegebenen Pflichtvorlesungen.</td></tr></tfoot>
+	<tbody>
+	<% unless @course.course_modules.empty? %>
+	<% @course.course_modules.each do |m| %>
+	<% @lectures = m.lectures %>
+		<tr class="<%= cycle('odd', 'even') %>">
+			<th id="semester">
+				<%=h m.semester %>
+			</th>
+			<td colspan="1">
+				<%=h m.title %>
+			</td>
+			<td>
+				<%=h m.lectures.sum('credits') %>
+			</td>
+			<td></td>
+		</tr>
+		<% unless @lectures.empty? %>
+		<% @lectures.each do |lecture| %>
+				<tr>
+			<td>&nbsp;</td>
+			<td class="lecture">
+				<%= link_to lecture.title, department_lecture_path(lecture.department, lecture.lecture_id) %>
+			</td>
+					<td><%=h lecture.credits %></td>
+					<td class="action">
+						<% if @current_user.enrolled?(lecture.lecture_id) %>
+								<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unrol_path(lecture.lecture_id), :class => 'undecorated' %>
+						<% else %>
+								<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', enrol_path(lecture.lecture_id), :class => 'undecorated' %>
+						<% end %>
+					 </td>
+		</tr>
+
+		<% end %>
+		<% end %>
+	<% end %>
+	<% end %>
+	</tbody>
+</table>
+<h2>Kurs&uuml;bersicht</h2>
+<table summary="More courses">
+<% @courses.each do |course| %>
+<% unless course == @course %>
+	<tr>
+		<td><%=link_to course.title, overview_path(@id, :id => course)  %></td>
+	</tr>
+<% end %>
+<% end %>
+</table>

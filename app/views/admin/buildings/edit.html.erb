@@ -1,0 +1,7 @@
+<h1>Editing building</h1>
+
+<%= error_messages_for :building %>
+<%= render :partial => @building, :locals => { :button_name => "Update"} %>
+
+<%= link_to 'Show', @building %> |
+<%= link_to 'Back', buildings_path %>

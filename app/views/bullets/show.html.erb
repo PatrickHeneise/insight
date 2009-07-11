@@ -1,0 +1,42 @@
+<h2><%=h @bullet.board.lecture.title %></h2>
+
+<div id="bullet" class="span-20">
+	<h3><%=h @bullet.title %></h3>
+	<div id="bullet_user" class="span-4">
+		<%= link_to @bullet.user.name + ' ' + @bullet.user.surname, @bullet.user %><br />
+		<%= image_tag @bullet.user.avatar.url(:large)  %>
+	</div>
+	<div id="bullet_content" class="span-16 last">
+		<%= Sanitize.clean(@bullet.content, Sanitize::Config::BASIC) %>
+	</div>
+	<%= link_to 'Edit', edit_department_lecture_board_bullet_path(@department, @lecture, @board, @bullet) %><br />
+</div>
+
+<div class="span-20 prepend-top"><h4>Antworten</h4></div>
+
+<%= will_paginate @replies %>
+
+<div id="bullet_replies" class="span-20">
+	<% unless @replies.empty? %>
+		<% @replies.each do |reply| %>
+		<div class="bullet_reply span-20 <%= cycle('odd', 'even') %>">
+			<div class="bullet_reply_user span-3">
+				<%= link_to reply.user.name + ' ' + reply.user.surname, reply.user %><br />
+				<%= image_tag reply.user.avatar.url(:medium)  %>
+			</div>
+			<div id="<%= reply.id %>" class="bullet_reply_content span-17 last">
+				<%= Sanitize.clean(reply.content, Sanitize::Config::BASIC) %>
+			</div>
+			<div class="bullet_reply_footer span-20">
+				 <span class="small">Verfasst: <%= reply.updated_at.to_s(:short) %></span>
+			</div>
+		</div>
+		<% end %>
+	<% end %>
+	<%= will_paginate @replies %>
+</div>
+
+<div class="span-20">
+	<h3>Direkt Antworten</h3>
+	<%= render :partial => @reply = Reply.new, :locals => { :button_name => 'Create'}%>
+</div>

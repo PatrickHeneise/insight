@@ -1,0 +1,9 @@
+<h1><%=h @room.building.code + " " + @room.number.to_s %></h1>
+<p>
+  <b>User:</b>
+  <%=h @room.user.fullname %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, @building, @room] %> |
+<%= link_to 'Back', building_rooms_path %>

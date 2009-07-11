@@ -1,0 +1,10 @@
+<%= render :partial => "layouts/head" %>
+<%= render :partial => "layouts/topnav" %>
+			<div id="subnav" class="span-4">
+				<%= render :partial => "layouts/defaultsubnav" %>
+				<%= render :partial => "submenu" rescue '' %>
+			</div>
+			<div id="content" class="span-20 last">
+				<%= yield %>
+			</div>
+<%= render :partial => "layouts/foot" %>

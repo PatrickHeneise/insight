@@ -1,0 +1,26 @@
+<div id="building_profile_code" class="span-3">
+	<h1><%=h @building.code %></h1>
+	<span><%= t('buildings.opening_hours') %></span><br />
+  <span><%=h @building.open_from.to_s(:time) rescue "" %> - </span><br />
+	<span><%=h @building.open_to.to_s(:time) rescue "" %></span>
+</div>
+<div class="span-17 last">
+<h2><%=h @building.organization.title %></h2>
+<% permitted_to? :destroy, :buildings do %>
+<p><%= link_to t('delete.building'), [:admin, @building], :confirm => 'Are you sure?', :method => :delete, :class => 'ss_sprite ss_building_delete delete' %></p>
+<% end %>
+<div class="append-bottom">
+  <h3><%= t('address.address') %></h3><br />
+	<%= @building.address.street %><br />
+	<%= @building.address.street_addition %><br />
+	<%= @building.address.postcode %>
+	<%= @building.address.city %>
+</div>
+<div id="building_profile_info" class="append-bottom">
+  <h3>Information</h3>
+  <%=Sanitize.clean(@building.info, Sanitize::Config::BASIC) rescue "" %>
+</div>
+
+<h3><%= t('rooms.rooms') %></h3>
+<%= render :partial => 'rooms/list', :locals => { :rooms => @building.rooms } %>
+</div>

@@ -1,0 +1,13 @@
+<p>
+  <b>Title:</b>
+  <%=h @forum.title %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%=h @forum.department %>
+</p>
+<%= link_to t('create.topic'), new_forum_topic_path(@forum) %>
+<%= render :partial => 'topics/list' %>
+<%= link_to t('create.topic'), new_forum_topic_path(@forum) %>
+<%= link_to 'Back', forums_path %>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="content-language" content="DE"/>
+		<meta http-equiv="pragma" content="no-cache"/>
+		<meta http-equiv="cache-control" content="no-cache"/>
+		<meta name="author" content="Patrick Heneise"/>
+		<title>insight</title>
+		<%= stylesheet_link_tag "hfu", :cache => true %>
+		<%= stylesheet_link_tag "blueprint/screen", :cache => true %>
+		<%= stylesheet_link_tag "blueprint/plugins/fancy-type/screen", :media => "screen, projection", :cache => true %>
+		<%= stylesheet_link_tag "blueprint/plugins/tabs/screen", :media => "screen, projection", :cache => true %>
+		<!--[if IE]><%= stylesheet_link_tag "blueprint/ie", :media => "screen, projection" %><![endif]-->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<%= javascript_include_tag 'prototype' %>
+		<%= javascript_include_tag 'effects' %>
+		<%= javascript_include_tag 'dragdrop' %>
+		<%= javascript_include_tag 'lowpro' %>
+		<%= javascript_include_tag 'application' %>
+		<%= init_tinymce_hammer_if_required %>
+    <%= yield(:head) %>
+    <script type="text/javascript">
+      $(function() {
+        <%= yield(:jquery) %>
+      });
+    </script>
+	</head>

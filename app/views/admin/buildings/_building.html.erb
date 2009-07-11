@@ -1,0 +1,59 @@
+<% form_for([:admin,@building]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </p>
+  <p>
+    <%= f.label :open_from %><br />
+    <%= f.time_select :open_from %>
+  </p>
+	<p>
+		<%= f.label :open_to %><br />
+    <%= f.time_select :open_to %>
+  </p>
+	<p>
+		<%= f.label :info %><br />
+    <%= f.tinymce :info %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.select :address_id, Address.find(:all).collect {|a| ["#{a.full}", a.id]},{:prompt => t('select.address')} %> <%= t 'support.or' %> <%= link_to_remote t('create.address'), :url => { :action => "reload" }, :complete => visual_effect(:appear, "new_address", :duration => 0.5) %>
+  </p>
+	<div id="new_address" style="display: none;">
+	<% fields_for @address do |address| %>
+		<p>
+				<%= address.label :street %><br />
+				<%= address.text_field :street %><br />
+		</p>
+		<p>
+			<%= address.label :street_addition %><br />
+			<%= address.text_field :street_addition %>
+		</p>
+		<p>
+			<%= address.label :city %><br />
+			<%= address.text_field :city %>
+		</p>
+		<p>
+			<%= address.label :postcode %><br />
+			<%= address.text_field :postcode %>
+		</p>
+		<p>
+			<%= address.label :state %><br />
+			<%= address.text_field :state %>
+		</p>
+		<p>
+			<%= address.label :country %><br />
+			<%= address.text_field :country %>
+		</p>
+  <% end %>
+	</div>
+  <p>
+    <%= f.label :organization %><br />
+    <%= f.select :organization_id, Organization.find(:all).collect {|o| ["#{o.title}", o.id]} %>
+  </p>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

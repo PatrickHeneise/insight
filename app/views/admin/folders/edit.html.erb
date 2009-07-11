@@ -1,0 +1,6 @@
+<h1>Editing folder</h1>
+
+<%= render :partial => @folder, :locals => { :button_name => "Edit"} %>
+
+<%= link_to 'Show', department_lecture_folder_path(@folder.lecture.department, @folder.lecture, @folder) %> |
+<%= link_to 'Back', admin_folders_path %>

@@ -1,0 +1,28 @@
+<%= error_messages_for :forum %>
+<% form_for([:admin,@forum]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+	<p>
+    <%= f.label :description %><br />
+    <%= f.tinymce :description %>
+  </p>
+	<p>
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </p>
+	<p>
+    <%= f.label :internal %><br />
+    <%= f.check_box :internal %>
+  </p>
+  <p>
+    <%= f.label :department %><br />
+    <%= f.select :department_id, Department.find(:all).collect {|d| ["#{d.title}, #{d.short}", d.id]} %>
+  </p>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

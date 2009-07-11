@@ -1,0 +1,32 @@
+<h1>Listing course_modules</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Short</th>
+    <th>Visible</th>
+    <th>Level</th>
+    <th>Description</th>
+    <th>Course</th>
+    <th>Semester</th>
+  </tr>
+
+<% @course_modules.each do |course_module| %>
+  <tr>
+    <td><%=h course_module.title %></td>
+    <td><%=h course_module.short %></td>
+    <td><%=h course_module.visible %></td>
+    <td><%=h course_module.level %></td>
+    <td><%=h course_module.description %></td>
+    <td><%=h course_module.course %></td>
+    <td><%=h course_module.semester %></td>
+    <td><%= link_to 'Show', course_module %></td>
+    <td><%= link_to 'Edit', edit_course_module_path(course_module) %></td>
+    <td><%= link_to 'Destroy', course_module, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New course_module', new_course_module_path %>

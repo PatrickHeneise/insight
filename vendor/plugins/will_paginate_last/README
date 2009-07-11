@@ -1,0 +1,17 @@
+
+This plugin extends the functionality of will_paginate.
+
+It adds the following features:
+
+1 - Support for rendering the last page.
+  Example:
+    Product.paginate :page => :last, :per_page => 50
+
+
+2 - No empty page unless all pages are empty
+  If your set has 5 pages and you request page 6, will_paginate returns an empty page, causing
+  the misleading impression that no records were found. This happens specially when the only
+  record of the last page is deleted. This extension corrects it looking for not empty previous
+  pages (although the url will still indicate the non-existing page).
+
+

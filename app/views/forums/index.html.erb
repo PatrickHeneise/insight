@@ -1,0 +1,79 @@
+<h1><%=t 'forums.public_forums' %></h1>
+<table>
+	<thead>
+		<tr>
+			<th class="accent" width="10">&nbsp;</th>
+			<th class="accent">Intranetforum</th>
+			<th class="accent" width="350">Letzter Beitrag</th>
+			<th class="accent" width="30">&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+<% @forums.each do |forum| %>
+	<tr class="<%= cycle('odd', 'even', :name => "public") %>">
+		<td>
+		<% if recent_forum_activity(forum) %>
+			<span class="ss_sprite ss_email_open">&nbsp;</span>
+		<% else %>
+			<span class="ss_sprite ss_email">&nbsp;</span>
+     <% end %>
+		</td>
+		<td><%= link_to forum.title, forum %></td>
+		<td>
+		<% if forum.topics.first.nil? == false %>
+			<%= link_to truncate(strip_tags(forum.topics.first.title), :length => 50), forum_topic_path(forum, forum.topics.first) %><br />
+			<span class="small"><%= t 'support.before' %> <%= time_ago_in_words(forum.topics.first.created_at) %>
+			<%= t 'support.of' %> <%= link_to forum.topics.first.user.fullname, user_path( forum.topics.first.user) %></span>
+		<% end %>
+		</td>
+		<td>
+		<% if forum.subscribed?(current_user) %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unsubscribe_path(forum.id), :class => 'undecorated' %>
+		<% else %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', subscribe_path(forum.id), :class => 'undecorated' %>
+		<% end %>
+		</td>
+	</tr>
+<% end %>
+	</tbody>
+</table>
+
+<h1><%=t 'forums.internal_forums' %></h1>
+<table>
+	<thead>
+		<tr>
+			<th class="<%= @css_class %>" width="10">&nbsp;</th>
+			<th class="<%= @css_class %>">Intranetforum</th>
+			<th class="<%= @css_class %>" width="350">Letzter Beitrag</th>
+			<th class="<%= @css_class %>" width="30">&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+<% @department_forums.each do |forum| %>
+	<tr class="<%= cycle('odd', 'even', :name => "internal") %>">
+		<td>
+		<% if recent_forum_activity(forum) %>
+			<span class="ss_sprite ss_email_open">&nbsp;</span>
+		<% else %>
+			<span class="ss_sprite ss_email">&nbsp;</span>
+     <% end %>
+		</td>
+		<td><%= link_to forum.title, forum %></td>
+		<td>
+		<% if forum.topics.first.nil? == false %>
+			<%= link_to truncate(strip_tags(forum.topics.first.title), :length => 50), forum_topic_path(forum, forum.topics.first) %><br />
+			<span class="small"><%= t 'support.before' %> <%= time_ago_in_words(forum.topics.first.created_at) %>
+			<%= t 'support.of' %> <%= link_to forum.topics.first.user.fullname, user_path( forum.topics.first.user) %></span>
+		<% end %>
+		</td>
+		<td>
+		<% if forum.subscribed?(current_user) %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unsubscribe_path(forum.id), :class => 'undecorated' %>
+		<% else %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', subscribe_path(forum.id), :class => 'undecorated' %>
+		<% end %>
+		</td>
+	</tr>
+<% end %>
+	</tbody>
+</table>

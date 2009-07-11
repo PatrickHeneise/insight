@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @course.title %>
+</p>
+
+<p>
+  <b>Short:</b>
+  <%=h @course.short %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%=h @course.department %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

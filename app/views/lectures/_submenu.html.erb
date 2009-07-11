@@ -1,0 +1,9 @@
+<%= navigation [{:bullet => new_department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board)},t('forums.add_new_topic'),
+								{:files => department_lecture_folder_path(@lecture.department, @lecture, @lecture.folder)},t('files.area')],
+								:link_text => true -%>
+
+<% permitted_to? :edit, :lectures do %>
+<%= navigation [{:lecture_edit => edit_admin_lecture_path(@lecture)}, t('edit.lecture'),
+								{:lecture_new => new_admin_lecture_path}, t('delete.lecture')],
+								:link_text => true -%>
+<% end %>

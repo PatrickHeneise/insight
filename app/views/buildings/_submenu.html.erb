@@ -1,0 +1,12 @@
+<%= navigation [{:buildings => buildings_path}, t('buildings.overview')], :link_text => true -%>
+
+<% permitted_to? :manage, :buildings do %>
+<% if @building.nil? %>
+	<%= navigation [	{:new_building => new_admin_building_path}, t('create.building')], :link_text => true -%>
+<% else %>
+	<%= navigation [	{:new_building => new_admin_building_path}, t('create.building'),
+										{:edit_building => edit_admin_building_path(@building)}, t('edit.building'),
+										{:new_room => new_admin_building_room_path(@building)}, t('create.room')],
+									:link_text => true -%>
+	<% end %>
+<% end %>

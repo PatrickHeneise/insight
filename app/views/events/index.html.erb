@@ -1,0 +1,40 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>At date</th>
+    <th>At time</th>
+    <th>To date</th>
+    <th>To time</th>
+    <th>From block</th>
+    <th>To block</th>
+    <th>Repeatfrequency</th>
+    <th>Repeatinterval</th>
+    <th>Lecture</th>
+    <th>Room</th>
+    <th>Is blocked</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h event.at_date %></td>
+    <td><%=h event.at_time %></td>
+    <td><%=h event.to_date %></td>
+    <td><%=h event.to_time %></td>
+    <td><%=h event.from_block %></td>
+    <td><%=h event.to_block %></td>
+    <td><%=h event.repeatFrequency %></td>
+    <td><%=h event.repeatInterval %></td>
+    <td><%=h event.lecture %></td>
+    <td><%=h event.room %></td>
+    <td><%=h event.is_blocked %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New event', new_event_path %>

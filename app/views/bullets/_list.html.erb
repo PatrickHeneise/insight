@@ -1,0 +1,44 @@
+<table id="bullets">
+	<thead>
+		<tr>
+			<th class="accent" width="5%">&nbsp;</th>
+			<th class="accent" width="55%"><%=t 'bullets.title' %></th>
+			<th class="accent" width="20%"><%=t 'bullets.created_at' %></th>
+			<th class="accent" width="35%"><%=t 'bullets.author' %></th>
+		</tr>
+	</thead>
+	<tfoot>
+		<th>
+			<td colspan="4"><%= will_paginate @bullets %></td>
+		<th>
+	</tfoot>
+	<tbody>
+<% unless @bullets.nil? %>
+<% @bullets.each do |bullet| %>
+	<tr class="<%= cycle('odd', 'even') %>">
+		<td><%= r bullet.get_state(current_user) %></td>
+		<td>
+			<%= link_to bullet.title, department_lecture_board_bullet_path(bullet.board.lecture.department,bullet.board.lecture,bullet.board,bullet) %>
+			<% if (bullet.replies.length > 2) %>
+				<% bullet.replies.reverse! %>
+				<ul>
+					<% bullet.replies[0..2].each do |reply| %>
+							<li><%= link_to(truncate(strip_tags(reply.content), :length => 25), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet, :anchor => reply.id)) %>... <span class="small">(<%= reply.user.name + ' ' + reply.user.surname + ', ' + reply.updated_at.to_s(:short) %>)</span></li>
+					<% end %>
+					<li><%= link_to t(:'view.bullets.all_replies'), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet) %></li>
+				</ul>
+			<% else %>
+				<ul>
+				<% bullet.replies.each do |reply| %>
+						<li><%= link_to(truncate(strip_tags(reply.content), :length => 25), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet, :anchor => reply.id)) %>... <span class="small">(<%= reply.user.name + ' ' + reply.user.surname + ', ' + reply.updated_at.to_s(:short) %>)</span></li>
+				<% end %>
+				</ul>
+			<% end %>
+		</td>
+		<td><%= bullet.updated_at.to_s(:short) %></td>
+		<td><%= link_to (bullet.user.name + ' ' + bullet.user.surname, bullet.user) %></td>
+	</tr>
+<% end %>
+<% end %>
+</tbody>
+</table>

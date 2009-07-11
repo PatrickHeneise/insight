@@ -1,0 +1,8 @@
+<%= navigation [{:back => department_lecture_path(@department, @lecture)}, t('lectures.lecture')],
+								:link_text => true -%>
+
+<% permitted_to? :edit, :folders do %>
+<%= navigation [{:data_item_upload => new_admin_folder_data_item_path(@folder)}, t('files.upload'),
+								{:new_folder => new_admin_folder_path(@folder, :parent => @folder)}, t('files.folder.new')],
+								:link_text => true -%>
+<% end %>

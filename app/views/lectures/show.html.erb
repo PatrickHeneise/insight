@@ -1,0 +1,39 @@
+<h2>	<%=h @lecture.title %></h2>
+<div id="lecture_description" class="span-20">
+	<strong><%= t 'lectures.description' %>:</strong>
+	<%= Sanitize.clean(@lecture.description, Sanitize::Config::BASIC) %><br />
+</div>
+
+<div id="lecture_events" class="span-10"><strong><%=t 'lectures.dates' %></strong><br />
+	<% @lecture.events.each do |event| %>
+		<%=h event.at_date %>
+		<% if event.is_blocked? %>
+			<% if event.from_block == event.to_block %>
+				<%=h event.from_block.to_s + '. Block' %>
+			<% else %>
+				<%=h event.from_block.to_s + '. - ' + event.to_block.to_s + '. Block' %>
+			<% end %>
+		<% else %>
+				<%=h event.at_time.to_s(:time) + ' - ' + event.to_time.to_s(:time) rescue '' %>
+		<% end %>
+		(<%= link_to(event.room.building.code.to_s << '.' << event.room.number.to_s,[event.room.building,event.room]) %>)<br />
+	<% end %>
+</div>
+<div id="lecture_info" class="span-10 last">
+	<strong><%=t 'departments.department' %>:</strong>
+	<%=h @lecture.department.title %><br />
+	<strong>Credits:</strong>
+	<%=h @lecture.credits %><br />
+	<strong><%=t 'lectures.lecture_number' %>:</strong>
+	<%=h @lecture.number %><br />
+	<strong><%=t 'lectures.person_responsible' %>:</strong>
+	<%= link_to (@lecture.user.title + ' ' + @lecture.user.name + ' ' + @lecture.user.surname, @lecture.user) rescue link_to (@lecture.user.name + ' ' + @lecture.user.surname, @lecture.user) %>
+</div>
+
+<div class="span-20">
+	<%= link_to t(:'bullets.add_new_bullet'), new_department_lecture_board_bullet_path(@department,@lecture,@board) %>
+</div>
+
+<div class="span-20">
+	<%= render :partial => 'bullets/list', :locals => { :bullets => @bullets } %>
+</div>

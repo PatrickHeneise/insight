@@ -1,0 +1,51 @@
+<% form_for([:admin, @event]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :at_date %><br />
+    <%= f.date_select :at_date %>
+  </p>
+  <p>
+    <%= f.label :at_time %><br />
+    <%= f.datetime_select :at_time %>
+  </p>
+  <p>
+    <%= f.label :to_date %><br />
+    <%= f.date_select :to_date %>
+  </p>
+  <p>
+    <%= f.label :to_time %><br />
+    <%= f.datetime_select :to_time %>
+  </p>
+  <p>
+    <%= f.label :from_block %><br />
+    <%= f.text_field :from_block %>
+  </p>
+  <p>
+    <%= f.label :to_block %><br />
+    <%= f.text_field :to_block %>
+  </p>
+  <p>
+    <%= f.label :repeatFrequency %><br />
+    <%= f.text_field :repeatFrequency %>
+  </p>
+  <p>
+    <%= f.label :repeatInterval %><br />
+    <%= f.text_field :repeatInterval %>
+  </p>
+  <p>
+    <%= f.label :lecture %><br />
+    <%= f.text_field :lecture %>
+  </p>
+  <p>
+    <%= f.label :room %><br />
+    <%= f.text_field :room %>
+  </p>
+  <p>
+    <%= f.label :is_blocked %><br />
+    <%= f.check_box :is_blocked %>
+  </p>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

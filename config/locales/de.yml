@@ -1,0 +1,246 @@
+de:
+  employee: "Mitarbeiter"
+  professor: "Professor"
+  student: "Student"
+  dean: "Dekan"
+  subscribe: "Abonnieren"
+  unsubscribe: "Abmelden"
+  webcam: "Webcam"
+  next_page: "Nächste Seite"
+  previous_page: "Vorherige Seite"
+
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    order: [:day, :month, :year]
+    days: "Tage"
+    weeks: "Wochen"
+    months: "Monate"
+  
+  time:
+    formats:
+      default: "%A, %e. %B %Y, %H:%M Uhr"
+      time: "%H:%M Uhr"
+      short: "%e.%m., %H:%M Uhr"
+      long: "%A, %e. %B %Y, %H:%M Uhr"
+
+    am: "vormittags"
+    pm: "nachmittags"
+      
+  datetime:
+    distance_in_words:
+      half_a_minute: 'einer halbe Minute'
+      less_than_x_seconds:
+        zero: 'weniger als einer Sekunde'
+        one: 'weniger als einer Sekunde'
+        other: 'weniger als {{count}} Sekunden'
+      x_seconds:
+        one: 'einer Sekunde'
+        other: '{{count}} Sekunden'
+      less_than_x_minutes:
+        zero: 'weniger als einer Minute'
+        one: 'weniger als einer Minute'
+        other: 'weniger als {{count}} Minuten'
+      x_minutes:
+        one: 'einer Minute'
+        other: '{{count}} Minuten'
+      about_x_hours:
+        one: 'etwa einer Stunde'
+        other: 'etwa {{count}} Stunden'
+      x_days:
+        one: 'einem Tag'
+        other: '{{count}} Tagen'
+      about_x_months:
+        one: 'etwa einem Monat'
+        other: 'etwa {{count}} Monaten'
+      x_months:
+        one: 'einem Monat'
+        other: '{{count}} Monaten'
+      about_x_years:
+        one: 'etwa einem Jahr'
+        other: 'etwa {{count}} Jahren'
+      over_x_years:
+        one: 'mehr als einem Jahr'
+        other: 'mehr als {{count}} Jahren'
+      
+  number:
+    format:
+      precision: 2
+      separator: ','
+      delimiter: '.'
+    currency:
+      format:
+        unit: '€'
+        format: '%n%u'
+        separator: 
+        delimiter: 
+        precision: 
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+ 
+  support:
+    of: "von"
+    from: "von"
+    before: "vor"
+    array:
+      sentence_connector: "und"
+      skip_last_comma: true
+    or: "oder"
+    until: "bis"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "Konnte dieses {{model}} Objekt nicht speichern: 1 Fehler."
+          other:  "Konnte dieses {{model}} Objekt nicht speichern: {{count}} Fehler."
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+ 
+      messages:
+        inclusion: "ist kein gültiger Wert"
+        exclusion: "ist nicht verfügbar"
+        invalid: "ist nicht gültig"
+        confirmation: "stimmt nicht mit der Bestätigung überein"
+        accepted: "muss akzeptiert werden"
+        empty: "muss ausgefüllt werden"
+        blank: "muss ausgefüllt werden"
+        too_long: "ist zu lang (nicht mehr als {{count}} Zeichen)"
+        too_short: "ist zu kurz (nicht weniger als {{count}} Zeichen)"
+        wrong_length: "hat die falsche Länge (muss genau {{count}} Zeichen haben)"
+        taken: "ist bereits vergeben"
+        not_a_number: "ist keine Zahl"
+        greater_than: "muss größer als {{count}} sein"
+        greater_than_or_equal_to: "muss größer oder gleich {{count}} sein"
+        equal_to: "muss genau {{count}} sein"
+        less_than: "muss kleiner als {{count}} sein"
+        less_than_or_equal_to: "muss kleiner oder gleich {{count}} sein"
+        odd: "muss ungerade sein"
+        even: "muss gerade sein"
+
+  edit:
+    edit: "Bearbeiten"
+    editing: "Bearbeite"
+    forums: "Forum bearbeiten"
+    article: "Artikel bearbeiten"
+    lecture: "Veranstaltung bearbeiten"
+    building: "Gebäude bearbeiten"
+    
+  delete:
+    delete: "Löschen"
+    forums: "Forum löschen"
+    lecture: "Veranstaltung löschen"
+    building: "Gebäude löschen"
+
+  create:
+    create: "Neu"
+    lecture: "Neue Veranstaltung"
+    topic: "Neues Thema"
+    forums: "Neues Forum"
+    building: "Neues Gebäude anlegen"
+    address: "Neue Adresse"
+    room: "Neuen Raum anlegen"
+
+  select:
+    address: "Address wählen"
+
+  application:
+    profile: "Profil"
+    faculty: "Fakultät"
+    calendar: "Kalender"
+    lectures: "Veranstaltungen"
+    forums: "Foren"
+    media: "Mediathek"
+    services: "Dienste"
+    home: "Dashboard"
+    back: "Zurück"
+    description: "Beschreibung"
+    title: "Titel"
+    home: "Dashboard"
+
+  page:
+    
+  blog:
+    header: "Fakultätsblog"    
+
+  forums:
+    forums: "Foren"
+    public_forums: "Öffentliche Foren"
+    internal_forums: "Fakultätsinterne Foren"
+    forum: "Forum"
+    topics:
+      title: "Titel"
+    author: "Autor"
+    actions: "Aktionen"
+    add_new_forum: "Neues Forum"
+    add_new_topic: "Neues Thema"
+    recent_answer: "Letzter Beitrag"
+    recent_activity: "Letzte Aktivität vor"
+    created_at: "Erstellt am"
+
+  bullets:
+    title: "Titel"
+    created_at: "Datum"
+    author: "Autor"
+    all_replies: "Weitere Antworten ..."
+    add_new_bullet: "Neues Thema"
+    recent_answer: "Letzter Beitrag"
+
+  files:
+    area: "Dateibereich"
+    parent: "Übergeordnet"
+    content: "Dateien"
+    upload: "Datei hochladen"
+    folder: 
+      new: "Neuer Ordner"
+      folder: "Ordner"
+
+  events:
+    title: "Termine"
+    blocked: "Blockveranstaltung"
+    dated: "Terminveranstaltung"
+
+  lectures:
+    lecture: "Veranstaltung"
+    lectures: "Veranstaltungen"
+    lecture_number: "Prüfungsnummer"
+    dates: "Termine"
+    author: "Autor"
+    person_responsible: "Verantwortlicher"
+    description: "Beschreibung"
+
+  departments:
+    department: "Fakultät"
+
+  rooms:
+    rooms: "Räume"
+  
+  address:
+    address: "Adresse"
+    street: "Straße"
+    street_addition: "Adresszusatz"
+
+  user:
+    contact: "Kontakt"
+
+  flash:
+    notice:
+      reply_created: "Antwort erstellt."
+
+  buildings:
+    overview: "Gebäudeübersicht"
+    opening_hours: "Öffnungszeiten"

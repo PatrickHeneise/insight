@@ -1,0 +1,3 @@
+read: "<span class=\"ss_sprite ss_email_open\">&nbsp;</span>"
+unread: "<span class=\"ss_sprite ss_email\">&nbsp;</span>"
+closed: "<span class=\"ss_sprite ss_email_error\">&nbsp;</span>"

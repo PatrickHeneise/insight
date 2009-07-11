@@ -1,0 +1,18 @@
+<% form_for([@forum, @topic]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+	<% if @topic.new_record? %>
+		<p>
+		<% fields_for :posts do |p| -%>
+			<%= p.tinymce :content %>
+		<% end %>
+		</p>
+	<% end %>
+	<p>
+  <%= f.submit button_name %>
+  </p>
+<% end %>

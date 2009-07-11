@@ -1,0 +1,7 @@
+<h1>New reply</h1>
+
+<%= error_messages_for :reply %>
+
+<%= render :partial => @reply, :locals => { :button_name => "New"} %>
+
+<%= link_to 'Back', bullet_replies_path %>

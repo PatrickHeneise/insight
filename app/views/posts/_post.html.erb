@@ -1,0 +1,9 @@
+<% form_for([@forum, @topic, @post]) do |f| %>
+  <p>
+    <%= f.tinymce :content %>
+  </p>
+
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

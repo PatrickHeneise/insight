@@ -1,0 +1,38 @@
+<p>
+  <b>Title:</b>
+  <%=h @course_module.title %>
+</p>
+
+<p>
+  <b>Short:</b>
+  <%=h @course_module.short %>
+</p>
+
+<p>
+  <b>Visible:</b>
+  <%=h @course_module.visible %>
+</p>
+
+<p>
+  <b>Level:</b>
+  <%=h @course_module.level %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @course_module.description %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%=h @course_module.course %>
+</p>
+
+<p>
+  <b>Semester:</b>
+  <%=h @course_module.semester %>
+</p>
+
+
+<%= link_to 'Edit', edit_course_module_path(@course_module) %> |
+<%= link_to 'Back', course_modules_path %>

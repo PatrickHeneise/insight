@@ -1,0 +1,52 @@
+<div id="page_courses" class="span-10">
+<h2><%= t 'lectures.lectures' %></h2>
+<table>
+		<thead>
+			<tr>
+				<th class="accent"><%= t 'lectures.lectures' %></th>
+			</tr>
+		</thead>
+		<tfoot>
+		</tfoot>
+		<tbody>
+		<% @enrollments.each do |enrollment| -%>
+			<tr>
+				<td><%= link_to enrollment.lecture.title, department_lecture_path(enrollment.lecture.department, enrollment.lecture) %><br /></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>
+
+<div id="page_forums" class="span-10 last">
+<h2><%= t 'forums.forums' %></h2>
+	<table>
+		<thead>
+			<tr>
+				<th class="accent" width="15">&nbsp;</th>
+				<th class="accent"><%= t 'forums.forums' %></th>
+			</tr>
+		</thead>
+		<tfoot>
+		</tfoot>
+		<tbody>
+		<% @subscriptions.each do |subscription| -%>
+			<tr>
+				<td>
+				<% if recent_forum_activity(subscription.forum) %>
+					<span class="ss_sprite ss_email_open">&nbsp;</span>
+				<% else %>
+					<span class="ss_sprite ss_email">&nbsp;</span>
+				<% end %>
+				</td>
+				<td><%= link_to subscription.forum.title, forum_path(subscription.forum) %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>
+
+<div id="page_webcam" class="span-10">
+<h2><%= t 'webcam' %></h2>
+	<%= image_tag("webcam.jpg") %>
+</div>

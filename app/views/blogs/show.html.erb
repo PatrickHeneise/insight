@@ -1,0 +1,17 @@
+<div class="span-4">
+	<div class="<%= current_user.department.short.downcase %> brick">
+		<h1><%= current_user.department.short.upcase %></h1>
+	</div>
+</div>
+<div class="span-14">
+	<h2><%= t 'blog.header' %></h2>
+
+	<% @articles.each do |article| %>
+	<h2><%= article.title %></h2>
+	<div class="article_content">
+		<%= Sanitize.clean(article.content, Sanitize::Config::BASIC) %>
+	</div>
+	<%= link_to t('edit.article'), edit_article_path(article) %>
+	<% end %>
+</div>
+<div class="span-2 last">&nbsp;</div>

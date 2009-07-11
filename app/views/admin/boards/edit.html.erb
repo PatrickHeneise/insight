@@ -1,0 +1,16 @@
+<h1>Editing board</h1>
+
+<% form_for([:admin, @board]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :lecture %><br />
+    <%= f.text_field :lecture %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @board %> |
+<%= link_to 'Back', boards_path %>

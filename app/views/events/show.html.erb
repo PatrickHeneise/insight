@@ -1,0 +1,58 @@
+<p>
+  <b>At date:</b>
+  <%=h @event.at_date %>
+</p>
+
+<p>
+  <b>At time:</b>
+  <%=h @event.at_time %>
+</p>
+
+<p>
+  <b>To date:</b>
+  <%=h @event.to_date %>
+</p>
+
+<p>
+  <b>To time:</b>
+  <%=h @event.to_time %>
+</p>
+
+<p>
+  <b>From block:</b>
+  <%=h @event.from_block %>
+</p>
+
+<p>
+  <b>To block:</b>
+  <%=h @event.to_block %>
+</p>
+
+<p>
+  <b>Repeatfrequency:</b>
+  <%=h @event.repeatFrequency %>
+</p>
+
+<p>
+  <b>Repeatinterval:</b>
+  <%=h @event.repeatInterval %>
+</p>
+
+<p>
+  <b>Lecture:</b>
+  <%=h @event.lecture %>
+</p>
+
+<p>
+  <b>Room:</b>
+  <%=h @event.room %>
+</p>
+
+<p>
+  <b>Is blocked:</b>
+  <%=h @event.is_blocked %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

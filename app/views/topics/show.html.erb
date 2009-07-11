@@ -1,0 +1,19 @@
+<p>
+  <b>Title:</b>
+  <%=h @topic.title %>
+</p>
+
+<p>
+  <b>Forum:</b>
+  <%=h @topic.forum %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @topic.user %>
+</p>
+
+<%= render :partial => 'posts/list' %>
+
+<%= link_to 'New post', new_forum_topic_post_path(@forum, @topic) %>
+<%= link_to 'Back', [@forum] %>

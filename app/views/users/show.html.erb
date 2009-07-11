@@ -1,0 +1,54 @@
+<div id="user" class="span-20">
+
+	<div id="user_profile_avatar" class="span-6 <%= @user.department.short.downcase! %>">
+		<%= image_tag @user.avatar.url %>
+	</div>
+
+	<div class="span-14 last">
+		<h1><%=h @user.department.title.upcase! %></h1>
+		<h2><%=h @user.fullname %></h2>
+		<p><% @user.roles.each do |role| -%>
+				<%= role.title %>
+		<% end %></p>
+		<div id="user_profile_contact" class="append-bottom">
+			<h3><%= t 'user.contact' %></h3>
+			<strong>Uni-Mail:</strong> <a href="mailto:"<%=h @user.email %>"><%=h @user.email %></a><br />
+			<% if @user.private_email.nil? == false %>
+				<strong>E-Mail:</strong> <a href="mailto:"<%=h @private_email %>"><%=h @user.private_email %></a><br />
+			<% end %>
+			<% if @user.icq.nil? == false %>
+				<strong>Icq:</strong> <a href="http://www.icq.com/people/webmsg.php?to=<%=h @user.icq %>" alt="ICQ"><%=h @user.icq %></a><br />
+			<% end %>
+			<% if @user.phone.nil? == false %>
+				<strong>Phone:</strong> <%=h @user.phone %>
+			<% end %>
+		</div>
+		<div id="user_profile_additions">
+			<% if @user.activities.nil? == false %>
+				<strong>Activities:</strong><br />
+				<%=h @user.activities %><br />
+			<% end %>
+			<% if @user.publications.nil? == false %>
+				<strong>Publications:</strong><br />
+				<%=h @user.publications %><br />
+			<% end %>
+			<% if @user.presentations.nil? == false %>
+				<strong>Presentations:</strong><br />
+				<%=h @user.presentations %><br />
+			<% end %>
+			<% if @user.biography.nil? == false %>
+				<strong>Biography:</strong><br />
+				<%=h @user.biography %><br />
+			<% end %>
+			<% if @user.company.nil? == false %>
+				<strong>Company:</strong><br />
+				<%=h @user.company %>
+			<% end %>
+		</div>
+	</div>
+	<div class="span-20">
+	<%= link_to 'Back', users_path %>
+	<%= link_to 'Edit', edit_account_path %>
+	</div>
+
+</div>

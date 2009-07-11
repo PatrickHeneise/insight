@@ -1,0 +1,7 @@
+<h1>Editing address</h1>
+
+<%= error_messages_for :address %>
+<%= render :partial => @address, :locals => { :button_name => "Update"} %>
+
+<%= link_to 'Show', @address %> |
+<%= link_to 'Back', addresses_path %>

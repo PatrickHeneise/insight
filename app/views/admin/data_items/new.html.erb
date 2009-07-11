@@ -1,0 +1,14 @@
+<h1>New data_item</h1>
+
+<% form_for ([:admin, @department, @lecture, @folder, @data_item], :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+	<%= t 'view.files.folder.folder' %>: <%=h @folder.name %>
+	<p>
+		<%= f.file_field :upload %>
+	</p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', department_lecture_folder_path(@folder.lecture.department, @folder.lecture, @folder) %>

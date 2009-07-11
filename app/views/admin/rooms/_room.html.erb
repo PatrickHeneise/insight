@@ -1,0 +1,15 @@
+<% form_for([:admin, @building, @room]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+	<p>
+		<%= f.label :user %><br />
+		<%= f.select :user_id, User.find(:all).collect {|u| ["#{u.surname}, #{u.name}", u.id]} %>
+	</p>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>
