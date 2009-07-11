@@ -12,7 +12,7 @@ Rails::Initializer.run do |config|
 	config.gem "stffn-declarative_authorization", :lib => "declarative_authorization"
 	config.gem "mislav-will_paginate", :version => "~> 2.3.8", :lib => "will_paginate", :source => "http://gems.github.com"
 	config.gem "cucumber", :lib => false, :version => ">=0.3.0"
-	config.gem "rgrove-sanitize"
+	config.gem "sanitize"
 	config.gem "flickr-fu", :lib => "flickr_fu"
 	config.gem "youtube-g", :lib => "youtube-g"
 	
