@@ -1,7 +1,7 @@
 <div id="user" class="span-20">
 
 	<div id="user_profile_avatar" class="span-6 <%= @user.department.short.downcase! %>">
-		<%= image_tag @user.avatar.url %>
+		<%= image_tag @user.avatar.url(:large) %>
 	</div>
 
 	<div class="span-14 last">
