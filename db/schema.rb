@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
     t.string   "postcode",        :limit => 15, :null => false
     t.string   "state"
     t.string   "country",                       :null => false
+    t.integer  "user_id",                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

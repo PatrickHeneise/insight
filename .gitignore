@@ -1,6 +1,6 @@
 .DS_Store
 *.gem
-public/images/
+public/avatars/
 public/upload/
 spec/fixtures/
 config/flickr.yml
