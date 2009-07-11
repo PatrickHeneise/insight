@@ -1,0 +1,6 @@
+= insight
+insight is a university intranet application based on the framework Ruby on Rails.
+It combines various methods of communication (Blog, Forums) with features to ease
+daily business of professors, students and employees.
+
+Copyright (c) 2009 Patrick Heneise, Hochschule Furtwangen University
