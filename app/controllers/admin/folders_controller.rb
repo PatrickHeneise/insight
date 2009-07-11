@@ -7,7 +7,6 @@ class Admin::FoldersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @folder }
     end
   end
 
@@ -25,10 +24,8 @@ class Admin::FoldersController < ApplicationController
       if @folder.save
         flash[:notice] = 'Folder was successfully created.'
         format.html { redirect_to(department_lecture_folder_path(@folder.parent.lecture.department, @folder.parent.lecture, @folder)) }
-        format.xml  { render :xml => @folder, :status => :created, :location => @folder }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @folder.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -41,11 +38,9 @@ class Admin::FoldersController < ApplicationController
     respond_to do |format|
       if @folder.update_attributes(params[:folder])
         flash[:notice] = 'Folder was successfully updated.'
-        format.html { redirect_to(department_lecture_folder_path(@folder.lecture.department, @folder.lecture, @folder) }
-        format.xml  { head :ok }
+        format.html { redirect_to(department_lecture_folder_path(@folder.lecture.department, @folder.lecture, @folder)) }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @folder.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -58,7 +53,6 @@ class Admin::FoldersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(department_lecture_path(@folder.lecture.department, @folder.lecture)) }
-      format.xml  { head :ok }
     end
   end
 end
