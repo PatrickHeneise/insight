@@ -13,8 +13,8 @@ Rails::Initializer.run do |config|
 	config.gem "mislav-will_paginate", :version => "~> 2.3.8", :lib => "will_paginate", :source => "http://gems.github.com"
 	config.gem "cucumber", :lib => false, :version => ">=0.3.0"
 	config.gem "sanitize"
-	config.gem "flickr-fu", :lib => "flickr_fu"
-	config.gem "youtube-g", :lib => "youtube-g"
+	config.gem "flickr-fu", :lib => "flickr_fu", :source => "http://gems.github.com"
+	config.gem "tmm1-youtube-g", :lib => "youtube_g", :source => "http://gems.github.com"
 	
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
