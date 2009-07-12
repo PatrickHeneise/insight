@@ -1,0 +1,21 @@
+<div id="replies" class="span-20">
+	<%= will_paginate @replies %>
+	<% unless @replies.empty? %>
+		<% @replies.each do |reply| %>
+		<div class="bullet_reply span-20 <%= cycle('odd', 'even') %>">
+			<div class="bullet_reply_user span-3">
+				<%= link_to reply.user.name + ' ' + reply.user.surname, reply.user %><br />
+				<%= image_tag reply.user.avatar.url(:medium)  %>
+			</div>
+			<div id="<%= reply.id %>" class="bullet_reply_content span-17 last">
+				<%= Sanitize.clean(reply.content, Sanitize::Config::BASIC) %><br />
+				<span class="small"><%= link_to t('edit.reply'), [:edit, @department, @lecture, @board, @bullet, reply] %>
+			</div>
+			<div class="bullet_reply_footer span-20">
+				 <span class="small">Verfasst: <%= reply.updated_at.to_s(:long) %></span>
+			</div>
+		</div>
+		<% end %>
+	<% end %>
+	<%= will_paginate @replies %>
+</div>

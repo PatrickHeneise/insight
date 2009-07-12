@@ -4,4 +4,4 @@
 
 <%= render :partial => @reply, :locals => { :button_name => "New"} %>
 
-<%= link_to 'Back', bullet_replies_path %>
+<%= link_to 'Back', department_lecture_board_bullet_path(@department, @lecture, @board, @bullet) %>

@@ -52,7 +52,6 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @topic }
     end
   end
 
@@ -76,10 +75,8 @@ class TopicsController < ApplicationController
 				@post.save
         flash[:notice] = 'Topic was successfully created.'
         format.html { redirect_to([@forum, @topic]) }
-        format.xml  { render :xml => @topic, :status => :created, :location => @topic }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -93,10 +90,8 @@ class TopicsController < ApplicationController
       if @topic.update_attributes(params[:topic])
         flash[:notice] = 'Topic was successfully updated.'
         format.html { redirect_to(@forum) }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @topic.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -110,7 +105,6 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(@forum) }
-      format.xml  { head :ok }
     end
   end
 end

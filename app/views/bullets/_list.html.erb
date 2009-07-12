@@ -16,21 +16,27 @@
 <% unless @bullets.nil? %>
 <% @bullets.each do |bullet| %>
 	<tr class="<%= cycle('odd', 'even') %>">
-		<td><%= r bullet.get_state(current_user) %></td>
+		<td>
+		<% if recent_bullet_activity(bullet) %>
+				<span class="ss_sprite ss_email_open">&nbsp;</span>
+      <% else %>
+				<span class="ss_sprite ss_email">&nbsp;</span>
+      <% end %>
+		</td>
 		<td>
 			<%= link_to bullet.title, department_lecture_board_bullet_path(bullet.board.lecture.department,bullet.board.lecture,bullet.board,bullet) %>
 			<% if (bullet.replies.length > 2) %>
 				<% bullet.replies.reverse! %>
 				<ul>
 					<% bullet.replies[0..2].each do |reply| %>
-							<li><%= link_to(truncate(strip_tags(reply.content), :length => 25), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet, :anchor => reply.id)) %>... <span class="small">(<%= reply.user.name + ' ' + reply.user.surname + ', ' + reply.updated_at.to_s(:short) %>)</span></li>
+							<li><%= link_to(truncate(strip_tags(reply.content), :length => 25), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet, :anchor => reply.id)) %>... <span class="small">(<%= reply.user.fullname %>, <%= t('support.before') %> <%= time_ago_in_words(reply.updated_at) %>)</span></li>
 					<% end %>
-					<li><%= link_to t(:'view.bullets.all_replies'), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet) %></li>
+					<li><%= link_to t('bullets.all_replies'), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet) %></li>
 				</ul>
 			<% else %>
 				<ul>
 				<% bullet.replies.each do |reply| %>
-						<li><%= link_to(truncate(strip_tags(reply.content), :length => 25), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet, :anchor => reply.id)) %>... <span class="small">(<%= reply.user.name + ' ' + reply.user.surname + ', ' + reply.updated_at.to_s(:short) %>)</span></li>
+						<li><%= link_to(truncate(strip_tags(reply.content), :length => 25), department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board, bullet, :anchor => reply.id)) %>... <span class="small">(<%= reply.user.fullname %>, <%= t('support.before') %> <%= time_ago_in_words(reply.updated_at) %>)</span></li>
 				<% end %>
 				</ul>
 			<% end %>

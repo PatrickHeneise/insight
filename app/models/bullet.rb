@@ -1,26 +1,19 @@
 class Bullet < ActiveRecord::Base
-	include AASM
+  before_create :set_default_replied_at_and_sticky
 	
   belongs_to :board
   belongs_to :user
 	
-	has_many :replies
-	has_many :bullet_activities
+	has_many :bullet_activities, :conditions => ['active = ?', true], :source => :user, :order => 'users.login'
 	
-	aasm_column :state
-	aasm_initial_state :active
-	
-	aasm_state :active
-	aasm_state :closed
-	
-	aasm_event :close do
-		transitions :from => :active, :to => :closed
+	has_many :replies, :order => 'created_at', :dependent => :destroy do
+		def last
+			@last_reply ||= find(:first, :order => 'created_at desc')
+		end
 	end
-	aasm_event :activate do
-		transitions :from => :closed, :to => :active
-	end
-	
-	def get_state(user_id)
-		return self.bullet_activities.find(:first, :conditions => {:user_id => user_id}).state rescue return "unread"
-	end
+
+	protected
+    def set_default_replied_at_and_sticky
+      self.replied_at = Time.now
+    end
 end

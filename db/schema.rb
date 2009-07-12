@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
   create_table "bullets", :force => true do |t|
     t.integer  "board_id",                      :null => false
     t.string   "title",                         :null => false
+    t.text     "content",                       :null => false
     t.integer  "user_id",                       :null => false
     t.datetime "replied_at"
     t.boolean  "locked",     :default => false

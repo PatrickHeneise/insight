@@ -3,6 +3,7 @@ class CreateBullets < ActiveRecord::Migration
     create_table :bullets do |t|
       t.references :board,						:null => false
       t.string :title,								:limit => 255,	:null => false
+			t.text :content,								:null => false
       t.references :user,							:null => false
 			t.datetime :replied_at
 			t.boolean :locked,							:default => false

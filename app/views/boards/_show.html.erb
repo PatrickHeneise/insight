@@ -1,0 +1,6 @@
+<div class="span-20">
+	<%= link_to t(:'bullets.add_new_bullet'), new_department_lecture_board_bullet_path(@department,@lecture,@lecture.board) %>
+</div>
+<div class="span-20">
+	<%= render :partial => 'bullets/list', :locals => { :bullets => @bullets } %>
+</div>

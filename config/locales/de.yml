@@ -28,7 +28,7 @@ de:
     formats:
       default: "%A, %e. %B %Y, %H:%M Uhr"
       time: "%H:%M Uhr"
-      short: "%e.%m., %H:%M Uhr"
+      short: "%a, %d.%m.%Y<br />%H:%M Uhr"
       long: "%A, %e. %B %Y, %H:%M Uhr"
 
     am: "vormittags"
@@ -139,6 +139,7 @@ de:
     article: "Artikel bearbeiten"
     lecture: "Veranstaltung bearbeiten"
     building: "Gebäude bearbeiten"
+    reply: "Beitrag Editieren"
     
   delete:
     delete: "Löschen"
