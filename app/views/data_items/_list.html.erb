@@ -1,0 +1,18 @@
+<% data_items.each do |data_item| -%>
+	<tr>
+		<td><%= r data_item.upload_content_type rescue "" %></td>
+		<td><%= link_to data_item.upload_file_name, data_item.upload.url %></td>
+		<td>
+			<% if data_item.upload_file_size > 1048576 %>
+				<%= number_with_precision(data_item.upload_file_size/2048) %> <%= t('number.computer.megabytes') %>
+			<% else %>
+				<%= data_item.upload_file_size/1024 %> <%= t('number.computer.kilobytes') %>
+			<% end %>
+		</td>
+		<td><%= data_item.upload_updated_at.to_s(:default) %></td>
+		<td><%= data_item.state %></td>
+		<% permitted_to? :edit, :folders do -%>
+		<td><%= link_to t ('delete.delete'), [:admin, @folder, data_item], :confirm => 'Are you sure?', :method => :delete, :class => "ss_sprite ss_database_delete" %></td>
+		<% end %>
+	</tr>
+<% end %>
