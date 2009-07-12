@@ -10,7 +10,10 @@
 	<thead>
 		<tr>
 			<th class="accent" width="15">&nbsp;</th>
-			<th class="accent">Name</th>
+			<th class="accent"><%= t('files.title') %></th>
+			<th class="accent"><%= t('files.size') %></th>
+			<th class="accent"><%= t('files.date') %></th>
+			<th class="accent"><%= t('files.state') %></th>
 			<% permitted_to? :edit, :folders do -%>
 				<th class="accent" width="15">&nbsp;</th>
 			<% end %>
@@ -19,30 +22,20 @@
 	<tfoot>
 	</tfoot>
 	<tbody>
-<% unless @folder.childs.empty? %>
-	<% @folder.childs.each do |folder| -%>
-		<tr>
-			<td><span class="ss_sprite ss_folder">&nbsp;</span></td>
-			<td><%= link_to folder.name, department_lecture_folder_path(@department, @lecture, folder) %></td>
-			<% permitted_to? :edit, :folders do -%>
-				<td><%= link_to t ('delete.delete'), [:admin, @folder], :confirm => 'Are you sure?', :method => :delete, :class => "ss_sprite ss_folder_delete" %></td>
-			<% end %>
-		</tr>
-	<% end %>
+	<% unless @folder.childs.empty? %>
+		<% @folder.childs.each do |folder| -%>
+			<tr>
+				<td><span class="ss_sprite ss_folder">&nbsp;</span></td>
+				<td colspan="4"><%= link_to folder.name, department_lecture_folder_path(@department, @lecture, folder) %></td>
+				<% permitted_to? :edit, :folders do -%>
+					<td><%= link_to t ('delete.delete'), [:admin, @folder], :confirm => 'Are you sure?', :method => :delete, :class => "ss_sprite ss_folder_delete" %></td>
+				<% end %>
+			</tr>
+		<% end %>
 	<% end %>
 	<% unless @folder.data_items.empty? %>
-	<% @folder.data_items.each do |data_item| -%>
-		<tr>
-			<td><%= link_to data_item.upload_file_name, data_item.upload.url %></td>
-			<td><%= data_item.upload_content_type %></td>
-			<td><%= data_item.upload_file_size %></td>
-			<td><%= data_item.upload_updated_at.to_s(:short) %></td>
-			<td><%= data_item.state %></td>
-			<% permitted_to? :edit, :folders do -%>
-			<td><%= link_to t ('delete.delete'), [:admin, @folder, data_item], :confirm => 'Are you sure?', :method => :delete, :class => "ss_sprite ss_database_delete" %></td>
-			<% end %>
-		</tr>
-	<% end %>
+	
+		<%= render :partial => 'data_items/list', :locals => { :data_items => @folder.data_items } %>
 	<% end %>
 	</tbody>
 </table>

@@ -26,7 +26,7 @@ de:
   
   time:
     formats:
-      default: "%A, %e. %B %Y, %H:%M Uhr"
+      default: "%d.%m.%Y, %H:%M Uhr"
       time: "%H:%M Uhr"
       short: "%a, %d.%m.%Y<br />%H:%M Uhr"
       long: "%A, %e. %B %Y, %H:%M Uhr"
@@ -92,6 +92,11 @@ de:
       format:
         delimiter: ""
         precision: 1
+    computer:
+      bits: "b"
+      bytes: "B"
+      kilobytes: "KB"
+      megabytes: "MB"
  
   support:
     of: "von"
@@ -204,6 +209,10 @@ de:
   files:
     area: "Dateibereich"
     parent: "Übergeordnet"
+    size: "Dateigröße"
+    state: "Status"
+    date: "Datum"
+    title: "Dateiname"
     content: "Dateien"
     upload: "Datei hochladen"
     folder: 

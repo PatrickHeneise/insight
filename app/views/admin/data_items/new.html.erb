@@ -2,7 +2,7 @@
 
 <% form_for ([:admin, @department, @lecture, @folder, @data_item], :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
-	<%= t 'view.files.folder.folder' %>: <%=h @folder.name %>
+	<%= t 'files.folder.folder' %>: <%=h @folder.name %>
 	<p>
 		<%= f.file_field :upload %>
 	</p>
