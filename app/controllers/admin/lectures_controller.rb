@@ -40,11 +40,11 @@ class Admin::LecturesController < ApplicationController
 		@board.lecture = @lecture
 		@folder.name = @lecture.title
 		@folder.lecture = @lecture
-		@folder.save
-		@board.save
 
     respond_to do |format|
       if @lecture.save
+				@folder.save
+				@board.save
         flash[:notice] = 'Lecture was successfully created.'
         format.html { redirect_to(department_lecture_path(@lecture.department, @lecture)) }
       else

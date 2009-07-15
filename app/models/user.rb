@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	acts_as_authentic
 	
+	validates_presence_of :department_id unless :email.present?
+	
   belongs_to :company
   belongs_to :department
   belongs_to :address
@@ -30,7 +32,11 @@ class User < ActiveRecord::Base
 	end
 	
 	def fullname
-		return self.title + " " + self.name + " " + self.surname rescue return self.name + " " + self.surname
+		if(self.title)
+			"#{title} #{name} #{surname}"
+		else
+			"#{name} #{surname}"
+		end
 	end
 	
 	def status
@@ -49,4 +55,15 @@ class User < ActiveRecord::Base
 	has_attached_file :avatar, :styles => { :original => "300x300", :large => "150x150", :medium => "100x100>", :small => "50x50>" }, :url => "/avatars/:login/:style/:login.:extension"
 	validates_attachment_size :avatar, :less_than => 500.kilobytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+	
+	protected
+    def valid_ldap_credentials?(ldap_password)
+      # try to authenticate against the LDAP server
+      ldap = Net::LDAP.new
+      ldap.host = LDAP_HOST
+      # first create the username/password strings to send to the LDAP server
+      # in our case we need to add the domain so it looks like COMPANY\firstname.lastname
+      ldap.auth "#{LDAP_DOMAIN}\\" + self.login, ldap_password
+      ldap.bind # will return false if authentication is NOT successful
+    end
 end

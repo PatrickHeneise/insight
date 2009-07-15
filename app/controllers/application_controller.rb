@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-	require 'flickr_fu'
 	before_filter :require_user
 	
   helper :all # include all helpers, all the time
@@ -10,7 +9,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
 	filter_parameter_logging :password, :password_confirmation
 
-	layout "hfu", :except => [ :rss, :atom ]
+	layout "hfu", :except => [ :rss, :atom, :authorization_rules ]
 	
 	def permission_denied 
 		respond_to do |format| 

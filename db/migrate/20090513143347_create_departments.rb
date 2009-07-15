@@ -5,6 +5,7 @@ class CreateDepartments < ActiveRecord::Migration
       t.text :description
       t.references :organization,			:null => false
 			t.string :short,								:null => false, :limit => 5
+			t.string :ldap_ou,							:null => false
 
       t.timestamps
     end

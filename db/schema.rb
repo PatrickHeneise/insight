@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
     t.text     "description"
     t.integer  "organization_id",              :null => false
     t.string   "short",           :limit => 5, :null => false
+    t.string   "ldap_ou",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -202,6 +203,7 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
 
   create_table "organizations", :force => true do |t|
     t.string   "title",      :null => false
+    t.string   "ldap_dc",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -281,18 +283,18 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
   add_index "topics", ["forum_id"], :name => "index_topics_on_forum_id"
 
   create_table "users", :force => true do |t|
-    t.string   "login",               :limit => 50,                   :null => false
+    t.string   "login",               :limit => 50,                    :null => false
     t.string   "name"
     t.string   "surname"
     t.string   "title",               :limit => 15
-    t.string   "crypted_password",                                    :null => false
-    t.string   "persistence_token",                                   :null => false
+    t.string   "crypted_password",                                     :null => false
+    t.string   "persistence_token",                                    :null => false
     t.datetime "last_login_at"
     t.datetime "current_login_at"
     t.datetime "last_request_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
-    t.string   "email",                                               :null => false
+    t.string   "email",                                                :null => false
     t.string   "private_email"
     t.integer  "icq",                 :limit => 15
     t.string   "phone"
@@ -304,9 +306,10 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
     t.integer  "department_id"
     t.integer  "address_id"
     t.integer  "home_address_id"
-    t.integer  "course_id",                                           :null => false
+    t.integer  "course_id"
     t.integer  "semester",            :limit => 2
-    t.boolean  "active",                            :default => true, :null => false
+    t.boolean  "active",                            :default => false, :null => false
+    t.string   "ldap_dn"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_seen_at"

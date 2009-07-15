@@ -23,7 +23,5 @@
 			<br class="clear" />
 		<% end %>
 	<% end %>
-	<div id="flickr_gallery_pagination">
-		<span><%= link_to "<<", media_path(:page => (@page.to_i - 1)), :class => "ss_decorated" %> <%= link_to ">>", media_path(:page => (@page.to_i + 1)), :class => "ss_decorated" %></span>
-	</div>
+	<%= will_paginate @photos %>
 </div>

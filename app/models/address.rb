@@ -3,10 +3,10 @@ class Address < ActiveRecord::Base
 	has_many :companies
 	
 	def national
-		return street + ", " + postcode + " " + city
+		"#{street}, #{postcode} #{city}"
 	end
 	
 	def full
-		return street + ", " + postcode + " " + city + " (" + country + ")"
+		"#{street}, #{postcode} #{city} (#{country})"
 	end
 end

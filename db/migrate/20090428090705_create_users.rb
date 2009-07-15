@@ -24,9 +24,10 @@ class CreateUsers < ActiveRecord::Migration
       t.references :department
       t.references :address
       t.references :home_address
-			t.references :course,					:null => false
+			t.references :course
 			t.integer :semester,					:null => true, :limit => 2
-			t.boolean :active,						:default => true, :null => false
+			t.boolean :active,						:default => false, :null => false
+			t.string :ldap_dn
 
       t.timestamps
     end

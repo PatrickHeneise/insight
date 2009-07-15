@@ -9,7 +9,7 @@
 		</tr>
 	</thead>
 	<tbody>
-<% @forums.each do |forum| %>
+<% @forums.each do |forum| -%>
 	<tr class="<%= cycle('odd', 'even', :name => "public") %>">
 		<td>
 		<% if recent_forum_activity(forum) %>

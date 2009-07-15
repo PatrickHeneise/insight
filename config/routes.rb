@@ -62,7 +62,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.media '/media', :controller => 'MediaCenter', :action => 'index'
 	
 	# Return blog articles for year, year/month, year/month/day
-	map.date 'blog/:year/:month/:day',
+	map.date '/blog/:year/:month/:day',
 		:controller => "blog",
 		:action => "show_date",
 		:requirements => {	:year => /(19|20)\d\d/,
@@ -75,6 +75,8 @@ ActionController::Routing::Routes.draw do |map|
 	map.unrol '/lectures/:id/unrol', :controller => 'lectures', :action => 'unrol'
 	map.subscribe '/forums/:id/subscribe', :controller => 'forums', :action => 'subscribe'
 	map.unsubscribe '/forums/:id/unsubscribe', :controller => 'forums', :action => 'unsubscribe'
+	
+	map.register '/register', :controller => 'Users', :action => 'new'
 	
 	map.with_options :controller => 'Departments' do |deps|
 	end
