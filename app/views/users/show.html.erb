@@ -10,6 +10,7 @@
 		<p><% @user.roles.each do |role| -%>
 				<%= role.title %>
 		<% end %></p>
+		<p><%= @user.course.short unless @user.course.short.nil? %><%= @user.semester unless @user.semester.nil? %></p>
 		<div id="user_profile_contact" class="append-bottom">
 			<h3><%= t 'user.contact' %></h3>
 			<strong>Uni-Mail:</strong> <a href="mailto:"<%=h @user.email %>"><%=h @user.email %></a><br />

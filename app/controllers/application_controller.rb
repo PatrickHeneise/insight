@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-	filter_parameter_logging :password, :password_confirmation
+	filter_parameter_logging :password, :password_confirmation, :api_key, :api_secret
 
 	layout "hfu", :except => [ :rss, :atom, :authorization_rules ]
 	

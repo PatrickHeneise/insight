@@ -1,30 +1,29 @@
-<% form_for @user do |f| %>
-	<%= f.error_messages %>
-<% end %>
 <h1>Student/LB/Prof/Mitarbeiter</h1>
-<% form_for @user, :url => account_path do |f| %>
-	<%= f.select :department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]},{:prompt => t('select.department')} %>
+<% form_for @intern, :url => { :controller => "users", :action => "create_intern" } do |i| %>
+	<%= i.error_messages %>
+	<%= i.select :department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]},{:prompt => t('select.department')} %>
 	<br />
-	<%= f.label :login %><br />
-	<%= f.text_field :login %><br />
+	<%= i.label :login %><br />
+	<%= i.text_field :login %><br />
 	<br />
-	<%= f.label :password %><br />
-	<%= f.password_field :password %><br />
+	<%= i.label :password %><br />
+	<%= i.password_field :password %><br />
 
-  <%= f.submit "Register" %>
+  <%= i.submit "Register" %>
 <% end %>
 
 <h1>Firma/Alumni/...</h1>
-<% form_for @user, :url => account_path do |f| %>
-	<%= f.label :email %><br />
-	<%= f.text_field :email %>
+<% form_for @extern, :url => { :controller => "users", :action => "create_extern" } do |e| %>
+	<%= e.error_messages %>
+	<%= e.label :email %><br />
+	<%= e.text_field :email %>
 	<br />
-	<%= f.label :name %><br />
-	<%= f.text_field :name %>
+	<%= e.label :name %><br />
+	<%= e.text_field :name %>
 	<br />
-	<%= f.label :surname %><br />
-	<%= f.text_field :surname %>
+	<%= e.label :surname %><br />
+	<%= e.text_field :surname %>
 	<br />
 
-  <%= f.submit "Register" %>
+  <%= e.submit "Register" %>
 <% end %>

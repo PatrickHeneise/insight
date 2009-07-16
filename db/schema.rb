@@ -288,6 +288,7 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
     t.string   "surname"
     t.string   "title",               :limit => 15
     t.string   "crypted_password",                                     :null => false
+    t.string   "salt"
     t.string   "persistence_token",                                    :null => false
     t.datetime "last_login_at"
     t.datetime "current_login_at"
@@ -310,6 +311,7 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
     t.integer  "semester",            :limit => 2
     t.boolean  "active",                            :default => false, :null => false
     t.string   "ldap_dn"
+    t.integer  "regid"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_seen_at"

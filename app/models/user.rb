@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
 	acts_as_authentic
-	
-	validates_presence_of :department_id unless :email.present?
-	
+	validate
+
   belongs_to :company
   belongs_to :department
   belongs_to :address
@@ -26,11 +25,11 @@ class User < ActiveRecord::Base
      (roles || []).map {|r| r.title.to_sym}
 	end
 	
-	def enrolled?(id)
-		lecture = enrollments.find_by_lecture_id id
-		return !lecture.nil?
-	end
-	
+	# Paperclip
+	has_attached_file :avatar, :styles => { :original => "300x300", :large => "150x150", :medium => "100x100>", :small => "50x50>" }, :url => "/avatars/:login/:style/:login.:extension"
+	validates_attachment_size :avatar, :less_than => 500.kilobytes
+	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
+
 	def fullname
 		if(self.title)
 			"#{title} #{name} #{surname}"
@@ -50,20 +49,24 @@ class User < ActiveRecord::Base
 			end
 		end
 	end
-	 
-	# Paperclip
-	has_attached_file :avatar, :styles => { :original => "300x300", :large => "150x150", :medium => "100x100>", :small => "50x50>" }, :url => "/avatars/:login/:style/:login.:extension"
-	validates_attachment_size :avatar, :less_than => 500.kilobytes
-	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 	
-	protected
-    def valid_ldap_credentials?(ldap_password)
-      # try to authenticate against the LDAP server
-      ldap = Net::LDAP.new
-      ldap.host = LDAP_HOST
-      # first create the username/password strings to send to the LDAP server
-      # in our case we need to add the domain so it looks like COMPANY\firstname.lastname
-      ldap.auth "#{LDAP_DOMAIN}\\" + self.login, ldap_password
-      ldap.bind # will return false if authentication is NOT successful
-    end
+	def enrolled?(id)
+		lecture = enrollments.find_by_lecture_id id
+		return !lecture.nil?
+	end
+
+	private
+		def validate
+			if department_is_needed?
+				if self.department.blank?
+					errors.clear
+					errors.add(:department_id, 'Please choose a department' )
+				end
+			end
+		end
+	 
+		def department_is_needed?
+			result = false
+			result = true if self.active?
+		end
 end

@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.string :surname,						:limit => 255
 			t.string :title,							:limit => 15, :null => true;
       t.string :crypted_password,		:null => false
+			t.string :salt
       t.string :persistence_token,	:null => false
       t.datetime :last_login_at
       t.datetime :current_login_at
@@ -28,6 +29,7 @@ class CreateUsers < ActiveRecord::Migration
 			t.integer :semester,					:null => true, :limit => 2
 			t.boolean :active,						:default => false, :null => false
 			t.string :ldap_dn
+			t.integer :regid
 
       t.timestamps
     end
