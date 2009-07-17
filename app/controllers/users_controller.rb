@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 			logger.debug @intern.login
 			logger.debug data.to_yaml
 			@intern.email = data.first.mail.first
-			@intern.private_email = data.first.mailprivat.first
+			@intern.private_email = data.first.mailprivat.first rescue @intern.private_mail = ""
 			@intern.surname = data.first.sn.first
 			@intern.name = data.first.givenname.first
 			logger.debug data.first.edupersonaffiliation
