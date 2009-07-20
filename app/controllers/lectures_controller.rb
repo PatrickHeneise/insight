@@ -16,29 +16,29 @@ class LecturesController < ApplicationController
       end
     end
 	end
+
+	def enrol
+		@enrollment = Enrollment.new
+		@enrollment.lecture = Lecture.find(params[:id])
+		@enrollment.user = current_user
+		if @enrollment.save
+			flash[:notice] = 'Booked.'
+			redirect_to(overview_path)
+		else
+			flash[:error] = @enrollment.errors
+			redirect_to(overview_path)
+		end
+	end
+	
+	def unrol
+		@enrollment = current_user.enrollments.find_by_lecture_id params[:id]
+		@enrollment.destroy
+		flash[:notice] = 'Canceled.'
+		redirect_to(overview_path)
+	end
 	
 	protected
 		def load_department
 			@department = Department.find(params[:department_id])
-		end
-		
-		def enrol
-			@enrollment = Enrollment.new
-			@enrollment.lecture = Lecture.find(params[:id])
-			@enrollment.user = current_user
-			if @enrollment.save
-				flash[:notice] = 'Booked.'
-				redirect_to(overview_path)
-			else
-				flash[:error] = @enrollment.errors
-				redirect_to(overview_path)
-			end
-		end
-		
-		def unrol
-			@enrollment = current_user.enrollments.find_by_lecture_id params[:id]
-			@enrollment.destroy
-			flash[:notice] = 'Canceled.'
-			redirect_to(overview_path)
 		end
 end

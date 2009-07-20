@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 		@extern = User.new
   end
 	
+	# Generate login and password and send them via mail to the user. The account is disabled by default.
   def create_extern
 		@extern = User.new(params[:user])
 		@extern.password_confirmation = @extern.password
@@ -42,7 +43,8 @@ class UsersController < ApplicationController
       render :action => :new
     end
 	end
-	
+
+	# LDAP authentication and data import for members of the university.
 	def create_intern
 		@intern = User.new(params[:user])
 		@intern.active = true
@@ -55,15 +57,10 @@ class UsersController < ApplicationController
 			dn = "uid="+@intern.login
 			@intern.ldap_dn = "#{dn},#{base_dn}"
 			data = LDAP.register @intern.login, @intern.password, base_dn
-			logger.debug base_dn
-			logger.debug @intern.password
-			logger.debug @intern.login
-			logger.debug data.to_yaml
 			@intern.email = data.first.mail.first
-			@intern.private_email = data.first.mailprivat.first rescue @intern.private_mail = ""
-			@intern.surname = data.first.sn.first
-			@intern.name = data.first.givenname.first
-			logger.debug data.first.edupersonaffiliation
+			@intern.private_email = data.first.mailprivat.first unless data.first.mailprivat.nil?
+			@intern.surname = data.first.sn.first unless data.first.sn.first.nil?
+			@intern.name = data.first.givenname.first unless data.first.givenname.nil?
 			if data.first.edupersonaffiliation.first == "student"
 				@intern.semester = data.first.hfucurrentsemester.first
 				@intern.course = Course.find(:first, :conditions => ["short like ?", data.first.hfustudycourse.first])
@@ -98,7 +95,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = @current_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to account_url

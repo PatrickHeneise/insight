@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
 	end
 	
 	map.resources :departments do |department|
+		department.resources :lectures, :member => { :enrol => :get, :unrol => :get }
 		department.resources :lectures do |lecture|
 			lecture.resources :folders do |folder|
 				folder.resources :data_items
@@ -34,6 +35,7 @@ ActionController::Routing::Routes.draw do |map|
 			end
 		end
 		
+		map.resources :forums, :member => { :subscribe => :get, :unsubscribe => :get }
 		map.resources :forums do |forum|
 			forum.resources :topics do |topic|
 				topic.resources :posts
@@ -70,11 +72,6 @@ ActionController::Routing::Routes.draw do |map|
 												:day => /[0-3]?\d/},
 		:day => nil,
 		:month => nil
-
-	map.enrol '/lectures/:id/enrol', :controller => 'lectures', :action => 'enrol'
-	map.unrol '/lectures/:id/unrol', :controller => 'lectures', :action => 'unrol'
-	map.subscribe '/forums/:id/subscribe', :controller => 'forums', :action => 'subscribe'
-	map.unsubscribe '/forums/:id/unsubscribe', :controller => 'forums', :action => 'unsubscribe'
 	
 	map.register '/register', :controller => 'Users', :action => 'new'
 	

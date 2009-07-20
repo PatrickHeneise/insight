@@ -28,9 +28,9 @@
 		</td>
 		<td>
 		<% if forum.subscribed?(current_user) %>
-			<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unsubscribe_path(forum.id), :class => 'undecorated' %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unsubscribe_forum_path(forum), :class => 'undecorated' %>
 		<% else %>
-			<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', subscribe_path(forum.id), :class => 'undecorated' %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', subscribe_forum_path(forum), :class => 'undecorated' %>
 		<% end %>
 		</td>
 	</tr>
@@ -68,9 +68,9 @@
 		</td>
 		<td>
 		<% if forum.subscribed?(current_user) %>
-			<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unsubscribe_path(forum.id), :class => 'undecorated' %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unsubscribe_forum_path(forum), :class => 'undecorated' %>
 		<% else %>
-			<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', subscribe_path(forum.id), :class => 'undecorated' %>
+			<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', subscribe_forum_path(forum), :class => 'undecorated' %>
 		<% end %>
 		</td>
 	</tr>
