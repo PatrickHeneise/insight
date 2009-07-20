@@ -7,10 +7,7 @@
 	<div class="span-14 last">
 		<h1><%=h @user.department.title.upcase! %></h1>
 		<h2><%=h @user.fullname %></h2>
-		<p><% @user.roles.each do |role| -%>
-				<%= role.title %>
-		<% end %></p>
-		<p><%= @user.course.short unless @user.course.short.nil? %><%= @user.semester unless @user.semester.nil? %></p>
+		<p><%= @user.list_roles_detail %></p>
 		<div id="user_profile_contact" class="append-bottom">
 			<h3><%= t 'user.contact' %></h3>
 			<strong>Uni-Mail:</strong> <a href="mailto:"<%=h @user.email %>"><%=h @user.email %></a><br />

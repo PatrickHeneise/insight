@@ -4,7 +4,6 @@ class UserSessionsController < ApplicationController
   layout "centered", :except => [ :rss, :atom ]
 	
   def new
-    @user_session = UserSession.new
   end
   
   def create

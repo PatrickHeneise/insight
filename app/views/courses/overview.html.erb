@@ -3,7 +3,7 @@
 <table class="overview" summary="This table gives an overview of lectures.">
 	<thead>
 		<tr>
-			<th class="accent" colspan="2"><%=h @course.title %></th>
+			<th class="accent" colspan="2"><%=h @course.title unless @course.nil? %></th>
 			<th class="accent">ECTS</th>
 			<th class="accent">Aktionen</th>
 		</tr>

@@ -1,0 +1,4 @@
+<% permitted_to? :create, :articles do %>
+<%= navigation [{:articles_new => new_admin_blog_article_path(@blog)}, t('create.article')],
+								:link_text => true -%>
+<% end %>

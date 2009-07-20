@@ -32,22 +32,27 @@ class User < ActiveRecord::Base
 
 	def fullname
 		if(self.title)
-			"#{title} #{name} #{surname}"
+			return "#{title} #{name} #{surname}"
 		else
-			"#{name} #{surname}"
+			return "#{name} #{surname}"
 		end
 	end
 	
-	def status
-		roles.each do |r|
-			if(r.title == "Student")
-				return course.short.to_s + " " + semester.to_s
-			elsif(r.title == "Developer")
-				return I18n.translate('employee') + " " + department.short
-			elsif(r.title == "Professor")
-				return I18n.translate('professor') + " " + department.short
+	def list_roles
+		(roles || []).map { |r| I18n.translate('roles.' + r.title.downcase) }.join('<br />')
+	end
+	
+	def list_roles_detail
+		list = ""
+		roles.each_with_index do |r,i|
+			list += I18n.translate('roles.' + r.title.downcase) + " #{course.short} #{semester}" if(r.title == "Student")
+			list += I18n.translate('roles.' + r.title.downcase) + " #{department.short.upcase}" if(r.title == "Developer")
+			list += I18n.translate('roles.' + r.title.downcase) + " #{department.short.upcase}" if(r.title == "Employee")
+			if(i < roles.size-1)
+				list += "<br />"
 			end
 		end
+		return list
 	end
 	
 	def enrolled?(id)

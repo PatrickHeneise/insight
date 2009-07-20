@@ -1,3 +1,5 @@
+<%= render :partial => 'user_sessions/login' %>
+
 <h1>Student/LB/Prof/Mitarbeiter</h1>
 <% form_for @intern, :url => { :controller => "users", :action => "create_intern" } do |i| %>
 	<%= i.error_messages %>

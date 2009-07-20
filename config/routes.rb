@@ -62,6 +62,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.login '/login', :controller => 'UserSessions', :action => 'new'
 	map.service '/service', :controller => 'Service', :action => 'index'
 	map.media '/media', :controller => 'MediaCenter', :action => 'index'
+	map.register '/register', :controller => 'Users', :action => 'new'
 	
 	# Return blog articles for year, year/month, year/month/day
 	map.date '/blog/:year/:month/:day',
@@ -72,8 +73,6 @@ ActionController::Routing::Routes.draw do |map|
 												:day => /[0-3]?\d/},
 		:day => nil,
 		:month => nil
-	
-	map.register '/register', :controller => 'Users', :action => 'new'
 	
 	map.with_options :controller => 'Departments' do |deps|
 	end

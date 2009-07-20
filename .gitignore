@@ -4,3 +4,4 @@ public/avatars/
 public/upload/
 spec/fixtures/
 config/flickr.yml
+test/fixtures/

@@ -1,13 +1,16 @@
 de:
-  employee: "Mitarbeiter"
-  professor: "Professor"
-  student: "Student"
-  dean: "Dekan"
   subscribe: "Abonnieren"
   unsubscribe: "Abmelden"
   webcam: "Webcam"
   next_page: "Nächste Seite"
   previous_page: "Vorherige Seite"
+
+  roles:
+    employee: "Mitarbeiter"
+    developer: "Mitarbeiter"
+    professor: "Professor"
+    student: "Student"
+    dean: "Dekan"
 
   date:
     formats:
