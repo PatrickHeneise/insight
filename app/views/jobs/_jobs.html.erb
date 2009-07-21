@@ -1,0 +1,30 @@
+<% form_for(@job) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+	<p>
+    <%= f.label :prerequisit %><br />
+    <%= f.tinymce :prerequisit %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.tinymce :description %>
+  </p>
+  <p>
+    <%= f.label :period %><br />
+    <%= f.text_field :period %>
+  </p>
+  <p>
+    <%= f.label :payment %><br />
+    <%= f.text_field :payment %>
+  </p>
+  <p>
+    <%= f.label :timeout %><br />
+    <%= f.date_select :timeout %>
+  </p>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

@@ -1,0 +1,44 @@
+<p>
+  <b>Company:</b>
+  <%=h @job.company %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @job.user.fullname, @job.user %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @job.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+	<%= Sanitize.clean(@job.description, Sanitize::Config::BASIC) %>
+</p>
+
+<p>
+  <b>Prerequisit:</b>
+	<%= Sanitize.clean(@job.prerequisit, Sanitize::Config::BASIC) %>
+</p>
+
+<p>
+  <b>Period:</b>
+  <%=h @job.period %>
+</p>
+
+<p>
+  <b>Payment:</b>
+  <%=h @job.payment %>
+</p>
+
+<p>
+  <b>Timeout:</b>
+  <%=h @job.timeout %>
+</p>
+
+<%= render :partial => 'advertisements', :locals => { :job => @job } %>
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

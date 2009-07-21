@@ -166,6 +166,7 @@ de:
 
   select:
     address: "Address wählen"
+    department: "Fakultät wählen"
 
   application:
     profile: "Profil"
@@ -180,8 +181,6 @@ de:
     description: "Beschreibung"
     title: "Titel"
     home: "Dashboard"
-
-  page:
     
   blog:
     header: "Fakultätsblog"    
@@ -249,6 +248,9 @@ de:
 
   user:
     contact: "Kontakt"
+
+  jobs:
+    jobs: "Jobs"
 
   flash:
     notice:

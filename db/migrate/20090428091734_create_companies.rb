@@ -4,7 +4,9 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :name,								:null => false, :limit => 255
       t.references :address,				:null => false
       t.string :industry
-
+			t.string :url,								:limit => 255
+			t.string :tags
+			
       t.timestamps
     end
   end

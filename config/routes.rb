@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :jobs
 	map.resources :events
   map.resources :addresses
   map.resources :companies
@@ -89,6 +90,6 @@ ActionController::Routing::Routes.draw do |map|
 		courses.schedule '/schedule',					:action => 'schedule'
 	end
 	
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+#  map.connect ':controller/:action/:id'
+#  map.connect ':controller/:action/:id.:format'
 end

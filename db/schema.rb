@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090625170357) do
+ActiveRecord::Schema.define(:version => 20090721081148) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street",                        :null => false
@@ -91,11 +91,17 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
   end
 
   create_table "companies", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "address_id", :null => false
+    t.string   "name",              :null => false
+    t.integer  "address_id",        :null => false
     t.string   "industry"
+    t.string   "url"
+    t.string   "tags"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "course_modules", :force => true do |t|
@@ -185,6 +191,23 @@ ActiveRecord::Schema.define(:version => 20090625170357) do
     t.boolean  "internal",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.text     "prerequisit"
+    t.string   "period"
+    t.integer  "payment"
+    t.date     "timeout"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "advertisement_file_name"
+    t.string   "advertisement_content_type"
+    t.integer  "advertisement_file_size"
+    t.datetime "advertisement_updated_at"
   end
 
   create_table "lectures", :force => true do |t|

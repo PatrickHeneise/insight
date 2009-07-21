@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 	has_many :data_items
 	has_many :bullet_activities
 	has_many :topic_activities
+	has_many :jobs
 	
 	def role_symbols
      (roles || []).map {|r| r.title.to_sym}
