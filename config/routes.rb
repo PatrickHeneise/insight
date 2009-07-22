@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
 		article.resources :comments
 	end
 	
+	map.resources :courses, :member => { :overview => :get }
   map.resources :courses do |course|
 		course.resources :course_modules
 	end
@@ -62,7 +63,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.service '/service', :controller => 'Service', :action => 'index'
 	map.media '/media', :controller => 'MediaCenter', :action => 'index'
 	map.register '/register', :controller => 'Users', :action => 'new'
-	map.overview '/overview', :controller => 'Courses', :action => 'overview'
+	map.overview '/lecture-plan', :controller => 'Courses', :action => 'overview'
 	
 	# Return blog articles for year, year/month, year/month/day
 	map.date '/blog/:year/:month/:day',

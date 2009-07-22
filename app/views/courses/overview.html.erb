@@ -10,7 +10,7 @@
 	</thead>
 	<tfoot><tr><td colspan="4">Vorlesungen basierend auf den in der SPO angegebenen Pflichtvorlesungen.</td></tr></tfoot>
 	<tbody>
-	<% unless @course.course_modules.empty? %>
+	<% unless @course.nil? %>
 	<% @course.course_modules.each do |m| %>
 	<% @lectures = m.lectures %>
 		<tr class="<%= cycle('odd', 'even') %>">
@@ -53,7 +53,7 @@
 <% @courses.each do |course| %>
 <% unless course == @course %>
 	<tr>
-		<td><%=link_to course.title, overview_path(@id, :id => course)  %></td>
+		<td><%=link_to course.title, overview_course_path(course)  %></td>
 	</tr>
 <% end %>
 <% end %>
