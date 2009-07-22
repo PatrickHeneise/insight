@@ -2,29 +2,19 @@
 
 <table>
   <tr>
-    <th>Company</th>
-    <th>User</th>
     <th>Title</th>
     <th>Description</th>
-    <th>Prerequisit</th>
     <th>Period</th>
     <th>Payment</th>
-    <th>Timeout</th>
   </tr>
 
 <% @jobs.each do |job| %>
   <tr>
-    <td><%=h job.company %></td>
-    <td><%=h job.user %></td>
-    <td><%=h job.title %></td>
-    <td><%=h job.description %></td>
-    <td><%=h job.prerequisit %></td>
+    <td><%=link_to "#{job.title} #{job.company.name}", job rescue link_to job.title, job %></td>
+    <td><strong><%=t 'jobs.prerequisit' %></strong><br /><%=h truncate(strip_tags(job.prerequisit), :length => 100) %><br />
+		<strong><%=t 'jobs.description' %></strong><br /><%=h truncate(strip_tags(job.description), :length => 100) %></td>
     <td><%=h job.period %></td>
     <td><%=h job.payment %></td>
-    <td><%=h job.timeout %></td>
-    <td><%= link_to 'Show', job %></td>
-    <td><%= link_to 'Edit', edit_job_path(job) %></td>
-    <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

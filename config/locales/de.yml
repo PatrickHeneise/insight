@@ -10,6 +10,7 @@ de:
     developer: "Mitarbeiter"
     professor: "Professor"
     student: "Student"
+    counselor: "Beirat"
     dean: "Dekan"
 
   date:

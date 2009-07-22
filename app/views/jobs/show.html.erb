@@ -38,7 +38,5 @@
   <%=h @job.timeout %>
 </p>
 
-<%= render :partial => 'advertisements', :locals => { :job => @job } %>
-
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

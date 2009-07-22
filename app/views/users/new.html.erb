@@ -1,7 +1,7 @@
 <%= render :partial => 'user_sessions/login' %>
 
 <h1>Student/LB/Prof/Mitarbeiter</h1>
-<% form_for @intern, :url => { :controller => "users", :action => "create_intern" } do |i| %>
+<% form_for @intern, :create_intern_user do |i| %>
 	<%= i.error_messages %>
 	<%= i.select :department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]},{:prompt => t('select.department')} %>
 	<br />
@@ -15,7 +15,7 @@
 <% end %>
 
 <h1>Firma/Alumni/...</h1>
-<% form_for @extern, :url => { :controller => "users", :action => "create_extern" } do |e| %>
+<% form_for @extern, :create_extern_user do |e| %>
 	<%= e.error_messages %>
 	<%= e.label :email %><br />
 	<%= e.text_field :email %>

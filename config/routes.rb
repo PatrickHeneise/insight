@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :addresses
   map.resources :companies
   map.resources :organizations
-  map.resources :users
+  map.resources :users, :member => { :create_intern => :post, :create_extern => :post }
 	
 	map.resource :blog
 	map.resource :user_session
@@ -64,6 +64,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.service '/service', :controller => 'Service', :action => 'index'
 	map.media '/media', :controller => 'MediaCenter', :action => 'index'
 	map.register '/register', :controller => 'Users', :action => 'new'
+	map.overview '/overview', :controller => 'Courses', :action => 'overview'
 	
 	# Return blog articles for year, year/month, year/month/day
 	map.date '/blog/:year/:month/:day',
@@ -75,19 +76,11 @@ ActionController::Routing::Routes.draw do |map|
 		:day => nil,
 		:month => nil
 	
-	map.with_options :controller => 'Departments' do |deps|
-	end
 	
 	map.with_options :controller => 'Pages' do |pages|
 		pages.root														:action => 'index'     # static home page
 		pages.calendar '/calendar',						:action => 'calendar'
 		pages.home '/home',										:action => 'index'
-	end
-	
-	map.with_options :controller => 'Courses' do |courses|
-		courses.overview '/overview',					:action => 'overview'
-		courses.overview '/overview/:id',			:action => 'overview'
-		courses.schedule '/schedule',					:action => 'schedule'
 	end
 	
 #  map.connect ':controller/:action/:id'

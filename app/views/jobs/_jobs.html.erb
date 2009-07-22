@@ -1,3 +1,5 @@
+<%= render :partial => 'advertisements', :locals => { :job => @job } %>
+
 <% form_for(@job) do |f| %>
   <%= f.error_messages %>
   <p>
