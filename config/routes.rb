@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :addresses
   map.resources :companies
   map.resources :organizations
-  map.resources :users, :member => { :create_intern => :post, :create_extern => :post }
+  map.resources :users, :collection => { :create_intern => :post, :create_extern => :post }
 	
 	map.resource :blog
 	map.resource :user_session
@@ -43,8 +43,6 @@ ActionController::Routing::Routes.draw do |map|
 			end
 		end
 	end
-	
-	map.root :controller => 'Pages'
 	
 	map.namespace :admin do |admin|
 		admin.resources :articles

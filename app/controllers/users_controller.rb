@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :require_no_user, :only => [:new]
-  before_filter :require_user, :only => [:show, :edit, :update]
-  
+  before_filter :require_no_user, :only => [:new, :create_intern, :create_extern]
+  before_filter :require_user, :except => [:new, :create_intern, :create_extern]
+	
   def index
 		@users = User.find(:all)
 	end
