@@ -58,7 +58,9 @@ class UsersController < ApplicationController
 			@intern.ldap_dn = "#{dn},#{base_dn}"
 			data = LDAP.register @intern.login, @intern.password, base_dn
 			@intern.email = data.first.mail.first
-			@intern.private_email = data.first.mailprivat.first unless data.first.mailprivat.nil?
+			if data.first.respond_to?("mailprivat")
+				@intern.private_email = data.first.mailprivat.first
+			end
 			@intern.surname = data.first.sn.first unless data.first.sn.first.nil?
 			@intern.name = data.first.givenname.first unless data.first.givenname.nil?
 			if data.first.edupersonaffiliation.first == "student"
