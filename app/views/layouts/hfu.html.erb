@@ -1,8 +1,9 @@
 <%= render :partial => "layouts/head" %>
-<%= render :partial => "layouts/topnav" %>
 			<div id="subnav" class="span-4">
-				<%= render :partial => "layouts/defaultsubnav" %>
 				<%= render :partial => "submenu" rescue '' %>
+				<% permitted_to? :manage, :administration do %>
+				<%= link_to t('application.administration'), admin_page_path, :id => "admin" %>
+				<% end %>
 			</div>
 			<div id="content" class="span-20 last">
 				<%= yield %>
