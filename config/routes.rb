@@ -46,8 +46,9 @@ ActionController::Routing::Routes.draw do |map|
 	end
 	
 	map.namespace :admin do |admin|
-		admin.resources :articles
-		admin.resources :blogs
+		admin.resources :blogs do |blog|
+			blog.resources :articles
+		end
 		admin.resources :boards
 		admin.resources :buildings do |building|
 			building.resources :rooms
