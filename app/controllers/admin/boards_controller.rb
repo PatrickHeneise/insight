@@ -1,13 +1,8 @@
 class Admin::BoardsController < ApplicationController
+	layout "admin"
   # GET /boards/new
-  # GET /boards/new.xml
   def new
     @board = Board.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @board }
-    end
   end
 
   # GET /boards/1/edit
@@ -16,7 +11,6 @@ class Admin::BoardsController < ApplicationController
   end
 
   # POST /boards
-  # POST /boards.xml
   def create
     @board = Board.new(params[:board])
 
@@ -24,10 +18,8 @@ class Admin::BoardsController < ApplicationController
       if @board.save
         flash[:notice] = 'Board was successfully created.'
         format.html { redirect_to(@board) }
-        format.xml  { render :xml => @board, :status => :created, :location => @board }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @board.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -41,23 +33,19 @@ class Admin::BoardsController < ApplicationController
       if @board.update_attributes(params[:board])
         flash[:notice] = 'Board was successfully updated.'
         format.html { redirect_to(@board) }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @board.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /boards/1
-  # DELETE /boards/1.xml
   def destroy
     @board = Board.find(params[:id])
     @board.destroy
 
     respond_to do |format|
       format.html { redirect_to(boards_url) }
-      format.xml  { head :ok }
     end
   end
 end

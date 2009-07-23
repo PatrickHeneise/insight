@@ -1,14 +1,11 @@
 class Admin::FoldersController < ApplicationController
+	layout "admin"
+	
 	# GET /folders/new
-  # GET /folders/new.xml
   def new
     @folder = Folder.new
 		@folder.parent = Folder.find(params[:parent])
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
-  end
+	end
 
   # GET /folders/1/edit
   def edit
@@ -16,7 +13,6 @@ class Admin::FoldersController < ApplicationController
   end
 
   # POST /folders
-  # POST /folders.xml
   def create
     @folder = Folder.new(params[:folder])
 
@@ -31,7 +27,6 @@ class Admin::FoldersController < ApplicationController
   end
 
   # PUT /folders/1
-  # PUT /folders/1.xml
   def update
     @folder = Folder.find(params[:id])
 
@@ -46,7 +41,6 @@ class Admin::FoldersController < ApplicationController
   end
 
   # DELETE /folders/1
-  # DELETE /folders/1.xml
   def destroy
     @folder = Folder.find(params[:id])
     @folder.destroy

@@ -1,14 +1,10 @@
 class Admin::BuildingsController < ApplicationController
+	layout "admin"
+
 	# GET /buildings/new
-  # GET /buildings/new.xml
   def new
     @building = Building.new
 		@address = Address.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @building }
-    end
   end
 
   # GET /buildings/1/edit
@@ -18,7 +14,6 @@ class Admin::BuildingsController < ApplicationController
   end
 
   # POST /buildings
-  # POST /buildings.xml
   def create
     @building = Building.new(params[:building])
 		if @building.address.nil?
@@ -33,16 +28,13 @@ class Admin::BuildingsController < ApplicationController
 				end
         flash[:notice] = 'Building was successfully created.'
         format.html { redirect_to(@building) }
-        format.xml  { render :xml => @building, :status => :created, :location => @building }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @building.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # PUT /buildings/1
-  # PUT /buildings/1.xml
   def update
     @building = Building.find(params[:id])
 
@@ -50,23 +42,19 @@ class Admin::BuildingsController < ApplicationController
       if @building.update_attributes(params[:building])
         flash[:notice] = 'Building was successfully updated.'
         format.html { redirect_to(@building) }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @building.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /buildings/1
-  # DELETE /buildings/1.xml
   def destroy
     @building = Building.find(params[:id])
     @building.destroy
 
     respond_to do |format|
       format.html { redirect_to(buildings_url) }
-      format.xml  { head :ok }
     end
   end
 end

@@ -1,27 +1,17 @@
 class Admin::LecturesController < ApplicationController
+	layout "admin"
+
   # GET /lectures
-  # GET /lectures.xml
   def index
     @lectures = Lecture.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @lectures }
-    end
   end
 	
   # GET /lectures/new
-  # GET /lectures/new.xml
   def new
     @lecture = Lecture.new
 		@lecture.events.build
 		@lecture.events.first.is_blocked = false
 		@course_module = CourseModule.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @lecture }
-    end
   end
 
   # GET /lectures/1/edit
@@ -30,7 +20,6 @@ class Admin::LecturesController < ApplicationController
   end
 
   # POST /lectures
-  # POST /lectures.xml
   def create
     @lecture = Lecture.new(params[:lecture])
 		@lecture.user = User.find(params[:lecture][:user_id])
@@ -54,7 +43,6 @@ class Admin::LecturesController < ApplicationController
   end
 
   # PUT /lectures/1
-  # PUT /lectures/1.xml
   def update
     @lecture = Lecture.find(params[:id])
 
@@ -82,7 +70,6 @@ class Admin::LecturesController < ApplicationController
   end
 
   # DELETE /lectures/1
-  # DELETE /lectures/1.xml
   def destroy
     @lecture = Lecture.find(params[:id])
     @lecture.destroy

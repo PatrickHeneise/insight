@@ -4,10 +4,6 @@ class Admin::DataItemsController < ApplicationController
   # GET /data_items/new
   def new
     @data_item = DataItem.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-    end
   end
 
   # POST /data_items
