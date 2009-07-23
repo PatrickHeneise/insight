@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :except => [:new, :create_intern, :create_extern]
 	
   def index
-		@users = User.find(:all)
+		@users = current_user.department.users
 	end
 	
   def new
@@ -93,7 +93,7 @@ class UsersController < ApplicationController
   end
  
   def edit
-    @user = @current_user
+    @user = current_user
   end
   
   def update

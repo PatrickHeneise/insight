@@ -2,6 +2,9 @@
 <div id="admin_warning" class="span-24"><%=t 'admin.area' %></div>
 			<div id="subnav" class="span-4">
 				<ul>
+					<% permitted_to? :manage, :administration do %>
+					<li><%= link_to t('application.administration'), admin_pages_path, :id => "admin" %></li>
+					<% end %>
 					<% permitted_to? :create, :lectures do -%>
 					<li><%= link_to t('create.lecture'), new_admin_lecture_path %></li>
 					<% end %>

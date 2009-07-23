@@ -46,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
 	end
 	
 	map.namespace :admin do |admin|
-		admin.page '/dashboard', :controller => 'page', :action => 'index'
+		admin.pages '/dashboard', :controller => 'pages', :action => 'index'
 		admin.resources :blogs do |blog|
 			blog.resources :articles
 		end
@@ -58,6 +58,7 @@ ActionController::Routing::Routes.draw do |map|
 		admin.resources :folders, :has_many => :data_items
 		admin.resources :lectures
 		admin.resources :forums
+		admin.resources :users, :member => { :activate => :get, :deactivate => :get }
 	end
 
 	map.logout '/logout', :controller => 'UserSessions', :action => 'destroy'

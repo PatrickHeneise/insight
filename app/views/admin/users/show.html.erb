@@ -44,10 +44,9 @@
 			<% end %>
 		</div>
 	</div>
-	<% if @user == current_user %>
 	<div class="span-20">
-		<%= link_to 'Edit', edit_account_path %>
-	<% end %>
+	<%= link_to 'Back', users_path %>
+	<%= link_to 'Edit', edit_account_path %>
 	</div>
 
 </div>

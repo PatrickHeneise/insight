@@ -11,7 +11,7 @@
 		<tbody>
 		<% @enrollments.each do |enrollment| -%>
 			<tr>
-				<td><%= link_to enrollment.lecture.title, department_lecture_path(enrollment.lecture.department, enrollment.lecture) %><br /></td>
+				<td><%= link_to enrollment.lecture.title, department_lecture_path(enrollment.lecture.department, enrollment.lecture) %></td>
 			</tr>
 		<% end %>
 		</tbody>

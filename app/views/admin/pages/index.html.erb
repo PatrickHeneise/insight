@@ -1,0 +1,21 @@
+<div id="users" class="admin_box">
+	<table>
+		<thead>
+			<tr>
+				<th class="accent"><%= t 'users.inactive' %></th>
+				<th class="accent"><%= t 'users.activate' %></th>
+			</tr>
+		</thead>
+		<tfoot>
+		</tfoot>
+		<tbody>
+		<% @inactive.each do |user| -%>
+			<tr>
+				<td><%= link_to user.fullname, [:edit, :admin, user] %></td>
+				<td><%= link_to(t('user.activate'), [:activate, :admin, user]) %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>
+</div>

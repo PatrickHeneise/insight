@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 		lecture = enrollments.find_by_lecture_id id
 		return !lecture.nil?
 	end
-
+	
 	private
 		def validate
 			if department_is_needed?
@@ -75,4 +75,6 @@ class User < ActiveRecord::Base
 			result = false
 			result = true if self.active?
 		end
+		
+		named_scope :inactive, :conditions => { :active => false }
 end
