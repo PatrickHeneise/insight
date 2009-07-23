@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
 	filter_parameter_logging :password, :password_confirmation, :api_key, :api_secret
 
-	layout "hfu", :except => [ :rss, :atom, :authorization_rules ]
+	layout "hfu", :except => [ :rss, :atom ]
 	
 	def permission_denied 
 		respond_to do |format| 

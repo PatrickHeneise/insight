@@ -22,6 +22,8 @@ authorization do
 		has_permission_on :forums, :to => :manage
 		has_permission_on :buildings, :to => :manage
 		has_permission_on :articles, :to => :manage
+		has_permission_on :administration, :to => :manage
+		has_permission_on :courses, :to => :manage
   end
 	
 	role :Developer do

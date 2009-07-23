@@ -10,13 +10,13 @@
 
 ----------------------------------------------------------------------- */
 
-.tabs { 
+.navigation { 
 	height:1%; /* fixing IE 6 */
 	margin:0 0 .75em 0;
 	min-height:auto;
 	overflow:auto;
 }
-.tabs li {
+.navigation li {
   border-bottom:none;
   float:left;
   line-height:2.5; 
@@ -24,7 +24,7 @@
   margin:0 .25em 0 0;
   padding:0;
 }
-.tabs li a { 
+.navigation li a { 
   color:#222;
   cursor:pointer;
   display:block;
@@ -32,22 +32,22 @@
   font-weight:bold;
   padding:.15em .33em .25em .33em;
 }
-.tabs li a.selected { 
+.navigation li a.selected { 
   background:#666;
   color:#fff;
   cursor:default;
 }
-.tabs li a, .tabs li a:focus, .tabs li a:hover { 
+.navigation li a, .navigation li a:focus, .navigation li a:hover { 
   text-decoration:none;
 }
-.tabs li a:focus, .tabs li a:hover { 
+.navigation li a:focus, .navigation li a:hover { 
   color:#555;
   outline:none;
 }
-.tabs li a.selected:focus, .tabs li a.selected:hover { 
+.navigation li a.selected:focus, .navigation li a.selected:hover { 
   color:#fafafa;
 }	
-.tabs li.label { 
+.navigation li.label { 
 	border:none;
 	font-weight:bold;
 	line-height:1.5; 

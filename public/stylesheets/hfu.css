@@ -35,6 +35,16 @@ a.undecorated {
 .ss_sprite {
 	padding-bottom: 0 !important;
 }
+/* === ADMIN ===*/
+a#admin {
+	color: red;
+}
+div#admin_warning {
+	background-color: #ff5349;
+	font-variant: small-caps;
+	font-size: 2em;
+	text-align: center;
+}
 /* === BLOG ===*/
 div.article_content {
 	text-align: justify;

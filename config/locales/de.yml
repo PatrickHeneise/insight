@@ -1,4 +1,7 @@
 de:
+  admin:
+    area: "Verwaltung"
+
   subscribe: "Abonnieren"
   unsubscribe: "Abmelden"
   webcam: "Webcam"
@@ -164,6 +167,7 @@ de:
     building: "Neues Gebäude anlegen"
     address: "Neue Adresse"
     room: "Neuen Raum anlegen"
+    article: "Neuer Artikel"
 
   select:
     address: "Address wählen"
@@ -182,6 +186,7 @@ de:
     description: "Beschreibung"
     title: "Titel"
     home: "Dashboard"
+    administration: "Verwaltung"
     
   blog:
     header: "Fakultätsblog"    

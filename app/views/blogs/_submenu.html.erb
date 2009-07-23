@@ -1,4 +1,9 @@
+<ul id="nav_general" class="subnavigation">
+	<li>Archives ...</li>
+</ul>
+
 <% permitted_to? :create, :articles do %>
-<%= navigation [{:articles_new => new_admin_blog_article_path(@blog)}, t('create.article')],
-								:link_text => true -%>
+<ul id="nav_management" class="subnavigation">
+	<li><%= link_to t('create.article'), new_admin_blog_article_path(@blog) %></li>
+</ul>
 <% end %>

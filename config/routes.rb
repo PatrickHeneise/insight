@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
 	end
 	
 	map.namespace :admin do |admin|
+		admin.page '/dashboard', :controller => 'page', :action => 'index'
 		admin.resources :blogs do |blog|
 			blog.resources :articles
 		end
@@ -64,7 +65,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.service '/service', :controller => 'Service', :action => 'index'
 	map.media '/media', :controller => 'MediaCenter', :action => 'index'
 	map.register '/register', :controller => 'Users', :action => 'new'
-	map.overview '/lecture-plan', :controller => 'Courses', :action => 'overview'
+	map.lectures '/lecture-plan', :controller => 'Courses', :action => 'overview'
 	
 	# Return blog articles for year, year/month, year/month/day
 	map.date '/blog/:year/:month/:day',
