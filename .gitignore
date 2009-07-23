@@ -1,5 +1,7 @@
 .DS_Store
 *.gem
+log/*.log
+tmp/**/*
 public/avatars/
 public/upload/
 spec/fixtures/
