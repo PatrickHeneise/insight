@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090721081148) do
+ActiveRecord::Schema.define(:version => 20090724075544) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street",                        :null => false
@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(:version => 20090721081148) do
     t.integer  "address_id",        :null => false
     t.string   "industry"
     t.string   "url"
-    t.string   "tags"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_file_name"
@@ -279,6 +278,20 @@ ActiveRecord::Schema.define(:version => 20090721081148) do
     t.integer  "forum_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "topic_activities", :force => true do |t|

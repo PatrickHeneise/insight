@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-	before_filter :load_forum
+	before_filter :load_forum, :except => 'recent'
 	
 	def load_forum
 		@forum = Forum.find(params[:forum_id])
@@ -8,6 +8,22 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.xml
   def index
+		@page = params[:page].to_i
+    @topics = Topic.paginate :page => @page, :per_page => 10
+
+		respond_to do |format|
+      format.html
+      format.js do
+        render :update do |page|
+          page.replace_html 'topics', :partial => "topics/list"
+        end
+      end
+    end
+  end
+	
+	# GET /topics
+  # GET /topics.xml
+  def recent
 		@page = params[:page].to_i
     @topics = Topic.paginate :page => @page, :per_page => 10
 

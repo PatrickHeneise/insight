@@ -41,6 +41,8 @@
 			<% if @user.company.nil? == false %>
 				<strong>Company:</strong><br />
 				<%=h @user.company %>
+			<% else %>
+				<%= link_to t('create.company'), new_company_path %>
 			<% end %>
 		</div>
 	</div>

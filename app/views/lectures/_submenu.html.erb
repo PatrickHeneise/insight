@@ -1,9 +1,11 @@
-<%= navigation [{:bullet => new_department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board)},t('forums.add_new_topic'),
-								{:files => department_lecture_folder_path(@lecture.department, @lecture, @lecture.folder)},t('files.area')],
-								:link_text => true -%>
+<ul id="nav_general" class="subnavigation">
+	<li><%= link_to t('forums.add_new_topic'), new_department_lecture_board_bullet_path(@lecture.department, @lecture, @lecture.board) %></li>
+	<li><%= link_to t('files.area'), department_lecture_folder_path(@lecture.department, @lecture, @lecture.folder) %></li>
+</ul>
 
-<% permitted_to? :edit, :lectures do %>
-<%= navigation [{:lecture_edit => edit_admin_lecture_path(@lecture)}, t('edit.lecture'),
-								{:lecture_new => new_admin_lecture_path}, t('delete.lecture')],
-								:link_text => true -%>
+<% permitted_to? :edit, :lectures do -%>
+<ul id="nav_management" class="subnavigation">
+	<li><%= link_to t('edit.lecture'), edit_admin_lecture_path(@lecture) %></li>
+	<li><%= link_to t('delete.lecture'), new_admin_lecture_path} %></li>
+</ul>
 <% end %>

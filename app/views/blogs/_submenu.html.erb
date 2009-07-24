@@ -1,5 +1,6 @@
 <ul id="nav_general" class="subnavigation">
 	<li>Archives ...</li>
+	<li><%= link_to t('list.departments'), departments_path %>
 </ul>
 
 <% permitted_to? :create, :articles do %>

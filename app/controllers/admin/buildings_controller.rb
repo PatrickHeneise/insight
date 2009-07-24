@@ -18,6 +18,7 @@ class Admin::BuildingsController < ApplicationController
     @building = Building.new(params[:building])
 		if @building.address.nil?
 			@address = Address.new(params[:address])
+			@address.user = current_user
 			@building.address = @address
 		end
 

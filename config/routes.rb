@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
 		article.resources :comments
 	end
 	
-	map.resources :courses, :member => { :overview => :get }
+	map.resources :courses, :member => { :overview => :get, :schedule => :get }
   map.resources :courses do |course|
 		course.resources :course_modules
 	end
@@ -77,7 +77,7 @@ ActionController::Routing::Routes.draw do |map|
 												:day => /[0-3]?\d/},
 		:day => nil,
 		:month => nil
-	
+	map.recent_topics '/topics/recent', :controller => 'Topics', :action => 'recent'
 	
 	map.with_options :controller => 'Pages' do |pages|
 		pages.root														:action => 'index'     # static home page
@@ -85,6 +85,6 @@ ActionController::Routing::Routes.draw do |map|
 		pages.home '/home',										:action => 'index'
 	end
 	
-#  map.connect ':controller/:action/:id'
-#  map.connect ':controller/:action/:id.:format'
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
 end

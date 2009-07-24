@@ -23,6 +23,10 @@ class CoursesController < ApplicationController
       format.xml  { render :xml => @courses }
     end
 	end
+	
+	def schedule
+	end
+	
   # GET /courses/1
   # GET /courses/1.xml
   def show

@@ -1,33 +1,4 @@
-<p>
-  <b>Street:</b>
-  <%=h @address.street %>
-</p>
-
-<p>
-  <b>Street addition:</b>
-  <%=h @address.street_addition %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%=h @address.city %>
-</p>
-
-<p>
-  <b>Postcode:</b>
-  <%=h @address.postcode %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%=h @address.state %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%=h @address.country %>
-</p>
-
+<%= render :partial => 'show', :locals => { :address => @address } %>
 
 <%= link_to 'Edit', edit_address_path(@address) %> |
 <%= link_to 'Back', addresses_path %>
