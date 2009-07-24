@@ -7,14 +7,15 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
+  <%= render :partial => 'addresses/selector', :locals => { :f => f } %>
   <p>
     <%= f.label :industry %><br />
     <%= f.text_field :industry %>
   </p>
+	<p>
+		<%= f.label :tag_list %>
+		<%= f.text_field :tag_list, :size => 80 %>
+	</p>
   <p>
     <%= f.submit 'Create' %>
   </p>

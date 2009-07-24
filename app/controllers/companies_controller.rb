@@ -25,6 +25,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new.xml
   def new
     @company = Company.new
+		@address = Address.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,15 +36,26 @@ class CompaniesController < ApplicationController
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
+		@address = @company.address
   end
 
   # POST /companies
   # POST /companies.xml
   def create
     @company = Company.new(params[:company])
+		if @company.address.nil?
+			@address = Address.new(params[:address])
+			@address.user = current_user
+			@company.address = @address
+		end
 
     respond_to do |format|
       if @company.save
+				current_user.company = @company
+				current_user.save
+				if !@address.nil?
+					@address.save
+				end
         flash[:notice] = 'Company was successfully created.'
         format.html { redirect_to(@company) }
         format.xml  { render :xml => @company, :status => :created, :location => @company }
