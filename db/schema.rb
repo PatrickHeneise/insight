@@ -151,8 +151,9 @@ ActiveRecord::Schema.define(:version => 20090724075544) do
   end
 
   create_table "enrollments", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "lecture_id", :null => false
+    t.integer  "user_id",                  :null => false
+    t.integer  "lecture_id",               :null => false
+    t.string   "level",      :limit => 10, :null => false
     t.datetime "due"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -3,6 +3,7 @@ class CreateEnrollments < ActiveRecord::Migration
     create_table :enrollments do |t|
       t.references :user,								:null => false
       t.references :lecture,						:null => false
+			t.string :level,									:limit => 10, :null => false
       t.datetime :due
 
       t.timestamps
