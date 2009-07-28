@@ -27,7 +27,6 @@
 	<strong><%=t 'lectures.lecture_number' %>:</strong>
 	<%=h @lecture.number %><br />
 	<strong><%=t 'lectures.person_responsible' %>:</strong>
-	<%= link_to (@lecture.user.title + ' ' + @lecture.user.name + ' ' + @lecture.user.surname, @lecture.user) rescue link_to (@lecture.user.name + ' ' + @lecture.user.surname, @lecture.user) %>
 </div>
 
 <div class="span-20">

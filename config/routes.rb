@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :addresses
   map.resources :companies
   map.resources :organizations
+	map.resources :enrollments
   map.resources :users, :collection => { :create_intern => :post, :create_extern => :post }
 	
 	map.resource :blog
@@ -24,8 +25,8 @@ ActionController::Routing::Routes.draw do |map|
 	end
 	
 	map.resources :departments do |department|
-		department.resources :lectures, :member => { :enrol => :get, :unrol => :get }
 		department.resources :lectures do |lecture|
+			lecture.resources :enrollments, :collection => { :enrol => :get, :unrol => :get }
 			lecture.resources :folders do |folder|
 				folder.resources :data_items
 			end
@@ -56,7 +57,9 @@ ActionController::Routing::Routes.draw do |map|
 		end
 		admin.resources :courses
 		admin.resources :folders, :has_many => :data_items
-		admin.resources :lectures
+		admin.resources :lectures do |lecture|
+			lecture.resources :enrollments
+		end
 		admin.resources :forums
 		admin.resources :users, :member => { :activate => :get, :deactivate => :get }
 	end

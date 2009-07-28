@@ -1,0 +1,12 @@
+<h1>Editing enrollments</h1>
+
+<% form_for(@enrollments) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @enrollments %> |
+<%= link_to 'Back', enrollments_path %>

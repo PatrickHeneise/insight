@@ -35,9 +35,9 @@
 					<td><%=h lecture.credits %></td>
 					<td class="action">
 						<% if @current_user.enrolled?(lecture.lecture_id) %>
-								<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unrol_department_lecture_path(lecture.department, lecture.lecture_id), :class => 'undecorated' %>
+								<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unrol_department_lecture_enrollments_path(lecture.department, lecture.lecture_id), :class => 'undecorated' %>
 						<% else %>
-								<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', enrol_department_lecture_path(lecture.department, lecture.lecture_id), :class => 'undecorated' %>
+								<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', enrol_department_lecture_enrollments_path(lecture.department, lecture.lecture_id), :class => 'undecorated' %>
 						<% end %>
 					 </td>
 		</tr>

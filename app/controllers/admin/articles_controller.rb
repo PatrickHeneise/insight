@@ -14,6 +14,7 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(params[:article])
+		@article.user = current_user
 
     respond_to do |format|
       if @article.save

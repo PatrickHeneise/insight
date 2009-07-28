@@ -29,8 +29,8 @@
 			<%= f.text_field :number %>
 		</p>
 		<p>
-			<%= f.label :user %><br />
-			<%= f.select :user_id, User.find(:all).collect {|u| ["#{u.surname}, #{u.name}", u.id]} %>
+			<%= f.label :department %><br />
+			<%= f.select :department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]} %>
 		</p>
 		<p>
 			<strong>Kurs:</strong><br />

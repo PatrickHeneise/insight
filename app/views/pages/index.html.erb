@@ -7,6 +7,9 @@
 			</tr>
 		</thead>
 		<tfoot>
+			<tr>
+				<td><%= link_to t('enrollments.list'), enrollments_path %></td>
+			</tr>
 		</tfoot>
 		<tbody>
 		<% @enrollments.each do |enrollment| -%>

@@ -1,5 +1,6 @@
 <ul id="nav_general" class="subnavigation">
 	<li><%= link_to t('schedule'), schedule_course_path(@course) %></li>
+	<li><%= link_to t('lectures.list'), department_lectures_path(@course.department) %></li>
 </ul>
 
 <% permitted_to? :edit, :lectures do %>

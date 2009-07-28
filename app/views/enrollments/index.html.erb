@@ -1,0 +1,12 @@
+<h1>Listing enrollments</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @enrollments.each do |enrollment| %>
+  <tr>
+    <td><%= link_to enrollment.lecture.title, department_lecture_path(enrollment.lecture.department, enrollment.lecture) %></td>
+  </tr>
+<% end %>
+</table>

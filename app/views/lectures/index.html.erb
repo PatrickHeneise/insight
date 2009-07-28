@@ -1,0 +1,35 @@
+<h1>Listing lectures</h1>
+
+<table>
+  <tr>
+    <th>Department</th>
+    <th>Title</th>
+    <th>Short</th>
+    <th>Description</th>
+    <th>Visible</th>
+    <th>Active</th>
+    <th>Credits</th>
+    <th>Number</th>
+  </tr>
+
+<% @lectures.each do |lecture| %>
+  <tr>
+    <td><%=h lecture.department %></td>
+    <td><%=h lecture.title %></td>
+    <td><%=h lecture.short %></td>
+    <td><%=h lecture.description %></td>
+    <td><%=h lecture.visible %></td>
+    <td><%=h lecture.active %></td>
+    <td><%=h lecture.credits %></td>
+    <td><%=h lecture.number %></td>
+    <td><%= link_to 'Show', department_lecture_path(lecture.department, lecture) %></td>
+		<td class="action">
+			<% if @current_user.enrolled?(lecture.id) %>
+				<%= link_to '<span class="ss_sprite ss_decorated ss_book_delete">'+ t('unsubscribe') +'</span>', unrol_department_lecture_enrollments_path(lecture.department, lecture), :class => 'undecorated' %>
+			<% else %>
+				<%= link_to '<span class="ss_sprite ss_decorated ss_book_add">'+ t('subscribe') +'</span>', enrol_department_lecture_enrollments_path(lecture.department, lecture), :class => 'undecorated' %>
+			<% end %>
+		</td>
+  </tr>
+<% end %>
+</table>

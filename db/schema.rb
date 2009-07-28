@@ -219,7 +219,6 @@ ActiveRecord::Schema.define(:version => 20090724075544) do
     t.boolean  "active"
     t.integer  "credits"
     t.integer  "number"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

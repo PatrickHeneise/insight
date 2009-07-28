@@ -22,8 +22,6 @@ class Admin::LecturesController < ApplicationController
   # POST /lectures
   def create
     @lecture = Lecture.new(params[:lecture])
-		@lecture.user = User.find(params[:lecture][:user_id])
-		@lecture.department = @lecture.user.department
 		@board = Board.new
 		@folder = Folder.new
 		@board.lecture = @lecture

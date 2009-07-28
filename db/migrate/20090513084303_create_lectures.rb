@@ -9,7 +9,6 @@ class CreateLectures < ActiveRecord::Migration
       t.boolean :active
       t.integer :credits
       t.integer :number
-      t.references :user
 
       t.timestamps
     end

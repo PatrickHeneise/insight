@@ -1,6 +1,5 @@
 class Lecture < ActiveRecord::Base
   belongs_to :department
-  belongs_to :user
 	
 	has_one :board
 	has_one :folder

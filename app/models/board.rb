@@ -1,8 +1,4 @@
 class Board < ActiveRecord::Base
-	acts_as_list
-	
-	validates_presence_of :title
-	
   belongs_to :lecture
 
 	has_many :bullets, :order => "replied_at desc, created_at desc", :dependent => :destroy do
