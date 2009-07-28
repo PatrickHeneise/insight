@@ -38,7 +38,8 @@ class UsersController < ApplicationController
 
 		if @extern.save
       flash[:notice] = "Account registered!"
-      redirect_back_or_default account_url
+			Notifier.deliver_welcome_email(@extern, @extern.password)
+      redirect_to register_path
     else
       render :action => :new
     end

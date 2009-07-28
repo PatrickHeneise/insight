@@ -1,4 +1,7 @@
+todo
+<% unless @topic.nil? %>
 <ul id="nav_general" class="subnavigation">
 	<li><%= link_to 'New post', new_forum_topic_post_path(@forum, @topic) %></li>
-	<li><%= link_to 'Edit', [:edit, @forum, @topic] %></li>
+
 </ul>
+<% end %>

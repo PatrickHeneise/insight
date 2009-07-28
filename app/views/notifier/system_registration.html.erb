@@ -1,0 +1,6 @@
+Login: <%= @user.login %>
+EMail: <%= @user.email %>
+
+<% unless @user.active? %>
+Account requires activation!
+<% end %>

@@ -18,6 +18,13 @@ Rails::Initializer.run do |config|
 	config.gem "ruby-net-ldap", :lib => "net/ldap"
 	config.gem "yahoo-weather"
 	
+	config.action_mailer.delivery_method = :smtp
+	config.action_mailer.smtp_settings = { 
+		:address => "mailhost.hs-furtwangen.de", 
+		:domain => "hs-furtwangen.de",
+		:port => 25
+	}
+
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :auto_complete_jquery, :paperclip ]
@@ -28,7 +35,8 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-
+	config.active_record.observers = :user_observer
+	
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   #config.time_zone = 'Berlin'

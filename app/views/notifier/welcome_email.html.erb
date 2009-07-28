@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to insight, <%=h "#{@user.name} #{@user.surname}" %></h1>
+    <p>
+      You have successfully signed up to insight, and your username is: <%= @user.login %>.<br />
+			Your password has been auto generated and is: <%= @password %>.<br />
+    </p>
+		<% unless @user.active? %>
+			Your account is currently deactivated and will be reviewed by staff immediately.<br />
+		<% end %>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
