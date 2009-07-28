@@ -15,7 +15,8 @@ Rails::Initializer.run do |config|
 	config.gem "sanitize"
 	config.gem "flickr-fu", :lib => "flickr_fu", :source => "http://gems.github.com"
 	config.gem "tmm1-youtube-g", :lib => "youtube_g", :source => "http://gems.github.com"
-	config.gem "ruby-net-ldap", :lib=>"net/ldap"
+	config.gem "ruby-net-ldap", :lib => "net/ldap"
+	config.gem "yahoo-weather"
 	
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'weather' %>
+<% end %>
+
 <div id="page_courses" class="span-10">
 <h2><%= t 'lectures.lectures' %></h2>
 <table>
@@ -52,4 +56,33 @@
 <div id="page_webcam" class="span-10">
 <h2><%= t 'webcam' %></h2>
 	<%= image_tag("webcam.jpg") %>
+</div>
+
+<div id="weather" class="span-10 last">
+	<h2><%= t 'weather.weather' %></h2>
+	<div id="weather_c" class="weather_day span-3">
+		<div class="weather_day_img code_<%=h @response.condition.code %>">
+			<span><%=h @response.condition.code %></span>
+		</div>
+		<div class="weather_day_temp">
+			<span class="weather_temp"><%= "#{@response.condition.temp}&deg; #{@response.units.temperature}" %></span>
+		</div>
+	</div>
+	<div id="weather_f1" class="weather_day span-3">
+		<div class="weather_day_img code_<%=h @response.forecasts[0].code %>">
+			<span><%=h @response.forecasts[0].code %></span>
+		</div>
+		<div class="weather_day_temp">
+			<span class="weather_temp"><%= "#{@response.forecasts[0].low} - #{@response.forecasts[0].high}&deg; #{@response.units.temperature}" %></span>
+		</div>
+
+	</div>
+	<div id="weather_f2" class="weather_day append-1 span-3 last">
+		<div class="weather_day_img code_<%=h @response.forecasts[1].code %>">
+			<span><%=h @response.forecasts[1].code %></span>
+		</div>
+		<div class="weather_day_temp">
+			<span class="weather_temp"><%= "#{@response.forecasts[1].low} - #{@response.forecasts[1].high}&deg; #{@response.units.temperature}" %></span>
+		</div>
+	</div>
 </div>
