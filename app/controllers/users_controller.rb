@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def new
     @intern = User.new
 		@extern = User.new
+		render :layout => "centered"
   end
 	
 	# Generate login and password and send them via mail to the user. The account is disabled by default.
@@ -16,28 +17,13 @@ class UsersController < ApplicationController
 		@extern = User.new(params[:user])
 		@extern.password_confirmation = @extern.password
 		@intern = User.new
-		
-		prop_login = @extern.name + @extern.surname
-		prop_login.downcase!
-		prop = false
-		prop_count = 1
-		while(prop == false)
-			check = User.find(:first, :conditions => ['login like ?', prop_login])
-			if(check.nil?)
-				prop = true
-			else
-				prop_login = @extern.name + @extern.surname + prop_count.to_s
-				prop_login.downcase!
-				prop_count += 1
-			end
-		end
-		@extern.login = prop_login
+		@extern.login = @extern.email
 		@extern.password = Base64.encode64(Digest::SHA1.digest("#{rand(1<<64)}/#{Time.now.to_f}/#{Process.pid}/#{@extern.login}"))[0..7]
 		@extern.password_confirmation = @extern.password
 		@extern.active = false
 
 		if @extern.save
-      flash[:notice] = "Account registered!"
+      flash[:success] = "Account registered! Your password has been sent to your mailbox."
 			Notifier.deliver_welcome_email(@extern, @extern.password)
       redirect_to register_path
     else
@@ -59,11 +45,9 @@ class UsersController < ApplicationController
 			@intern.ldap_dn = "#{dn},#{base_dn}"
 			data = LDAP.register @intern.login, @intern.password, base_dn
 			@intern.email = data.first.mail.first
-			if data.first.respond_to?("mailprivat")
-				@intern.private_email = data.first.mailprivat.first
-			end
-			@intern.surname = data.first.sn.first unless data.first.sn.first.nil?
-			@intern.name = data.first.givenname.first unless data.first.givenname.nil?
+			@intern.private_email = data.first.mailprivat.first rescue nil
+			@intern.surname = data.first.sn.first rescue nil
+			@intern.name = data.first.givenname.first rescue nil
 			if data.first.edupersonaffiliation.first == "student"
 				@intern.semester = data.first.hfucurrentsemester.first
 				@intern.course = Course.find(:first, :conditions => ["short like ?", data.first.hfustudycourse.first])
@@ -82,7 +66,7 @@ class UsersController < ApplicationController
 		end
 		
     if @intern.save
-      flash[:notice] = "Account registered!"
+      flash[:success] = "Welcome to insight!"
       redirect_back_or_default account_url
     else
       render :action => :new
@@ -100,7 +84,7 @@ class UsersController < ApplicationController
   def update
     @user = @current_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
+      flash[:success] = "Account updated!"
       redirect_to account_url
     else
       render :action => :edit
@@ -116,5 +100,4 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
 end

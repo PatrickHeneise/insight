@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+	current_tab :services
   # GET /companies
   # GET /companies.xml
   def index

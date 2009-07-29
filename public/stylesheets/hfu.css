@@ -1,4 +1,20 @@
+/* === TYPOGRAPHY ===*/
+@font-face {
+	font-family: Univers;
+	src: url('type/UNVR67W.ttf');
+}
 /* === GENERAL ===*/
+input {
+	border: 1px solid #00844d;
+	background-color: #fef5ff;
+}
+div.page {}
+h1 {
+	font-family: Univers, Arial, Helvetica, Geneva, sans-serif !important;
+}
+h2 {
+	font-family: Univers, Arial, Helvetica, Geneva, sans-serif !important;
+}
 *{color:#000;font-family:"Lucida Grande",Lucida,Verdana,sans-serif !important;}
 div#header{height:54px;background-color:#00844d;}
 div#header div#logo{height:54px;}
@@ -105,7 +121,7 @@ div#user_profile_contact {
 }
 .building_code a {
 	font-variant: small-caps;
-	border: 2px solid rgb(114,120,121);
+	border: 2px solid #00844D;
 	display: block;
 	width: 50px;
 	background-color: #00844d;
@@ -113,7 +129,7 @@ div#user_profile_contact {
 	text-decoration: none;
 }
 div#building_profile_code {
-	background-color:#00844d;
+	background-color:#00844D;
 	-moz-border-radius-bottomright: 50px;
 	-webkit-border-bottom-right-radius: 50px;
 }
@@ -137,15 +153,34 @@ div#building_profile_info {
 	padding-bottom: 10px;
 	padding-left: 10px;
 }
-/* ==== MEDIACENTER ==== */
-div.flickr_photo {
-	width: 240px;
-	height: 240px;
-	display: block;
-	float: left;
-	margin: 5px;
+/* ==== NAVIGATION ====*/
+div#navigation {
+	
 }
+ul.navigation {
+	margin-top: 7px;
+}
+ul.navigation li a {
+	font: 2em Univers, Arial, Helvetica, Geneva, sans-serif !important;
+	color: #efefef;
+}
+ul.navigation li.current {
+	background-color: #003720;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+/* ==== MEDIACENTER ==== */
 div#flickr_gallery_pagination span {}
+div.imagecontainer {
+	float: left;
+}
+div.loader {
+	width: 75px;
+	height: 75px;
+}
+div.loading {
+	background: url(/images/ajax-loader.gif) no-repeat center center;
+}
 h1#youtube a {
 	background: url(/images/youtube.gif) no-repeat;
 	width: 73px;
@@ -178,7 +213,7 @@ h1#youtube a span{
 	margin-left: 10px;
 }
 .hfu {
-	background-color: rgb(0,132,77);
+	background-color: #00844D;
 }
 .accent {
 	background-color: rgb(165,196,0);

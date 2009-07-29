@@ -30,9 +30,10 @@
 	</head>
 	<body>
 		<div class="container">
-			<div id="header" class="span-24">
+			<%= display_flashes %>
+			<div id="header" class="span-24 last">
 				<div id="logo" class="span-4"><h1><a href="/"><span>insight</span></a></h1></div>
-					<div id="nav" class="span-20 last">
+					<div id="navigation" class="span-20 last">
 					<%= navigation [
 								:blog, t('application.faculty'),
 								:lectures, t('application.lectures'),
@@ -44,13 +45,3 @@
 								], :link_text => true %>
 				</div>
 			</div>
-			<%- if flash[:notice] -%>
-			<div id="flash" class="span-24">
-				<p class="notice"><%= flash[:notice] %></p>
-			</div>
-			<% end %>
-			<%- if flash[:error] -%>
-			<div id="flash" class="span-24">
-				<p class="error"><%= flash[:error] %></p>
-			</div>
-			<% end %>

@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+	current_tab :service
   # GET /jobs
   # GET /jobs.xml
   def index

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	current_tab :forums
 	before_filter :load_forum_topic
 	
 	def load_forum_topic

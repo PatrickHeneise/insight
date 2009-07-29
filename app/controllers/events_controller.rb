@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	current_tab :calendar
   # GET /events
   # GET /events.xml
   def index

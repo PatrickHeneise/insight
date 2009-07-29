@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+	current_tab :lectures
+
   # GET /boards/1
   # GET /boards/1.xml
   def show

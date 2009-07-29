@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+	current_tab :blog
+	
   # GET /articles
   # GET /articles.xml
   def index

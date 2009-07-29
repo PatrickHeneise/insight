@@ -1,4 +1,5 @@
 class CourseModulesController < ApplicationController
+	current_tab :lectures
   # GET /course_modules
   # GET /course_modules.xml
   def index

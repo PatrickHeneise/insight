@@ -1,4 +1,6 @@
 class LecturesController < ApplicationController
+	current_tab :lectures
+
 	before_filter :load_department
 	
   # GET /lectures

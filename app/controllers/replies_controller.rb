@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+	current_tab :lectures
 	before_filter :load_department_lecture_board_and_bullet
 
   # GET /replies/new

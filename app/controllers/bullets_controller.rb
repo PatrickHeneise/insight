@@ -1,4 +1,5 @@
 class BulletsController < ApplicationController
+	current_tab :lectures
   require 'sanitize'
 	before_filter :load_department_board_and_lecture
 	

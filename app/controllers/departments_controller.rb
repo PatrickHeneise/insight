@@ -1,4 +1,6 @@
 class DepartmentsController < ApplicationController
+	current_tab :blog
+	
   # GET /departments
   # GET /departments.xml
   def index

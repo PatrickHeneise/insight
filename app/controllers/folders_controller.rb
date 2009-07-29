@@ -1,4 +1,5 @@
 class FoldersController < ApplicationController
+	current_tab :lecture
 	before_filter :load_vars
 	
 	def load_vars

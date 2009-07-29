@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+	current_tab :forums
 	before_filter :load_forum, :except => 'recent'
 	
 	def load_forum

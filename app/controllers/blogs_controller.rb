@@ -1,4 +1,6 @@
-class BlogsController < ApplicationController	
+class BlogsController < ApplicationController
+	current_tab :blog
+	
   # GET /blogs/1
   # GET /blogs/1.xml
   def show

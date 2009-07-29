@@ -16,10 +16,8 @@
 <div id="flickr_gallery" class="span-20 prepend-top">
 	<h1 id="flickr"><a href="http://www.flickr.com/groups/hochschule_furtwangen_university/" alt="flickr"><span>Flickr</span></a></h1>
 	<% @photos.each_with_index do |photo, index| -%>
-		<div class="flickr_photo">
-			<%= link_to(image_tag(photo.url(:small), :alt =>  photo.title),photo.url_photopage) %>
-		</div>
-		<% if (index+1).modulo(3) == 0 %>
+		<%= link_to(image_tag(photo.url(:square), :alt =>  photo.title),photo.url_photopage) %>
+		<% if (index+1).modulo(24) == 0 %>
 			<br class="clear" />
 		<% end %>
 	<% end %>

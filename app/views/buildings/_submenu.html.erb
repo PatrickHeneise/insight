@@ -3,12 +3,13 @@
 <ul>
 
 <% permitted_to? :manage, :buildings do %>
-<ul id="nav_management" class="subnavigation">
-<% if @building.nil? %>
-	<li><%= link_to t('create.building'), new_admin_building_path %></li>
-<% else %>
-	<li><%= link_to t('create.building'), new_admin_building_path %></li>
-	<li><%= link_to t('edit.building'), edit_admin_building_path(@building) %></li>
-	<li><%= link_to t('create.room')new_admin_building_room_path(@building) %></li>
-</ul>
+	<ul id="nav_management" class="subnavigation">
+	<% if @building.nil? %>
+		<li><%= link_to t('create.building'), new_admin_building_path %></li>
+	<% else %>
+		<li><%= link_to t('create.building'), new_admin_building_path %></li>
+		<li><%= link_to t('edit.building'), edit_admin_building_path(@building) %></li>
+		<li><%= link_to t('create.room'), new_admin_building_room_path(@building) %></li>
+	</ul>
+	<% end %>
 <% end %>

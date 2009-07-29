@@ -7,6 +7,7 @@ de:
   webcam: "Webcam"
   next_page: "Nächste Seite"
   previous_page: "Vorherige Seite"
+  schedule: "Stundenplan"
 
   roles:
     employee: "Mitarbeiter"
@@ -169,10 +170,19 @@ de:
     room: "Neuen Raum anlegen"
     article: "Neuer Artikel"
     course: "Neuer Kurs"
+    company: "Firma anlegen"
 
   select:
     address: "Address wählen"
     department: "Fakultät wählen"
+
+  list:
+    departments: "Alle Fakultäten"
+    lectures: "Alle Veranstaltungen"
+    topics: "Alle Themen"
+    companies: "Alle Firmen"
+    users: "Alle Personen"
+    jobs: "Alle Jobs"
 
   application:
     profile: "Profil"
@@ -190,7 +200,7 @@ de:
     administration: "Verwaltung"
     
   blog:
-    header: "Fakultätsblog"    
+    header: "Fakultätsblog"
 
   forums:
     forums: "Foren"
@@ -242,6 +252,9 @@ de:
     person_responsible: "Verantwortlicher"
     description: "Beschreibung"
 
+  enrollments:
+    list: "Buchungsliste"
+
   departments:
     department: "Fakultät"
 
@@ -266,3 +279,10 @@ de:
   buildings:
     overview: "Gebäudeübersicht"
     opening_hours: "Öffnungszeiten"
+
+  weather:
+    weather: "Wetter"
+
+  photos:
+    recent: "Neue Fotos"
+    more: "Weitere Fotos ..."

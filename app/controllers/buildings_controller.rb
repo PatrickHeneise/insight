@@ -1,4 +1,6 @@
 class BuildingsController < ApplicationController
+	current_tab :service
+
   # GET /buildings
   # GET /buildings.xml
   def index

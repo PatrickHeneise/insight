@@ -70,6 +70,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.media '/media', :controller => 'MediaCenter', :action => 'index'
 	map.register '/register', :controller => 'Users', :action => 'new'
 	map.lectures '/lecture-plan', :controller => 'Courses', :action => 'overview'
+	map.calendar '/calendar', :controller => 'Calendar', :action => 'index'
 	
 	# Return blog articles for year, year/month, year/month/day
 	map.date '/blog/:year/:month/:day',
@@ -84,7 +85,6 @@ ActionController::Routing::Routes.draw do |map|
 	
 	map.with_options :controller => 'Pages' do |pages|
 		pages.root														:action => 'index'     # static home page
-		pages.calendar '/calendar',						:action => 'calendar'
 		pages.home '/home',										:action => 'index'
 	end
 	

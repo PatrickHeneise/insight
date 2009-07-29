@@ -9,7 +9,7 @@ class Notifier < ActionMailer::Base
    end
 	 
 	def system_registration(user)
-		recipients "sternh@hs-furtwangen.de"
+		recipients "heneise@hs-furtwangen.de"
 		from       "insight@hs-furtwangen.de"
 		subject    "new insight account"
 		sent_on			Time.now

@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+	current_tab :service
 	before_filter :load_building
 	
 	def load_building

@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'weather' %>
 <% end %>
 
-<div id="page_courses" class="span-10">
+<div id="page_courses" class="page span-12">
 <h2><%= t 'lectures.lectures' %></h2>
 <table>
 		<thead>
@@ -25,7 +25,15 @@
 	</table>
 </div>
 
-<div id="page_forums" class="span-10 last">
+<div id="page_photos" class="page span-12 last">
+<h2><%= t 'photos.recent' %></h2>
+	<% @photos.each do |photo| -%>
+			<%= link_to(image_tag(photo.url(:square), :alt =>  photo.title),photo.url_photopage) %>
+	<% end %><br />
+	<a href="http://www.flickr.com/groups/hochschule_furtwangen_university/" alt="flickr"><span><%= t 'photos.more' %></span></a>
+</div>
+
+<div id="page_forums" class="page span-12">
 <h2><%= t 'forums.forums' %></h2>
 	<table>
 		<thead>
@@ -53,12 +61,12 @@
 	</table>
 </div>
 
-<div id="page_webcam" class="span-10">
+<div id="page_webcam" class="page span-12 last">
 <h2><%= t 'webcam' %></h2>
-	<%= image_tag("webcam.jpg") %>
+	<%= image_tag("webcam.jpg", :style => "margin-left: 75px") %>
 </div>
 
-<div id="weather" class="span-10 last">
+<div id="weather" class="page span-12">
 	<h2><%= t 'weather.weather' %></h2>
 	<div id="weather_c" class="weather_day span-3">
 		<div class="weather_day_img code_<%=h @response.condition.code %>">
@@ -86,3 +94,4 @@
 		</div>
 	</div>
 </div>
+<div class="page span-12 last">&nbsp;</div>

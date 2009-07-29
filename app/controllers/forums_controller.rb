@@ -1,4 +1,6 @@
 class ForumsController < ApplicationController
+	current_tab :forums
+	
   # GET /forums
   # GET /forums.xml
   def index
