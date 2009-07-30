@@ -1,0 +1,46 @@
+<% form_for(@thesis) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :coeditor %><br />
+		<%= f.select :coeditor_id, User.find(:all).collect {|u| ["#{u.fullname}", u.id]},{:prompt => t('select.coeditor')} %><br />
+  </p>
+  <p>
+    <%= f.label :topic %><br />
+    <%= f.text_field :topic %>
+  </p>
+  <p>
+    <%= f.label :supervisor %><br />
+		<%= f.select :supervisor_id, User.professors.collect {|u| ["#{u.fullname}", u.id]},{:prompt => t('select.supervisor')} %><br />  </p>
+  <p>
+    <%= f.label :assistant_supervisor %><br />
+		<%= f.select :assistant_supervisor_id, User.find(:all).collect {|u| ["#{u.fullname}", u.id]},{:prompt => t('select.assistant_supervisor')} %><br />  </p>
+  <p>
+    <%= f.label :delivery %><br />
+		<select name="thesis[delivery]">
+		<% if((Date.today.month < 9) && (Date.today.month > 2)) %>
+			<option value="ss_ss"><%= "SS #{Date.today.year}" %></option>
+			<option value="ss_ws" selected="selected"><%= "WS #{Date.today.year}/#{Date.today.year+1}" %></option>
+		<% else %>
+				<% if((Date.today.month > 0) && (Date.today.month < 3)) %>
+				<option value="ws_nws"><%= "WS #{Date.today.year-1}/#{Date.today.year}" %></option>
+				<option value="ws_nss" selected="selected"><%= "SS #{Date.today.year}" %></option>
+			<% else %>
+				<option value="ws_ws"><%= "WS #{Date.today.year}/#{Date.today.year+1}" %></option>
+				<option value="ws_ss" selected="selected"><%= "SS #{Date.today.year+1}" %></option>
+			<% end %>
+		<% end %>
+		</select>
+	</p>
+	<p>
+		<%= f.label :tag_list %>
+		<%= f.text_field :tag_list, :size => 80 %>
+	</p>
+  <p>
+    <%= f.label :abstract %><br />
+    <%= f.text_area :abstract %>
+  </p>
+  <p>
+    <%= f.submit 'Create', :class => 'button' %>
+  </p>
+<% end %>

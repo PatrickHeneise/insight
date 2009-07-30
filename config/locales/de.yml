@@ -171,6 +171,7 @@ de:
     article: "Neuer Artikel"
     course: "Neuer Kurs"
     company: "Firma anlegen"
+    thesis: "Neue Thesis"
 
   select:
     address: "Address wählen"
@@ -286,3 +287,16 @@ de:
   photos:
     recent: "Neue Fotos"
     more: "Weitere Fotos ..."
+
+  theses:
+    course: "Studiengang"
+    editors: "Bearbeiter"
+    topic: "Thema"
+    supervisor: "Betreuer"
+    assistant_supervisor: "2. Betreuer"
+    delivery: "Abgabe"
+    applied: "Angemeldet"
+    processing: "In Bearbeitung"
+    own: "Eigene Arbeiten"
+    faq: "Wichtige Infos"
+    thesis: "Thesis"

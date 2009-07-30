@@ -1,0 +1,9 @@
+<ul id="nav_general" class="subnavigation">
+	<li><%= link_to t('create.thesis'), new_thesis_path %></li>
+	<li><%= link_to t('theses.applied'),  applied_theses_path %></li>
+	<li><%= link_to t('theses.processing'), processing_theses_path %></li>
+	<% if @current_user.theses %>
+	<li><%= link_to t('theses.own'), own_theses_path %></li>
+	<% end %>
+	<li><%= link_to t('theses.faq'), new_thesis_path %></li>
+</ul>

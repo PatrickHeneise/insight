@@ -8,6 +8,13 @@ input {
 	border: 1px solid #00844d;
 	background-color: #fef5ff;
 }
+input.button {
+	border: 1px solid #00512F;
+	background-color: #00844d;
+	color: white;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
 div.page {}
 h1 {
 	font-family: Univers, Arial, Helvetica, Geneva, sans-serif !important;
@@ -161,7 +168,7 @@ ul.navigation {
 	margin-top: 7px;
 }
 ul.navigation li a {
-	font: 2em Univers, Arial, Helvetica, Geneva, sans-serif !important;
+	font: 1.5em Univers, Arial, Helvetica, Geneva, sans-serif !important;
 	color: #efefef;
 }
 ul.navigation li.current {

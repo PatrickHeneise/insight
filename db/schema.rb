@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090724075544) do
+ActiveRecord::Schema.define(:version => 20090730081305) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street",                        :null => false
@@ -292,6 +292,25 @@ ActiveRecord::Schema.define(:version => 20090724075544) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "theses", :force => true do |t|
+    t.integer  "editor_id"
+    t.integer  "coeditor_id"
+    t.integer  "course_id"
+    t.string   "topic"
+    t.integer  "supervisor_id"
+    t.integer  "assistant_supervisor_id"
+    t.date     "delivery"
+    t.string   "state"
+    t.text     "abstract"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "paper_file_name"
+    t.string   "paper_content_type"
+    t.integer  "paper_file_size"
+    t.datetime "paper_updated_at"
   end
 
   create_table "topic_activities", :force => true do |t|

@@ -1,0 +1,26 @@
+<h1>Listing theses</h1>
+
+<table>
+	<thead>
+	  <tr>
+			<th class="accent" width="100"><%= t 'theses.editors' %></th>
+			<th class="accent"><%= t 'theses.topic' %></th>
+			<th class="accent" width="100"><%= t 'theses.supervisor' %></th>
+			<th class="accent" width="100"><%= t 'theses.assistant_supervisor' %></th>
+			<th class="accent" width="10"><%= t 'theses.delivery' %></th>
+		</tr>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody>
+	<% @theses.each do |thesis| %>
+	<tr class="<%= cycle('odd', 'even', :name => "theses") %>">
+			<td><%= "#{thesis.editor.fullname},<br />#{thesis.coeditor.fullname}" rescue "#{thesis.editor.fullname}" %></td>
+			<td><%=link_to thesis.topic, thesis %></td>
+			<td><%=h thesis.supervisor.fullname rescue "" %></td>
+			<td><%=h thesis.assistant_supervisor.fullname rescue "" %></td>
+			<td><%=h thesis.delivery %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

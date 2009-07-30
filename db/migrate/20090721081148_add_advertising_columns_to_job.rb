@@ -13,4 +13,3 @@ class AddAdvertisingColumnsToJob < ActiveRecord::Migration
 		remove_column :jobs, :advertisement_updated_at
 	end
 end
-

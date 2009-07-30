@@ -22,13 +22,17 @@ class User < ActiveRecord::Base
 	has_many :topic_activities
 	has_many :jobs
 	has_many :addresses
+	has_many :theses, :class_name => "Thesis", :foreign_key => "editor_id"
+	has_many :theses, :class_name => "Thesis", :foreign_key => "supervisor_id"
+	has_many :theses, :class_name => "Thesis", :foreign_key => "coeditor_id"
+	has_many :theses, :class_name => "Thesis", :foreign_key => "assistant_supervisor_id"
 	
 	def role_symbols
      (roles || []).map {|r| r.title.to_sym}
 	end
 	
 	# Paperclip
-	has_attached_file :avatar, :styles => { :original => "300x300", :large => "150x150", :medium => "100x100>", :small => "50x50>" }, :url => "/avatars/:login/:style/:login.:extension"
+	has_attached_file :avatar, :styles => { :original => "300x300", :large => "150x150", :medium => "100x100>", :small => "50x50>" }, :url => "/avatars/:hashed_id/:style/:login.:extension"
 	validates_attachment_size :avatar, :less_than => 500.kilobytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
 
@@ -61,7 +65,9 @@ class User < ActiveRecord::Base
 		lecture = enrollments.find_by_lecture_id id
 		return !lecture.nil?
 	end
-		
+	
+	named_scope :professors, :joins => :roles, :conditions => "roles.title like 'Professor'"
+
 	private
 		def validate
 			if department_is_needed?
@@ -77,5 +83,7 @@ class User < ActiveRecord::Base
 			result = true if self.active?
 		end
 		
-		named_scope :inactive, :conditions => { :active => false }
+		def professor?
+			self.roles.include?(Role.find(:first, :condition => "title like 'Professor"))
+		end
 end

@@ -1,0 +1,4 @@
+<% form_for (@thesis, :html => { :multipart => true }) do |form| %>
+    <%= form.file_field :paper %>
+    <%= form.submit 'Upload', :class => 'button' %>
+<% end %>

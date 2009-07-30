@@ -1,0 +1,31 @@
+<div class="span-4">
+	<div class="<%= current_user.department.short.downcase %> brick">
+		<h1><%= @thesis.editor.department.short.upcase %></h1>
+	</div>
+</div>
+<div class="span-14">
+	<h2><%= t 'theses.thesis' %></h2>
+  <h3><%=h @thesis.topic %></h3>
+	<% if((@thesis.editor == current_user) || (@thesis.coeditor == current_user)) %>
+		<%= link_to 'Edit', edit_thesis_path(@thesis) %>
+	<% end %>
+	<div id="thesis_info" class="span-14 prepend-top">
+		<strong>Editor: </strong> <%= link_to @thesis.editor.fullname, @thesis.editor %><br />
+		<% unless @thesis.coeditor.nil? %>
+		<strong>Editor:</strong> <%= link_to @thesis.coeditor.fullname, @thesis.coeditor %><br />
+		<% end %>
+		<br />
+	  <strong>Supervisor:</strong> <%= link_to @thesis.supervisor.fullname, @thesis.supervisor %><br />
+		<strong>Assistant supervisor:</strong> <%= link_to @thesis.assistant_supervisor.fullname, @thesis.assistant_supervisor %><br />
+		<br />
+		<strong>Delivery:</strong> <%=h @thesis.delivery %>
+	</div>
+	<div id="thesis_abstract" class="span-14 prepend-top">
+	<h4>Abstract</h4>
+  <%=h @thesis.abstract %>
+	</div>
+	<div id="thesis_paper" class="span-14 prepend-top">
+		<%= link_to 'Download', @thesis.paper.url %>
+	</div>
+</div>
+<div class="span-2 last">&nbsp;</div>

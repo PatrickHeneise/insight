@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :theses, :collection => { :applied => :get, :processing => :get, :own => :get }
   map.resources :jobs
 	map.resources :events
   map.resources :addresses
