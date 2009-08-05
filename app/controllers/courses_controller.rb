@@ -26,6 +26,7 @@ class CoursesController < ApplicationController
 	end
 	
 	def schedule
+		@enrollments = current_user.enrollments
 	end
 	
   # GET /courses/1

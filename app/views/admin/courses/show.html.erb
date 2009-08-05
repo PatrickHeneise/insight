@@ -1,0 +1,35 @@
+<p>
+  <b>Title:</b>
+  <%=h @course.title %>
+</p>
+
+<p>
+  <b>Short:</b>
+  <%=h @course.short %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%=h @course.department.title %>
+</p>
+
+<table>
+	<thead>
+	</thead>
+	<tfoot>
+	</tfoot>
+	<tbody>
+<% @course_modules.each do |course_module| -%>
+		<tr>
+			<td><%= link_to course_module.title, edit_admin_course_course_module_path(@course, course_module) %></td>
+			<td><%=h course_module.short %></td>
+			<td><%=h course_module.visible %></td>
+			<td><%=h course_module.level %></td>
+			<td><%=h course_module.description %></td>
+			<td><%=h course_module.semester %></td>
+<% end %>
+	</tbody>
+</table>
+<%= link_to t('create.course_module'), new_admin_course_course_module_path(@course) %>
+<%= link_to 'Edit', edit_admin_course_path(@course) %> |
+<%= link_to 'Back', admin_courses_path %>

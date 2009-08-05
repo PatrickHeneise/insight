@@ -1,24 +1,6 @@
 <h1>Editing course</h1>
 
-<% form_for([:admin, @course]) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :short %><br />
-    <%= f.text_field :short %>
-  </p>
-  <p>
-    <%= f.label :department %><br />
-    <%= f.text_field :department %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<%= render :partial => 'course', :locals => { :button_name => "Update" } %>
 
 <%= link_to 'Show', @course %> |
 <%= link_to 'Back', courses_path %>

@@ -3,8 +3,10 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.all
-
+		@year = @params[:year].to_i rescue Date.today.year
+		@month = @params[:month].to_i rescue Date.today.month
+		@events = Event.events
+		
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }

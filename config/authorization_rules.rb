@@ -24,6 +24,7 @@ authorization do
 		has_permission_on :articles, :to => :manage
 		has_permission_on :administration, :to => :manage
 		has_permission_on :courses, :to => :manage
+		has_permission_on :course_modules, :to => :manage
   end
 	
 	role :Developer do

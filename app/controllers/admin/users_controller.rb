@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:user])
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
+      flash[:success] = "Account updated!"
       redirect_to admin_users_path
     else
       render :action => :edit
@@ -37,7 +37,7 @@ class Admin::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.active = true
 		if @user.save
-			flash[:notice] = "User activated"
+			flash[:success] = "User activated"
 			redirect_to admin_users_path
 		end
 	end
@@ -46,7 +46,7 @@ class Admin::UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.active = false
 		if @user.save
-			flash[:notice] = "User deactivated"
+			flash[:success] = "User deactivated"
 			redirect_to admin_users_path
 		end
 	end

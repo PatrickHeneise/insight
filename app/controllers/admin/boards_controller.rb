@@ -16,7 +16,7 @@ class Admin::BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        flash[:notice] = 'Board was successfully created.'
+        flash[:success] = 'Board was successfully created.'
         format.html { redirect_to(@board) }
       else
         format.html { render :action => "new" }
@@ -31,7 +31,7 @@ class Admin::BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.update_attributes(params[:board])
-        flash[:notice] = 'Board was successfully updated.'
+        flash[:success] = 'Board was successfully updated.'
         format.html { redirect_to(@board) }
       else
         format.html { render :action => "edit" }

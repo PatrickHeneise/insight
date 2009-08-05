@@ -3,7 +3,8 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.date :at_date
       t.time :at_time
-      t.date :to_date,						:null => true
+			t.string :title,						:limit => 255, :null => false
+      t.date :to_date,						:null => false
       t.time :to_time,						:null => true
       t.integer :from_block,			:null => true
       t.integer :to_block,				:null => true
@@ -11,6 +12,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :repeatInterval,	:null => true
       t.references :lecture,			:null => true
       t.references :room,					:null => true
+			t.boolean :is_lecture,			:null => false
       t.boolean :is_blocked,			:null => false
 
       t.timestamps

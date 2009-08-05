@@ -30,15 +30,19 @@
 		</p>
 		<p>
 			<%= f.label :department %><br />
-			<%= f.select :department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]} %>
+			<%= f.select(:department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]}, {:prompt => t('select.department')}) %>
 		</p>
 		<p>
 			<strong>Kurs:</strong><br />
-			<%= select 'lecture','course_module_ids', CourseModule.find(:all).collect {|c| ["#{c.title} (#{c.short}, #{c.course.department.title})", c.id]} %>
+			<%= select('lecture','course_module_ids', CourseModule.find(:all).collect {|c| ["#{c.title} (#{c.short}, #{c.course.department.title})", c.id]},{:prompt => t('select.course')}, :size => 10, :multiple => "multiple") %>
+		</p>
+		<p>
+			<strong>Verwalter:</strong><br />
+			<%= select('lecture','user_ids', User.professors.collect {|u| ["#{u.fullname} (#{u.department.short})", u.id]},{:prompt => t('select.supervisor')}, :size => 10, :multiple => "multiple") %>
 		</p>
 		<hr />
 		<div id="events">
-			<h2><%= t 'view.events.title' %></h2>
+			<h2><%= t 'events.title' %></h2>
 			<% f.fields_for :events do |e| %>
 				<%= render :partial => "event", :locals => {:form => e, :fid => e.id} %>
 			<% end %>

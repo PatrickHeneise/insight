@@ -18,7 +18,7 @@ class Admin::FoldersController < ApplicationController
 
     respond_to do |format|
       if @folder.save
-        flash[:notice] = 'Folder was successfully created.'
+        flash[:success] = 'Folder was successfully created.'
         format.html { redirect_to(department_lecture_folder_path(@folder.parent.lecture.department, @folder.parent.lecture, @folder)) }
       else
         format.html { render :action => "new" }
@@ -32,7 +32,7 @@ class Admin::FoldersController < ApplicationController
 
     respond_to do |format|
       if @folder.update_attributes(params[:folder])
-        flash[:notice] = 'Folder was successfully updated.'
+        flash[:success] = 'Folder was successfully updated.'
         format.html { redirect_to(department_lecture_folder_path(@folder.lecture.department, @folder.lecture, @folder)) }
       else
         format.html { render :action => "edit" }

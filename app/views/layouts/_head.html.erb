@@ -15,18 +15,10 @@
 		<%= stylesheet_link_tag "blueprint/plugins/tabs/screen", :media => "screen, projection", :cache => true %>
 		<!--[if IE]><%= stylesheet_link_tag "blueprint/ie", :media => "screen, projection" %><![endif]-->
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<%= javascript_include_tag 'prototype' %>
-		<%= javascript_include_tag 'effects' %>
-		<%= javascript_include_tag 'dragdrop' %>
-		<%= javascript_include_tag 'lowpro' %>
-		<%= javascript_include_tag 'application' %>
+		<%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min' %>
+		<%= javascript_include_tag 'jrails', 'application' %>
 		<%= init_tinymce_hammer_if_required %>
     <%= yield(:head) %>
-    <script type="text/javascript">
-      $(function() {
-        <%= yield(:jquery) %>
-      });
-    </script>
 	</head>
 	<body>
 		<div class="container">
@@ -43,5 +35,13 @@
 								:service, t('application.services'),
 								:account, t('application.profile')
 								], :link_text => true %>
+				</div>
+			</div>
+			<div id="logo_head" class="span-24 last">
+				<div class="span-20">
+					<h1><%= yield(:logo) %></h1>
+				</div>
+				<div class="span-4 last">
+					<%= image_tag 'hfu_small.jpg' %>
 				</div>
 			</div>

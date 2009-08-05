@@ -1,3 +1,22 @@
+<%- content_for(:head) do -%>
+	<%= stylesheet_link_tag "smoothness/jquery-ui-1.7.2.custom", :media => "screen, projection", :cache => true %>
+	<script type="text/javascript">
+	$(function() {
+		$(".tabs").tabs();
+		$(".tabs").each(function() {
+			if($(this).parents(".event").find(".blocked").val() == "true")
+				$(this).tabs('select', 1);
+		});
+		$("a.tabbing").click(function () {
+			var $tabs = $(this).parents("div.tabs").tabs();
+			var selected = $tabs.tabs('option', 'selected');
+			$(this).parents("div.event").find(".blocked").val(new Boolean(selected));
+		});
+		$(".date-picker").datepicker({ showOn: 'button', buttonImageOnly: true, dateFormat: 'dd.mm.yy', minDate: new Date(), buttonImage: '/images/icon_cal.png' });
+	});
+	</script>
+<%- end -%>
+
 <h1><%= t 'view.editing' %> "<%=@lecture.title %>"</h1>
 
 <%= error_messages_for :lecture %>

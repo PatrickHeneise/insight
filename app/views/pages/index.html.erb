@@ -1,97 +1,105 @@
-<% content_for :head do %>
+<% content_for :head do -%>
   <%= stylesheet_link_tag 'weather' %>
 <% end %>
 
-<div id="page_courses" class="page span-12">
-<h2><%= t 'lectures.lectures' %></h2>
-<table>
-		<thead>
-			<tr>
-				<th class="accent"><%= t 'lectures.lectures' %></th>
-			</tr>
-		</thead>
-		<tfoot>
-			<tr>
-				<td><%= link_to t('enrollments.list'), enrollments_path %></td>
-			</tr>
-		</tfoot>
-		<tbody>
-		<% @enrollments.each do |enrollment| -%>
-			<tr>
-				<td><%= link_to enrollment.lecture.title, department_lecture_path(enrollment.lecture.department, enrollment.lecture) %></td>
-			</tr>
-		<% end %>
-		</tbody>
-	</table>
-</div>
+<% content_for :logo do -%>
+	Willkommen im neuen Intranet der Hochschule Furtwangen
+<% end %>
 
-<div id="page_photos" class="page span-12 last">
-<h2><%= t 'photos.recent' %></h2>
-	<% @photos.each do |photo| -%>
-			<%= link_to(image_tag(photo.url(:square), :alt =>  photo.title),photo.url_photopage) %>
-	<% end %><br />
-	<a href="http://www.flickr.com/groups/hochschule_furtwangen_university/" alt="flickr"><span><%= t 'photos.more' %></span></a>
-</div>
-
-<div id="page_forums" class="page span-12">
-<h2><%= t 'forums.forums' %></h2>
+<div id="page_left_col" class="span-12">
+	<div id="page_courses" class="page span-12">
+	<h2><%= t 'lectures.lectures' %></h2>
 	<table>
-		<thead>
-			<tr>
-				<th class="accent" width="15">&nbsp;</th>
-				<th class="accent"><%= t 'forums.forums' %></th>
-			</tr>
-		</thead>
-		<tfoot>
-		</tfoot>
-		<tbody>
-		<% @subscriptions.each do |subscription| -%>
-			<tr>
-				<td>
-				<% if recent_forum_activity(subscription.forum) %>
-					<span class="ss_sprite ss_email_open">&nbsp;</span>
-				<% else %>
-					<span class="ss_sprite ss_email">&nbsp;</span>
-				<% end %>
-				</td>
-				<td><%= link_to subscription.forum.title, forum_path(subscription.forum) %></td>
-			</tr>
+			<thead>
+				<tr>
+					<th class="accent"><%= t 'lectures.lectures' %></th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td><%= link_to t('enrollments.list'), enrollments_path %></td>
+				</tr>
+			</tfoot>
+			<tbody>
+			<% @enrollments.each do |enrollment| -%>
+				<tr>
+					<td><%= link_to enrollment.lecture.title, department_lecture_path(enrollment.lecture.department, enrollment.lecture) %></td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
+	
+	<div id="page_forums" class="page span-12">
+	<h2><%= t 'forums.forums' %></h2>
+		<table>
+			<thead>
+				<tr>
+					<th width="15" class="accent">&nbsp;</th>
+					<th class="accent"><%= t 'forums.forums' %></th>
+				</tr>
+			</thead>
+			<tfoot>
+			</tfoot>
+			<tbody>
+			<% @subscriptions.each do |subscription| -%>
+				<tr>
+					<td>
+					<% if recent_forum_activity(subscription.forum) %>
+						<span class="ss_sprite ss_email_open">&nbsp;</span>
+					<% else %>
+						<span class="ss_sprite ss_email">&nbsp;</span>
+					<% end %>
+					</td>
+					<td><%= link_to subscription.forum.title, forum_path(subscription.forum) %></td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
+	
+	<div id="weather" class="page span-12">
+		<h2><%= t 'weather.weather' %></h2>
+		<div id="weather_c" class="weather_day">
+			<div class="weather_day_img code_<%=h @response.condition.code %>">&nbsp;</div>
+			<div class="weather_day_info">
+				<span class="weather_day"><%= Date.today.to_s(:day) %></span><br />
+				<span class="weather_temp"><%= "#{@response.condition.temp}&deg;#{@response.units.temperature}" %></span>
+			</div>
+		</div>
+		<div id="weather_f1" class="weather_day">
+			<div class="weather_day_img code_<%=h @response.forecasts[0].code %>">&nbsp;</div>
+			<div class="weather_day_info">
+				<span class="weather_day"><%= Date.tomorrow.to_s(:day) %></span><br />
+				<span class="weather_temp"><%= "#{@response.forecasts[0].low} / #{@response.forecasts[0].high}&deg;#{@response.units.temperature}" %></span>
+			</div>
+		</div>
+		<div id="weather_f2" class="weather_day">
+			<div class="weather_day_img code_<%=h @response.forecasts[1].code %>">&nbsp;</div>
+			<div class="weather_day_info">
+				<span class="weather_day"><%= (Date.today+2.days).to_s(:day) %></span><br />
+				<span class="weather_temp"><%= "#{@response.forecasts[1].low} / #{@response.forecasts[1].high}&deg;#{@response.units.temperature}" %></span>
+			</div>
+		</div>
+		<div class="wl">&nbsp;</div>
+	</div>
+</div>
+
+<div id="page_right_col" class="span-12 last">
+	<div id="page_photos" class="page span-12">
+	<h2><%= t 'photos.recent' %></h2>
+		<% @photos.each do |photo| -%>
+				<%= link_to(image_tag(photo.url(:square), :alt =>  photo.title),photo.url_photopage) %>
 		<% end %>
-		</tbody>
-	</table>
-</div>
-
-<div id="page_webcam" class="page span-12 last">
-<h2><%= t 'webcam' %></h2>
-	<%= image_tag("webcam.jpg", :style => "margin-left: 75px") %>
-</div>
-
-<div id="weather" class="page span-12">
-	<h2><%= t 'weather.weather' %></h2>
-	<div id="weather_c" class="weather_day span-3">
-		<div class="weather_day_img code_<%=h @response.condition.code %>">
-			<span><%=h @response.condition.code %></span>
-		</div>
-		<div class="weather_day_temp">
-			<span class="weather_temp"><%= "#{@response.condition.temp}&deg; #{@response.units.temperature}" %></span>
-		</div>
 	</div>
-	<div id="weather_f1" class="weather_day span-3">
-		<div class="weather_day_img code_<%=h @response.forecasts[0].code %>">
-			<span><%=h @response.forecasts[0].code %></span>
-		</div>
-		<div class="weather_day_temp">
-			<span class="weather_temp"><%= "#{@response.forecasts[0].low} - #{@response.forecasts[0].high}&deg; #{@response.units.temperature}" %></span>
-		</div>
 
+	<div id="page_webcam" class="page span-12">
+	<h2><%= t 'webcam' %></h2>
+		<%= image_tag("webcam.jpg", :style => "margin-left: 75px") %>
 	</div>
-	<div id="weather_f2" class="weather_day append-1 span-3 last">
-		<div class="weather_day_img code_<%=h @response.forecasts[1].code %>">
-			<span><%=h @response.forecasts[1].code %></span>
-		</div>
-		<div class="weather_day_temp">
-			<span class="weather_temp"><%= "#{@response.forecasts[1].low} - #{@response.forecasts[1].high}&deg; #{@response.units.temperature}" %></span>
-		</div>
+	
+	<div id="page_mensa_rss" class="page span-12">
+		<h2><%= t 'rss.mensa' %></h2>
+		<%= @mensa %>
 	</div>
 </div>
-<div class="page span-12 last">&nbsp;</div>

@@ -14,7 +14,7 @@ class Admin::DataItemsController < ApplicationController
 
     respond_to do |format|
       if @data_item.save
-        flash[:notice] = 'DataItem was successfully created.'
+        flash[:success] = 'DataItem was successfully created.'
         format.html { redirect_to(department_lecture_folder_path(@folder.lecture.department, @folder.lecture, @folder)) }
       else
         format.html { render :action => "new" }

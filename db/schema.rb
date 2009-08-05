@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20090730081305) do
   create_table "events", :force => true do |t|
     t.date     "at_date"
     t.time     "at_time"
+    t.string   "title"
     t.date     "to_date"
     t.time     "to_time"
     t.integer  "from_block"
@@ -295,16 +296,14 @@ ActiveRecord::Schema.define(:version => 20090730081305) do
   end
 
   create_table "theses", :force => true do |t|
-    t.integer  "editor_id"
+    t.integer  "editor_id",               :null => false
     t.integer  "coeditor_id"
-    t.integer  "course_id"
-    t.string   "topic"
-    t.integer  "supervisor_id"
-    t.integer  "assistant_supervisor_id"
-    t.date     "delivery"
+    t.string   "topic",                   :null => false
+    t.integer  "supervisor_id",           :null => false
+    t.integer  "assistant_supervisor_id", :null => false
+    t.date     "delivery",                :null => false
     t.string   "state"
     t.text     "abstract"
-    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "paper_file_name"

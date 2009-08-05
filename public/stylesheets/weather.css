@@ -1,23 +1,59 @@
+div.weather_day {
+	width: 156px;
+	float: left;
+}
 div.weather_day_img {
-	background: url(../images/weather.png) no-repeat;
-	width: 110px;
-	height: 90px;
+	height: 65px;
+	width: 65px;
+	float: left;
+	margin-right: 10px;
 }
-div.weather_day_img span {
-	display: none;
+div.weather_day_info {
+	width: 81px;
+	float: left;
 }
-div.weather_day_temp span.weather_temp {
-	color: #89a2ff;
+div.wl {
+	clear: both;
+	width: 0;
+	height: 0;
+}
+div.weather_day_info span.weather_day {
 	font-variant: small-caps;
-	text-align: center;
-	font-size: 1.5em;
 }
-div.code_8, div.code_9, div.code_10, div.code_11, div.code_12 {
-	background-position: -260px -35px;
+div.weather_day_info span.weather_temp {
+	font-weight: bold;
+	font-size: 1.2em;
 }
-div.code_27, div.code_28, div.code_29, div.code_30 {
-	background-position: -135px -35px;
+div.code_0, div.code_1, div.code_2, div.code_3, div.code_4 {
+	background: url(../images/weather/6.png) no-repeat;
 }
-div.code_31, div.code_32, div.code_33, div.code_34 {
-	background-position: -20px -25px;
+div.code_5, div.code_6, div.code_7, div.code_8, div.code_18, div.code_35, div.code_40, div.code_41, div.code_43 {
+	background: url(../images/weather/7.png) no-repeat;
+}
+div.code_9, div.code_10, div.code_11, div.code_12, div.code_42, div.code_46 {
+	background: url(../images/weather/8.png) no-repeat;
+}
+div.code_13, div.code_14, div.code_15, div.code_16, div.code_17 {
+	background: url(../images/weather/9.png) no-repeat;
+}
+div.code_19, div.code_20, div.code_21, div.code_22, div.code_23, div.code_24, div.code_25 {
+	background: red;
+}
+div.code_26, div.code_28, div.code_30 {
+	background: url(../images/weather/2.png) no-repeat;
+}
+div.code_27, div.code_29 {
+	background: url(../images/weather/10.png) no-repeat;
+}
+div.code_31, div.code_33 {
+	background: url(../images/weather/9.png) no-repeat;
+}
+div.code_32, div.code_34, div.code_36 {
+	background: url(../images/weather/1.png) no-repeat;
+}
+div.code_37, div.code_38, div.code_39, div.code_45, div.code_47 {
+	background: url(../images/weather/5.png) no-repeat;
+}
+div.code_44 {
+	background: url(../images/weather/3.png) no-repeat;
 }

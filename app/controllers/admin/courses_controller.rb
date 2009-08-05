@@ -1,6 +1,17 @@
 class Admin::CoursesController < ApplicationController
 	layout "admin"
-
+	# GET /courses
+  # GET /courses.xml
+  def index
+    @courses = Course.all
+  end
+	
+  # GET /courses/1
+  def show
+    @course = Course.find(params[:id])
+		@course_modules = CourseModule.find(:all, :conditions => {:course_id => @course}, :order => "level")
+  end
+	
   # GET /courses/new
   def new
     @course = Course.new
@@ -17,7 +28,7 @@ class Admin::CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        flash[:notice] = 'Course was successfully created.'
+        flash[:success] = 'Course was successfully created.'
         format.html { redirect_to(@course) }
       else
         format.html { render :action => "new" }
@@ -31,7 +42,7 @@ class Admin::CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        flash[:notice] = 'Course was successfully updated.'
+        flash[:success] = 'Course was successfully updated.'
         format.html { redirect_to(@course) }
       else
         format.html { render :action => "edit" }

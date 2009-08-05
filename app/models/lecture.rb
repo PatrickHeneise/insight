@@ -1,4 +1,12 @@
 class Lecture < ActiveRecord::Base
+	validates_presence_of :title
+	validates_presence_of :short
+	validates_presence_of :description
+	validates_numericality_of :credits
+	validates_numericality_of :number
+	validates_presence_of :department
+	validates_presence_of :course_modules
+	
   belongs_to :department
 	
 	has_one :board

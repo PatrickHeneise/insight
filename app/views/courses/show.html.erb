@@ -10,9 +10,9 @@
 
 <p>
   <b>Department:</b>
-  <%=h @course.department %>
+  <%=h @course.department.title %>
 </p>
 
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Edit', edit_admin_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

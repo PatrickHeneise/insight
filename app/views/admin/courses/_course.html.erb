@@ -1,0 +1,19 @@
+<% form_for([:admin, @course]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :short %><br />
+    <%= f.text_field :short %>
+  </p>
+	<p>
+		<%= f.label :department %><br />
+		<%= f.select(:department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]}, {:prompt => t('select.department')}) %>
+	</p>
+  <p>
+    <%= f.submit button_name %>
+  </p>
+<% end %>

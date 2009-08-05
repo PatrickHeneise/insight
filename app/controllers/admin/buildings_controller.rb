@@ -27,7 +27,7 @@ class Admin::BuildingsController < ApplicationController
 				if !@address.nil?
 					@address.save
 				end
-        flash[:notice] = 'Building was successfully created.'
+        flash[:success] = 'Building was successfully created.'
         format.html { redirect_to(@building) }
       else
         format.html { render :action => "new" }
@@ -41,7 +41,7 @@ class Admin::BuildingsController < ApplicationController
 
     respond_to do |format|
       if @building.update_attributes(params[:building])
-        flash[:notice] = 'Building was successfully updated.'
+        flash[:success] = 'Building was successfully updated.'
         format.html { redirect_to(@building) }
       else
         format.html { render :action => "edit" }

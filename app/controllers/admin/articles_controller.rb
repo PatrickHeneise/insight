@@ -18,7 +18,7 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        flash[:notice] = 'Article was successfully created.'
+        flash[:success] = 'Article was successfully created.'
         format.html { redirect_to(@article) }
       else
         format.html { render :action => "new" }
@@ -32,7 +32,7 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        flash[:notice] = 'Article was successfully updated.'
+        flash[:success] = 'Article was successfully updated.'
         format.html { redirect_to(@article) }
       else
         format.html { render :action => "edit" }

@@ -1,152 +1,50 @@
-<%- content_for(:head) do -%>
-	<%= javascript_include_tag "ajax_tabs" -%>
-	<%= stylesheet_link_tag "ajax_tabs" -%>
-<%- end -%>
 <div class="event" id="event<%= fid %>">
-	<ul class="tabselector" id="tab<%= fid %>">
-		<% if(form.object.is_blocked) %>
-			<li class="tab-unselected" id="dated_tab_<%= fid %>"><%= link_to_function(t('view.events.dated'), "loadPane($('dated_pane_"+fid.to_s+"')), tabselect($('tab"+fid.to_s+"'),$('dated_tab_"+fid.to_s+"')); paneselect($('pane"+fid.to_s+"'),$('dated_pane_"+fid.to_s+"')); switch_block($('is_blocked_"+fid.to_s+"'),'f')") %></li>
-			<li class="tab-selected" id="blocked_tab_<%= fid %>"><%= link_to_function(t('view.events.blocked'), "tabselect($('tab"+fid.to_s+"'),$('blocked_tab_"+fid.to_s+"')); paneselect($('pane"+fid.to_s+"'),$('blocked_pane_"+fid.to_s+"')); switch_block($('is_blocked_"+fid.to_s+"'),'t')") %></li>
-		<% else %>
-			<li class="tab-selected" id="dated_tab_<%= fid %>"><%= link_to_function(t('view.events.dated'),"tabselect($('tab"+fid.to_s+"'),$('dated_tab_"+fid.to_s+"')); paneselect($('pane"+fid.to_s+"'),$('dated_pane_"+fid.to_s+"')); switch_block($('is_blocked_"+fid.to_s+"'),'f')") %></li>
-			<li class="tab-unselected" id="blocked_tab_<%= fid %>"><%= link_to_function(t('view.events.blocked'), "loadPane($('blocked_pane_"+fid.to_s+"')), tabselect($('tab"+fid.to_s+"'),$('blocked_tab_"+fid.to_s+"')); paneselect($('pane"+fid.to_s+"'),$('blocked_pane_"+fid.to_s+"')); switch_block($('is_blocked_"+fid.to_s+"'),'t')") %></li>
-		<% end %>
-	</ul>
-		<p>
-			<%= form.label :at_date %><br />
-			<%= form.date_select :at_date %>
-		</p>
-		<p>
-			<%= form.label :room %><br />
-			<%= form.select :room_id, Room.find(:all).collect {|r| ["#{r.building.code} #{r.number}", r.id]} %>
-		</p>
-	<ul class="panes" id="pane<%= fid %>">
-		<li id="dated_pane_<%= fid %>" class="pane-<%= if(form.object.is_blocked == true) then h('un');end %>selected">
+	<p>
+		<%= form.label :at_date %><br />
+		<%= form.text_field :at_date, :size => 10, :class => "date-picker" %>
+	</p>
+	<p>
+		<%= form.label :room %><br />
+		<%= form.select(:room_id, Room.find(:all).collect {|r| ["#{r.building.code} #{r.number}", r.id]}, {:prompt => t('select.room')}) %>
+	</p>
+	<div class="tabs">
+		<ul>
+			<li><a href="#tabs-<%= fid %>-1" class="tabbing"><%= t('events.dated') %></a></li>
+			<li><a href="#tabs-<%= fid %>-2" class="tabbing"><%= t('events.blocked') %></a></li>
+		</ul>
+		<div id="tabs-<%= fid %>-1">
 			<p>
 				<%= form.label :at_time %><br />
 				<%= form.time_select :at_time %>
 			</p>
 			<p>
 				<%= form.label :to_date %><br />
-				<%= form.date_select :to_date %>
+				<%= form.text_field :to_date, :size => 10, :class => "date-picker" %>
 			</p>
 			<p>
 				<%= form.label :to_time %><br />
 				<%= form.time_select :to_time %>
 			</p>
-		</li>
-		<li id="blocked_pane_<%= fid %>" class="pane-<%= if(form.object.is_blocked == false) then h('un');end %>selected">
-			<%= form.label :from_block %>
-			<div class="blockit">
-				<div class="row">
-					<div class="column">
-						1
-					</div>
-					<div class="column">
-						2
-					</div>
-					<div class="column">
-						3
-					</div>
-					<div class="column">
-						4
-					</div>
-					<div class="column">
-						5
-					</div>
-					<div class="column">
-						6
-					</div>
-					<div class="column">
-						7
-					</div>
-					<br class="clear" />
-				</div>
-				<div class="row">
-					<div class="column">
-						<%= form.radio_button :from_block, "1" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :from_block, "2" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :from_block, "3" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :from_block, "4" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :from_block, "5" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :from_block, "6" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :from_block, "7" %>
-					</div>
-					<br class="clear" />
-				</div>
-			</div>
-			<%= form.label :to_block %>
-			<div class="blockit">
-				<div class="row">
-					<div class="column">
-						1
-					</div>
-					<div class="column">
-						2
-					</div>
-					<div class="column">
-						3
-					</div>
-					<div class="column">
-						4
-					</div>
-					<div class="column">
-						5
-					</div>
-					<div class="column">
-						6
-					</div>
-					<div class="column">
-						7
-					</div>
-					<br class="clear" />
-				</div>
-				<div class="row">
-					<div class="column">
-						<%= form.radio_button :to_block, "1" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :to_block, "2" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :to_block, "3" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :to_block, "4" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :to_block, "5" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :to_block, "6" %>
-					</div>
-					<div class="column">
-						<%= form.radio_button :to_block, "7" %>
-					</div>
-					<br class="clear" />
-				</div>
-			</div>
+		</div>
+		<div id="tabs-<%= fid %>-2">
+			<p>
+			<%= t 'events.blocks' %> <%= t 'events.from_block' %>: <%= form.text_field :from_block, :size => 1, :value => 2 %>
+			<%= t 'events.to_block' %> : <%= form.text_field :to_block, :size => 1, :value => 5 %>
+			</p>
 			<p>
 				<%= form.label :repeatInterval %><br />
 				<%= form.text_field :repeatInterval %>
-				<%= form.select(:repeatFrequency, ([[t('date.days'), "1"], [t('date.weeks'), "2"], [t('date.months'), "3"]]), {:prompt => 'Select Interval'}) %>
+				<%= form.select(:repeatFrequency, ([[t('date.days'), "1"], [t('date.weeks'), "2"], [t('date.months'), "3"]]), {:prompt => t('select.interval')}) %>
 			</p>
-		</li>
-	</ul>
+		</div>
+	</div>
 	<p>
-		<%= form.hidden_field :is_blocked, :id => "is_blocked_"+fid.to_s %>
+		<%= form.hidden_field :title, :value => "Veranstaltung" %>
+		<% if form.object.is_blocked.nil? %>
+			<%= form.hidden_field :is_blocked, :id => "is_blocked_"+fid.to_s, :class => "blocked", :value => false %>
+		<% else %>
+			<%= form.hidden_field :is_blocked, :id => "is_blocked_"+fid.to_s, :class => "blocked" %>
+		<% end %>
 	</p>
 	<p>			
 		<%= remove_link( form, "events" ) %>

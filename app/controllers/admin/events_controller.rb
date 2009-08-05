@@ -14,10 +14,12 @@ class Admin::EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(params[:event])
+		@event.at_date = Date.strptime(params[:event][:at_date], '%d.%m.%Y') if params[:event][:at_date] != ""
+		@event.to_date = Date.strptime(params[:event][:to_date], '%d.%m.%Y') if params[:event][:to_date] != ""
 
     respond_to do |format|
       if @event.save
-        flash[:notice] = 'Event was successfully created.'
+        flash[:success] = 'Event was successfully created.'
         format.html { redirect_to(@event) }
       else
         format.html { render :action => "new" }
@@ -31,7 +33,7 @@ class Admin::EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        flash[:notice] = 'Event was successfully updated.'
+        flash[:success] = 'Event was successfully updated.'
         format.html { redirect_to(@event) }
       else
         format.html { render :action => "edit" }

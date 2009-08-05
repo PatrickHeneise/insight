@@ -9,16 +9,14 @@
 
 <% @courses.each do |course| %>
   <tr>
-    <td><%=h course.title %></td>
+    <td><%= link_to course.title, course %></td>
     <td><%=h course.short %></td>
-    <td><%=h course.department %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h course.department.title %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New course', new_course_path %>
+<%= link_to 'New course', new_admin_course_path %>

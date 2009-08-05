@@ -22,6 +22,7 @@ de:
       default: "%d.%m.%Y"
       short: "%e. %b"
       long: "%e. %B %Y"
+      day: "%A"
       
     day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
     abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
@@ -123,7 +124,7 @@ de:
           one:    "Konnte dieses {{model}} Objekt nicht speichern: 1 Fehler."
           other:  "Konnte dieses {{model}} Objekt nicht speichern: {{count}} Fehler."
         body: "Bitte überprüfen Sie die folgenden Felder:"
- 
+
       messages:
         inclusion: "ist kein gültiger Wert"
         exclusion: "ist nicht verfügbar"
@@ -172,10 +173,16 @@ de:
     course: "Neuer Kurs"
     company: "Firma anlegen"
     thesis: "Neue Thesis"
+    event: "Neues Event"
 
   select:
     address: "Address wählen"
     department: "Fakultät wählen"
+    frequency: "Wiederholungsfrequenz wählen"
+    interval: "Interval wählen"
+    room: "Raum wählen"
+    course: "Kurs wählen"
+    supervisor: "Verwalter wählen"
 
   list:
     departments: "Alle Fakultäten"
@@ -243,6 +250,15 @@ de:
     title: "Termine"
     blocked: "Blockveranstaltung"
     dated: "Terminveranstaltung"
+    repeat: "Wiederholung"
+    blocks: "Blöcke"
+    from_block: "von"
+    to_block: "bis"
+    frequency:
+      daily: "Tage"
+      weekly: "Wochen"
+      monthly: "Monate"
+      every: "Alle"
 
   lectures:
     lecture: "Veranstaltung"
@@ -300,3 +316,6 @@ de:
     own: "Eigene Arbeiten"
     faq: "Wichtige Infos"
     thesis: "Thesis"
+
+  rss:
+    mensa: "Mensa"

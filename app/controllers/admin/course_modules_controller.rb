@@ -1,5 +1,7 @@
 class Admin::CourseModulesController < ApplicationController
+	before_filter :load_course
 	layout "admin"
+	
   # GET /course_modules
   def index
     @course_modules = CourseModule.all
@@ -18,11 +20,12 @@ class Admin::CourseModulesController < ApplicationController
   # POST /course_modules
   def create
     @course_module = CourseModule.new(params[:course_module])
+		@course_module.course = @course
 
     respond_to do |format|
       if @course_module.save
-        flash[:notice] = 'CourseModule was successfully created.'
-        format.html { redirect_to(@course_module) }
+        flash[:success] = 'CourseModule was successfully created.'
+        format.html { redirect_to(admin_course_path(@course)) }
       else
         format.html { render :action => "new" }
       end
@@ -35,8 +38,8 @@ class Admin::CourseModulesController < ApplicationController
 
     respond_to do |format|
       if @course_module.update_attributes(params[:course_module])
-        flash[:notice] = 'CourseModule was successfully updated.'
-        format.html { redirect_to(@course_module) }
+        flash[:success] = 'CourseModule was successfully updated.'
+        format.html { redirect_to(admin_course_path(@course)) }
       else
         format.html { render :action => "edit" }
       end
@@ -53,4 +56,9 @@ class Admin::CourseModulesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+	
+	private
+		def load_course
+			@course = Course.find(params[:course_id])
+		end
 end

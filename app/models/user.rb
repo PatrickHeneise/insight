@@ -66,7 +66,8 @@ class User < ActiveRecord::Base
 		return !lecture.nil?
 	end
 	
-	named_scope :professors, :joins => :roles, :conditions => "roles.title like 'Professor'"
+	named_scope :professors, :joins => :roles, :conditions => 'roles.title like \'Professor\''
+	named_scope :inactive, :conditions => 'active = \'f\''
 
 	private
 		def validate

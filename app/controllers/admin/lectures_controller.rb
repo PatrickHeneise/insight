@@ -32,7 +32,7 @@ class Admin::LecturesController < ApplicationController
       if @lecture.save
 				@folder.save
 				@board.save
-        flash[:notice] = 'Lecture was successfully created.'
+        flash[:success] = 'Lecture was successfully created.'
         format.html { redirect_to(department_lecture_path(@lecture.department, @lecture)) }
       else
         format.html { render :action => "new" }
@@ -59,7 +59,7 @@ class Admin::LecturesController < ApplicationController
 					end
 					e.save
 				end
-        flash[:notice] = 'Lecture was successfully updated.'
+        flash[:success] = 'Lecture was successfully updated.'
         format.html { redirect_to(department_lecture_path(@lecture.department, @lecture)) }
       else
         format.html { render :action => "edit" }

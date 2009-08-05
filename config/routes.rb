@@ -1,46 +1,44 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :theses, :collection => { :applied => :get, :processing => :get, :own => :get }
   map.resources :jobs
-	map.resources :events
+	map.resources :events, :except => [:edit, :new, :update, :destroy]
   map.resources :addresses
   map.resources :companies
-  map.resources :organizations
+  map.resources :organizations, :except => [:edit, :new, :update, :destroy]
 	map.resources :enrollments
   map.resources :users, :collection => { :create_intern => :post, :create_extern => :post }
 	
-	map.resource :blog
+	map.resource :blog, :except => [:edit, :new, :update, :destroy]
 	map.resource :user_session
 	map.resource :account, :controller => "users"
 
-  map.resources :buildings do |building|
-		building.resources :rooms
+  map.resources :buildings, :except => [:edit, :new, :update, :destroy] do |building|
+		building.resources :rooms, :except => [:edit, :new, :update, :destroy]
 	end
 	
   map.resources :articles do |article|
 		article.resources :comments
 	end
 	
-	map.resources :courses, :member => { :overview => :get, :schedule => :get }
-  map.resources :courses do |course|
+  map.resources :courses, :except => [:edit, :new, :update, :destroy], :member => { :overview => :get, :schedule => :get } do |course|
 		course.resources :course_modules
 	end
 	
-	map.resources :departments do |department|
-		department.resources :lectures do |lecture|
+	map.resources :departments, :except => [:edit, :new, :update, :destroy] do |department|
+		department.resources :lectures, :except => [:edit, :new, :update, :destroy] do |lecture|
 			lecture.resources :enrollments, :collection => { :enrol => :get, :unrol => :get }
-			lecture.resources :folders do |folder|
-				folder.resources :data_items
+			lecture.resources :folders, :except => [:edit, :new, :update, :destroy] do |folder|
+				folder.resources :data_items, :except => [:edit, :new, :update, :destroy]
 			end
 			
-			lecture.resources :boards do |board|
+			lecture.resources :boards, :except => [:edit, :new, :update, :destroy] do |board|
 				board.resources :bullets do |bullet|
 					bullet.resources :replies
 				end
 			end
 		end
 		
-		map.resources :forums, :member => { :subscribe => :get, :unsubscribe => :get }
-		map.resources :forums do |forum|
+		map.resources :forums, :except => [:edit, :new, :update, :destroy], :member => { :subscribe => :get, :unsubscribe => :get } do |forum|
 			forum.resources :topics do |topic|
 				topic.resources :posts
 			end
@@ -49,19 +47,22 @@ ActionController::Routing::Routes.draw do |map|
 	
 	map.namespace :admin do |admin|
 		admin.pages '/dashboard', :controller => 'pages', :action => 'index'
-		admin.resources :blogs do |blog|
-			blog.resources :articles
+		admin.resources :blogs, :except => [:index, :show] do |blog|
+			blog.resources :articles, :except => [:index, :show]
 		end
-		admin.resources :boards
-		admin.resources :buildings do |building|
-			building.resources :rooms
+		admin.resources :boards, :except => [:index, :show]
+		admin.resources :buildings, :except => [:index, :show] do |building|
+			building.resources :rooms, :except => [:index, :show]
 		end
-		admin.resources :courses
-		admin.resources :folders, :has_many => :data_items
-		admin.resources :lectures do |lecture|
-			lecture.resources :enrollments
+		admin.resources :courses do |course|
+			course.resources :course_modules, :except => [:index, :show]
 		end
-		admin.resources :forums
+		admin.resources :events, :except => [:index, :show]
+		admin.resources :folders, :except => [:index, :show], :has_many => :data_items, :except => [:index, :show]
+		admin.resources :lectures, :except => [:index, :show] do |lecture|
+			lecture.resources :enrollments, :except => [:index, :show]
+		end
+		admin.resources :forums, :except => [:index, :show]
 		admin.resources :users, :member => { :activate => :get, :deactivate => :get }
 	end
 
@@ -71,7 +72,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.media '/media', :controller => 'MediaCenter', :action => 'index'
 	map.register '/register', :controller => 'Users', :action => 'new'
 	map.lectures '/lecture-plan', :controller => 'Courses', :action => 'overview'
-	map.calendar '/calendar', :controller => 'Calendar', :action => 'index'
+	map.calendar '/calendar', :controller => 'Events', :action => 'index'
 	
 	# Return blog articles for year, year/month, year/month/day
 	map.date '/blog/:year/:month/:day',

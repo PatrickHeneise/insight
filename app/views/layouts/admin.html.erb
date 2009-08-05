@@ -8,13 +8,13 @@
 					<% permitted_to? :create, :lectures do -%>
 					<li><%= link_to t('create.lecture'), new_admin_lecture_path %></li>
 					<% end %>
-					<% permitted_to? :create, :courses do -%>
-					<li><%= link_to t('create.course'), new_admin_course_path %></li>
+					<% permitted_to? :manage, :courses do -%>
+					<li><%= link_to t('manage.course'), admin_courses_path %></li>
 					<% end %>
 					<% permitted_to? :create, :forums do -%>
-					<li><%= link_to t('create.forums'), new_admin_forum_path %>
+					<li><%= link_to t('create.forums'), new_admin_forum_path %></li>
 					<% end %>
-				<ul>
+				</ul>
 			</div>
 			<div id="content" class="span-20 last">
 				<%= yield %>

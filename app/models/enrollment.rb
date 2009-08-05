@@ -28,4 +28,6 @@ class Enrollment < ActiveRecord::Base
 	named_scope :forced, :conditions => {:level => "force"}
 	named_scope :representatives, :conditions => {:level => "represent"}
 	named_scope :managers, :conditions => {:level => "manage"}
+	
+	named_scope :lectures, lambda { |at_day| {:conditions => ['lecture.at_block = ?', ] }}
 end

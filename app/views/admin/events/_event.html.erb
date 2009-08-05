@@ -1,51 +1,51 @@
+<% content_for :head do -%>
+	<%= stylesheet_link_tag "smoothness/jquery-ui-1.7.2.custom", :cache => true %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#event_at_date").datepicker({ showOn: 'button', buttonImageOnly: true, dateFormat: 'dd.mm.yy', minDate: new Date(), buttonImage: '/images/icon_cal.png' });
+			$("#event_to_date").datepicker({ showOn: 'button', buttonImageOnly: true, dateFormat: 'dd.mm.yy', minDate: new Date(), buttonImage: '/images/icon_cal.png' });
+		});
+	</script>
+<% end %>
+<%= error_messages_for :event %>
 <% form_for([:admin, @event]) do |f| %>
   <%= f.error_messages %>
-
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
   <p>
     <%= f.label :at_date %><br />
-    <%= f.date_select :at_date %>
+    <%= f.text_field :at_date, :size => 10 %>
   </p>
   <p>
     <%= f.label :at_time %><br />
-    <%= f.datetime_select :at_time %>
+    <%= f.time_select :at_time, {:minute_step => 15} %>
   </p>
   <p>
     <%= f.label :to_date %><br />
-    <%= f.date_select :to_date %>
+    <%= f.text_field :to_date, :size => 10 %>
   </p>
   <p>
     <%= f.label :to_time %><br />
-    <%= f.datetime_select :to_time %>
+    <%= f.time_select :to_time, {:minute_step => 15} %>
+  </p>
+	<%= link_to_remote t('events.repeat'), :url => { :action => 'reload' }, :complete => visual_effect(:appear, 'repeat', :duration => 0.5) %>
+	<div id="repeat" style="display:none;">
+  <p>
+		<%= t('events.frequency.every') %><%= f.text_field :repeatInterval, :size => 2 %>
+		<select name="event[repeatFrequency]">
+			<%= options_for_select([[t('select.frequency'),""], [t('events.frequency.daily'), "daily"], [t('events.frequency.weekly'), "weekly"], [t('events.frequency.monthly'), "monthly"]]) %>
+		</select>
   </p>
   <p>
-    <%= f.label :from_block %><br />
-    <%= f.text_field :from_block %>
   </p>
+	</div>
+	<p>
+		<%= f.label :room %><br />
+		<%= f.select :room_id, Room.find(:all).collect {|r| ["#{r.building.code} #{r.number}", r.id]} %>
+	</p>
   <p>
-    <%= f.label :to_block %><br />
-    <%= f.text_field :to_block %>
-  </p>
-  <p>
-    <%= f.label :repeatFrequency %><br />
-    <%= f.text_field :repeatFrequency %>
-  </p>
-  <p>
-    <%= f.label :repeatInterval %><br />
-    <%= f.text_field :repeatInterval %>
-  </p>
-  <p>
-    <%= f.label :lecture %><br />
-    <%= f.text_field :lecture %>
-  </p>
-  <p>
-    <%= f.label :room %><br />
-    <%= f.text_field :room %>
-  </p>
-  <p>
-    <%= f.label :is_blocked %><br />
-    <%= f.check_box :is_blocked %>
-  </p>
-  <p>
-    <%= f.submit button_name %>
+    <%= f.submit button_name, :class => 'button' %>
   </p>
 <% end %>

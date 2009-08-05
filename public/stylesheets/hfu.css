@@ -4,6 +4,22 @@
 	src: url('type/unvr67w.ttf');
 }
 /* === GENERAL ===*/
+body {
+	background: url(../images/patt_4a795dcf98ab9.jpg) repeat !important;
+}
+.container {
+	background: white !important;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+	border-color: silver;
+}
+div#logo_head div h1 {
+	margin-top: 10px;
+	margin-left: 10px;
+	font-size: 2em;
+	color: #72787a;
+}
 input {
 	border: 1px solid #00844d;
 	background-color: #fef5ff;
@@ -205,6 +221,16 @@ h1#flickr a {
 }
 h1#youtube a span{
 	display: none;
+}
+/* ==== MENSA ==== */
+div.mensa_day h3 {
+	font-size: 1.2em;
+}
+div.mensa_day h4 {
+	font-weight: bold;
+}
+div.mensa_day a {
+	text-decoration: none;
 }
 /* ==== HFU COLOURS ==== */
 .brick {

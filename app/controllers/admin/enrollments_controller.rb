@@ -28,7 +28,7 @@ class Admin::EnrollmentsController < ApplicationController
 
     respond_to do |format|
       if @enrollment.save
-        flash[:notice] = 'Enrollment was successfully created.'
+        flash[:success] = 'Enrollment was successfully created.'
         format.html { redirect_to(@enrollment) }
       else
         format.html { render :action => "new" }
@@ -42,7 +42,7 @@ class Admin::EnrollmentsController < ApplicationController
 
     respond_to do |format|
       if @enrollment.update_attributes(params[:enrollment])
-        flash[:notice] = 'Enrollment was successfully updated.'
+        flash[:success] = 'Enrollment was successfully updated.'
         format.html { redirect_to(@enrollment) }
       else
         format.html { render :action => "edit" }
