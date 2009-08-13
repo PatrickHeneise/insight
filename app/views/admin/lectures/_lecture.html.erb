@@ -33,11 +33,11 @@
 			<%= f.select(:department_id, Department.find(:all).collect {|d| ["#{d.title}", d.id]}, {:prompt => t('select.department')}) %>
 		</p>
 		<p>
-			<strong>Kurs:</strong><br />
+			<%= f.label :course_modules %><br />
 			<%= select('lecture','course_module_ids', CourseModule.find(:all).collect {|c| ["#{c.title} (#{c.short}, #{c.course.department.title})", c.id]},{:prompt => t('select.course')}, :size => 10, :multiple => "multiple") %>
 		</p>
 		<p>
-			<strong>Verwalter:</strong><br />
+			<%= f.label :users %><br />
 			<%= select('lecture','user_ids', User.professors.collect {|u| ["#{u.fullname} (#{u.department.short})", u.id]},{:prompt => t('select.supervisor')}, :size => 10, :multiple => "multiple") %>
 		</p>
 		<hr />

@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+	using_access_control
+
   belongs_to :company
   belongs_to :user
 	

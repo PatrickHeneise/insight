@@ -1,6 +1,6 @@
   <p>
     <%= f.label :address %><br />
-    <%= f.select :address_id, Address.find(:all).collect {|a| ['#{a.full}', a.id]},{:prompt => t('select.address')} %> <%= t 'support.or' %> <%= link_to_remote t('create.address'), :url => { :action => 'reload' }, :complete => visual_effect(:appear, 'new_address', :duration => 0.5) %>
+    <%= f.select :address_id, Address.find(:all).collect {|a| ["#{a.full}", a.id]},{:prompt => t('select.address')} %> <%= t 'support.or' %> <%= link_to_remote t('create.address'), :url => { :action => 'reload' }, :complete => visual_effect(:appear, 'new_address', :duration => 0.5) %>
   </p>
 	<div id="new_address" style="display: none;">
 	<% fields_for @address do |a| %>
@@ -13,12 +13,9 @@
 			<%= a.text_field :street_addition %>
 		</p>
 		<p>
-			<%= a.label :city %><br />
+			<%= a.label :postcode %>, <%= a.label :city %><br />
+			<%= a.text_field :postcode, :size => 5 %>
 			<%= a.text_field :city %>
-		</p>
-		<p>
-			<%= a.label :postcode %><br />
-			<%= a.text_field :postcode %>
 		</p>
 		<p>
 			<%= a.label :state %><br />
@@ -26,7 +23,7 @@
 		</p>
 		<p>
 			<%= a.label :country %><br />
-			<%= a.text_field :country %>
+			<%= a.text_field :country, :size => 20 %>
 		</p>
   <% end %>
 	</div>

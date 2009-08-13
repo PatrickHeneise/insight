@@ -1,4 +1,6 @@
 class Room < ActiveRecord::Base
+	using_access_control
+	
   belongs_to :building
   belongs_to :user
 	

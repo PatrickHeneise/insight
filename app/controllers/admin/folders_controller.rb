@@ -1,5 +1,7 @@
 class Admin::FoldersController < ApplicationController
 	layout "admin"
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
 	
 	# GET /folders/new
   def new

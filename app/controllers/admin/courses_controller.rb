@@ -1,5 +1,8 @@
 class Admin::CoursesController < ApplicationController
 	layout "admin"
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
+	
 	# GET /courses
   # GET /courses.xml
   def index

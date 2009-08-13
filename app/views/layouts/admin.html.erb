@@ -6,13 +6,16 @@
 					<li><%= link_to t('application.administration'), admin_pages_path, :id => "admin" %></li>
 					<% end %>
 					<% permitted_to? :create, :lectures do -%>
-					<li><%= link_to t('create.lecture'), new_admin_lecture_path %></li>
+					<li><%= link_to t('new.lecture'), new_admin_lecture_path %></li>
 					<% end %>
 					<% permitted_to? :manage, :courses do -%>
-					<li><%= link_to t('manage.course'), admin_courses_path %></li>
+					<li><%= link_to t('manage.courses'), admin_courses_path %></li>
 					<% end %>
 					<% permitted_to? :create, :forums do -%>
-					<li><%= link_to t('create.forums'), new_admin_forum_path %></li>
+					<li><%= link_to t('new.forums'), new_admin_forum_path %></li>
+					<% end %>
+					<% permitted_to? :create, :departments do -%>
+					<li><%= link_to t('create.department'), admin_new_department_path %></li>
 					<% end %>
 				</ul>
 			</div>

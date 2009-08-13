@@ -7,8 +7,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :organizations, :except => [:edit, :new, :update, :destroy]
 	map.resources :enrollments
   map.resources :users, :collection => { :create_intern => :post, :create_extern => :post }
+	map.resources :pages, :except => [:edit, :update, :destroy, :new]
 	
-	map.resource :blog, :except => [:edit, :new, :update, :destroy]
+	map.resources :blogs, :except => [:edit, :new, :update, :destroy] do |blog|
+	  blog.resources :articles, :except => [:edit, :new, :update, :destroy] do |article|
+			article.resources :comments, :except => [:index, :edit, :new, :update, :destroy]
+		end
+	end
 	map.resource :user_session
 	map.resource :account, :controller => "users"
 
@@ -16,15 +21,11 @@ ActionController::Routing::Routes.draw do |map|
 		building.resources :rooms, :except => [:edit, :new, :update, :destroy]
 	end
 	
-  map.resources :articles do |article|
-		article.resources :comments
-	end
-	
   map.resources :courses, :except => [:edit, :new, :update, :destroy], :member => { :overview => :get, :schedule => :get } do |course|
 		course.resources :course_modules
 	end
 	
-	map.resources :departments, :except => [:edit, :new, :update, :destroy] do |department|
+	map.resources :departments, :except => [:edit, :new, :update, :destroy], :member => { :users => :get } do |department|
 		department.resources :lectures, :except => [:edit, :new, :update, :destroy] do |lecture|
 			lecture.resources :enrollments, :collection => { :enrol => :get, :unrol => :get }
 			lecture.resources :folders, :except => [:edit, :new, :update, :destroy] do |folder|
@@ -47,6 +48,7 @@ ActionController::Routing::Routes.draw do |map|
 	
 	map.namespace :admin do |admin|
 		admin.pages '/dashboard', :controller => 'pages', :action => 'index'
+		admin.resources :pages, :except => [:show]
 		admin.resources :blogs, :except => [:index, :show] do |blog|
 			blog.resources :articles, :except => [:index, :show]
 		end
@@ -64,6 +66,7 @@ ActionController::Routing::Routes.draw do |map|
 		end
 		admin.resources :forums, :except => [:index, :show]
 		admin.resources :users, :member => { :activate => :get, :deactivate => :get }
+		admin.resources :departments
 	end
 
 	map.logout '/logout', :controller => 'UserSessions', :action => 'destroy'
@@ -75,20 +78,18 @@ ActionController::Routing::Routes.draw do |map|
 	map.calendar '/calendar', :controller => 'Events', :action => 'index'
 	
 	# Return blog articles for year, year/month, year/month/day
-	map.date '/blog/:year/:month/:day',
-		:controller => "blog",
+	map.blog '/blog/:year/:month/:day',
+		:controller => "blogs",
 		:action => "show_date",
 		:requirements => {	:year => /(19|20)\d\d/,
 												:month => /[01]?\d/,
 												:day => /[0-3]?\d/},
 		:day => nil,
 		:month => nil
+	map.static 'static/:title', :controller => 'pages', :action => 'static'
 	map.recent_topics '/topics/recent', :controller => 'Topics', :action => 'recent'
 	
-	map.with_options :controller => 'Pages' do |pages|
-		pages.root														:action => 'index'     # static home page
-		pages.home '/home',										:action => 'index'
-	end
+	map.root :controller => 'pages', :action => 'index'     # static home page
 	
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

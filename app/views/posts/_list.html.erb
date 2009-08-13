@@ -2,11 +2,11 @@
 <%= will_paginate @posts %>
 <% @posts.each do |post| %>
 	<div id="<%= post.id %>" class="span-20">
-		<div id="post_meta" class="span-20 accent">
+		<div id="post_meta" class="span-20">
 			<%= link_to post.user.fullname, user_path(post.user) %>
-			(<%= h post.user.status %>) <span class="small"><%= t 'support.before' %> <%= time_ago_in_words(post.created_at) %></span>
+			(<%= h post.user.show_roles %>) <span class="small"><%= t 'support.before' %> <%= time_ago_in_words(post.created_at) %></span>
 		</div>
-		<div id="post_user" class="span-4 decoration">
+		<div id="post_user" class="span-4">
 			<%= image_tag post.user.avatar.url(:medium)  %>
 		</div>
 		<div id="post_content" class="span-16 last">

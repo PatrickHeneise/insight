@@ -1,0 +1,8 @@
+<% unless @page.nil? %>
+<div id="static-content" class="span-20">
+	<%= Sanitize.clean(@page.content, Sanitize::Config::BASIC) %>
+</div>
+<div id="static-content-meta" class="span-20">
+	<%= link_to t('edit.edit'), edit_admin_page_path(@page) %>
+</div>
+<% end %>

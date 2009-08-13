@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090730081305) do
+ActiveRecord::Schema.define(:version => 20090809130344) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street",                        :null => false
@@ -162,8 +162,8 @@ ActiveRecord::Schema.define(:version => 20090730081305) do
   create_table "events", :force => true do |t|
     t.date     "at_date"
     t.time     "at_time"
-    t.string   "title"
-    t.date     "to_date"
+    t.string   "title",           :null => false
+    t.date     "to_date",         :null => false
     t.time     "to_time"
     t.integer  "from_block"
     t.integer  "to_block"
@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20090730081305) do
     t.integer  "repeatInterval"
     t.integer  "lecture_id"
     t.integer  "room_id"
+    t.boolean  "is_lecture",      :null => false
     t.boolean  "is_blocked",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -231,6 +232,13 @@ ActiveRecord::Schema.define(:version => 20090730081305) do
     t.datetime "updated_at"
   end
 
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", :force => true do |t|
     t.text     "content",    :null => false
     t.integer  "user_id",    :null => false
@@ -270,6 +278,13 @@ ActiveRecord::Schema.define(:version => 20090730081305) do
     t.integer  "number",      :null => false
     t.integer  "building_id", :null => false
     t.integer  "user_id",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "statics", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,8 @@
 class Admin::RoomsController < ApplicationController
 	layout "admin"
 	before_filter :load_building
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
 	
 	def load_building
 		@building = Building.find(params[:building_id])

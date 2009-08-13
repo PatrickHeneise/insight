@@ -4,8 +4,8 @@
 	src: url('type/unvr67w.ttf');
 }
 /* === GENERAL ===*/
-body {
-	background: url(../images/patt_4a795dcf98ab9.jpg) repeat !important;
+th {
+	background-color: rgb(165,196,0) !important;
 }
 .container {
 	background: white !important;
@@ -31,12 +31,21 @@ input.button {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-div.page {}
-h1 {
+div#page_webcam img {
+	width: 320px;
+	height: 260px;
+	margin-left: 35px !important;
+}
+a {
+	color: #00844d !important;
+	text-decoration: none !important;
+}
+h1, h2, h3 {
 	font-family: Univers, Arial, Helvetica, Geneva, sans-serif !important;
 }
-h2 {
+h2 a {
 	font-family: Univers, Arial, Helvetica, Geneva, sans-serif !important;
+	text-decoration:none;
 }
 *{color:#000;font-family:"Lucida Grande",Lucida,Verdana,sans-serif !important;}
 div#header{height:54px;background-color:#00844d;}
@@ -85,6 +94,10 @@ div#admin_warning {
 	text-align: center;
 }
 /* === BLOG ===*/
+div.article_meta {
+	font-size: 0.8em;
+	border-bottom: 1px solid black;
+}
 div.article_content {
 	text-align: justify;
 }
@@ -177,8 +190,8 @@ div#building_profile_info {
 	padding-left: 10px;
 }
 /* ==== NAVIGATION ====*/
-div#navigation {
-	
+div#navigation ul li a {
+	color: white !important;
 }
 ul.navigation {
 	margin-top: 7px;
@@ -231,6 +244,34 @@ div.mensa_day h4 {
 }
 div.mensa_day a {
 	text-decoration: none;
+}
+/* ==== BEAUTIFUL DATES ==== */
+span.beauty_date {
+	width: 30px;
+	height: 55px;
+	display: inline-block;
+	font-variant: small-caps;
+	background-color: #00844D;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	color: #fff;
+	text-align: center;
+}
+span.beauty_date span.day {
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+span.beauty_date span.month {
+	color: #fff;
+	font-size: 0.9em;
+}
+span.beauty_date span.year {
+	color: #fff;
+	font-size: 0.8em;
+}
+.noblock {
+	display: inline !important;
 }
 /* ==== HFU COLOURS ==== */
 .brick {

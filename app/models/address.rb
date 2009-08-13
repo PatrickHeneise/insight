@@ -1,4 +1,6 @@
 class Address < ActiveRecord::Base
+	using_access_control
+	
 	has_many :users
 	has_many :companies
 

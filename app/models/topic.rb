@@ -1,5 +1,9 @@
 class Topic < ActiveRecord::Base
+	using_access_control
+	
   before_create :set_default_replied_at_and_sticky
+
+	validates_presence_of :title
 	
   belongs_to :forum
   belongs_to :user
@@ -22,7 +26,7 @@ class Topic < ActiveRecord::Base
 	
 	protected
     def set_default_replied_at_and_sticky
-      self.replied_at = Time.now
+      self.replied_at = Time.zone.now
       self.sticky   ||= 0
     end
 end

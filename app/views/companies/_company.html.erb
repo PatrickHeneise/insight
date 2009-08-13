@@ -1,0 +1,20 @@
+<% form_for(@company) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <%= render :partial => 'addresses/selector', :locals => { :f => f } %>
+  <p>
+    <%= f.label :industry %><br />
+    <%= f.text_field :industry %>
+  </p>
+	<p>
+		<%= f.label :tag_list %>(comma sperated)<br />
+		<%= f.text_field :tag_list, :size => 80 %>
+	</p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

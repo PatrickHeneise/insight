@@ -1,4 +1,6 @@
 class Department < ActiveRecord::Base
+	using_access_control
+	
   belongs_to :organization
 	
 	has_many :users

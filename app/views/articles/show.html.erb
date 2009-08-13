@@ -1,23 +1,11 @@
-<p>
-  <b>Title:</b>
-  <%=h @article.title %>
+<% content_for :logo do -%>
+	<%= t 'blog.article' %>
+<% end %>
+<span class="beauty_date"><%= @article.updated_at.to_s(:beauty) %></span> <h2 class="noblock"><%=h @article.title %></h2>
 </p>
-
-<p>
-  <b>Content:</b>
-  <%=h @article.content %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%=h @article.user %>
-</p>
-
-<p>
-  <b>Blog:</b>
-  <%=h @article.blog %>
-</p>
-
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="article_content">
+	<%= Sanitize.clean(@article.content, Sanitize::Config::BASIC) %>
+</div>
+<% permitted_to? :edit, :articles do -%>
+<%= link_to t('edit.article'), edit_admin_blog_article_path(@blog, @article) %>
+<% end %>

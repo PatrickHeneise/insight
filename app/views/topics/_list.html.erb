@@ -30,7 +30,7 @@
 				&nbsp;
 			<% else %>
 				<%= link_to(truncate(strip_tags(topic.posts.last.content), :length => 20), forum_topic_path(topic, :anchor => topic.posts.last.id)) %>
-				<span class="small"><%= t 'support.before' %> <%= h time_ago_in_words(topic.replied_at) %></span><br />
+				<span class="small"><%= t 'support.before' %> <%= time_ago_in_words(topic.replied_at) %></span><br />
 				<span class="small">(<%= t 'support.of' %> <%= link_to(topic.posts.last.user.fullname, users_path(topic.posts.last.user)) %>)</span>
 			<% end %>
 			</td>

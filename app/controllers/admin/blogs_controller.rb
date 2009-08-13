@@ -1,8 +1,7 @@
 class Admin::BlogsController < ApplicationController
 	layout "admin"
-	filter_access_to :new, :create, :require => :create
-	filter_access_to :edit, :update, :require => :update
-	filter_access_to :destroy, :require => :delete
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
 	
 	# GET /blogs
   def index

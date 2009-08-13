@@ -22,7 +22,7 @@
 	</div>
 	<div id="thesis_abstract" class="span-14 prepend-top">
 	<h4>Abstract</h4>
-  <%=h @thesis.abstract %>
+	<%= Sanitize.clean(@thesis.abstract, Sanitize::Config::BASIC) %>
 	</div>
 	<div id="thesis_paper" class="span-14 prepend-top">
 		<%= link_to 'Download', @thesis.paper.url %>

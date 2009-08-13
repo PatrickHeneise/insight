@@ -1,4 +1,6 @@
 class DataItem < ActiveRecord::Base
+	using_access_control
+	
 	include AASM
 	
   belongs_to :folder

@@ -26,7 +26,7 @@ class PagesController < ApplicationController
 				desc.gsub!("<u>","")
 				desc.gsub!("</u>","")
 				# replace Menü with proper h4 header and div wraps
-				desc.gsub!(/Menü [0-9]*/,"</div><div class=\"mensa_desc span-6 last\"><h4>Men&uuml;</h4>")
+				desc.gsub!(/Menü [0-9]*/,"</div><div class=\"mensa_desc span-6 last\"><strong>Men&uuml;</strong> ")
 				# remove first </div>
 				desc = desc.slice(6..-1)
 				# remove 'last'-class from the first menu container and put everything together
@@ -36,12 +36,24 @@ class PagesController < ApplicationController
 				second = second.slice(34..-1)
 				desc = first << second
 				link = Sanitize.clean(item.link, Sanitize::Config::RESTRICTED)
-				@mensa += "<div class=\"mensa_day span-12\"><a href=\"#{link}\" alt=\"mensa menu\"><h3>#{title}</h3></a>#{desc}</div></div>"
+				@mensa += "<div class=\"mensa_day span-12\"><a href=\"#{link}\" alt=\"mensa menu\"><h4>#{title}</h4></a>#{desc}</div></div>"
       end  
 		end
   end
 	
-	def calendar
-    @events = Event.find(:all)
+  # GET /pages/1
+  # GET /pages/1.xml
+  def show
+    @page = Page.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @jobs }
+    end
+  end
+	
+	def static
+		@page = Page.find(:first, :conditions => ["title like ?", params[:title]] )
+		render :action => 'show'
 	end
 end

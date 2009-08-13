@@ -1,4 +1,6 @@
 class Bullet < ActiveRecord::Base
+	using_access_control
+	
   before_create :set_default_replied_at_and_sticky
 	
   belongs_to :board

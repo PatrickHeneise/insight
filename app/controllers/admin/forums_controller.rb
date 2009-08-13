@@ -1,5 +1,8 @@
 class Admin::ForumsController < ApplicationController
 	layout "admin"
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
+
   # GET /forums/new
   def new
     @forum = Forum.new

@@ -1,4 +1,6 @@
 class Lecture < ActiveRecord::Base
+	using_access_control
+	
 	validates_presence_of :title
 	validates_presence_of :short
 	validates_presence_of :description

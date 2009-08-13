@@ -1,6 +1,8 @@
 class Admin::CourseModulesController < ApplicationController
 	before_filter :load_course
 	layout "admin"
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
 	
   # GET /course_modules
   def index

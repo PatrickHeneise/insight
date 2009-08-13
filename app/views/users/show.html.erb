@@ -10,9 +10,9 @@
 		<p><%= @user.list_roles_detail %></p>
 		<div id="user_profile_contact" class="append-bottom">
 			<h3><%= t 'user.contact' %></h3>
-			<strong>Uni-Mail:</strong> <a href="mailto:"<%=h @user.email %>"><%=h @user.email %></a><br />
+			<strong>Uni-Mail:</strong> <%= mail_to @user.email %><br />
 			<% if @user.private_email.nil? == false %>
-				<strong>E-Mail:</strong> <a href="mailto:"<%=h @private_email %>"><%=h @user.private_email %></a><br />
+				<strong>E-Mail:</strong> <%= mail_to @user.private_email %><br />
 			<% end %>
 			<% if @user.icq.nil? == false %>
 				<strong>Icq:</strong> <a href="http://www.icq.com/people/webmsg.php?to=<%=h @user.icq %>" alt="ICQ"><%=h @user.icq %></a><br />
@@ -42,7 +42,7 @@
 				<strong>Company:</strong><br />
 				<%=h @user.company %>
 			<% else %>
-				<%= link_to t('create.company'), new_company_path %>
+				<%= link_to t('new.company'), new_company_path %>
 			<% end %>
 		</div>
 	</div>

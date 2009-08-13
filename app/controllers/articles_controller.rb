@@ -1,17 +1,7 @@
 class ArticlesController < ApplicationController
-	current_tab :blog
+	before_filter :load_blog
+	current_tab :blogs
 	
-  # GET /articles
-  # GET /articles.xml
-  def index
-    @articles = Article.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @articles }
-    end
-  end
-
   # GET /articles/1
   # GET /articles/1.xml
   def show
@@ -22,4 +12,9 @@ class ArticlesController < ApplicationController
       format.xml  { render :xml => @article }
     end
   end
+	
+	private
+		def load_blog
+			@blog = Blog.find(params[:blog_id])
+		end
 end

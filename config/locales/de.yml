@@ -1,4 +1,7 @@
 de:
+  update: Aktualisieren
+  create: Erstellen
+  
   admin:
     area: "Verwaltung"
 
@@ -23,6 +26,7 @@ de:
       short: "%e. %b"
       long: "%e. %B %Y"
       day: "%A"
+      archive: "%b '%y"
       
     day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
     abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
@@ -39,6 +43,8 @@ de:
       time: "%H:%M Uhr"
       short: "%a, %d.%m.%Y<br />%H:%M Uhr"
       long: "%A, %e. %B %Y, %H:%M Uhr"
+      date: "%e. %b %y"
+      beauty: <span class="day">%d</span><br /><span class="month">%b</span><br /><span class="year">'%y</span>
 
     am: "vormittags"
     pm: "nachmittags"
@@ -116,6 +122,7 @@ de:
       skip_last_comma: true
     or: "oder"
     until: "bis"
+    at: "am"
 
   activerecord:
     errors:
@@ -146,6 +153,46 @@ de:
         odd: "muss ungerade sein"
         even: "muss gerade sein"
 
+    attributes:
+      address:
+        street: "Strasse"
+        street_addition: "Addresszusatz"
+        city: "Ort"
+        postcode: "PLZ"
+        state: "Bundesland"
+        country: "Land"
+      article:
+        title: Titel
+        content: Inhalt
+      company:
+        industry: "Industriezweig"
+        tag_list: "Tags"
+      lecture:
+        title: Titel
+        short: Kurzbezeichnung
+        description: Beschreibung
+        visible: Sichtbarkeit
+        active: Aktiv
+        credits: ECTS
+        number: Prüfungsnummer
+        department: Fakultät
+        course_modules: Kurs
+        users: Verwalter
+      event:
+        at_date: Beginn
+        room: Raum Nr.
+        at_time: Beginnt um
+        to_date: Bis Datum
+        to_time: Bis Uhrzeit
+        repeatinterval: Interval
+      forum:
+        title: Titel
+        department: Fakultät
+      topic:
+        title: Thema
+      post:
+        content: Inhalt
+
   edit:
     edit: "Bearbeiten"
     editing: "Bearbeite"
@@ -161,10 +208,10 @@ de:
     lecture: "Veranstaltung löschen"
     building: "Gebäude löschen"
 
-  create:
-    create: "Neu"
+  new:
     lecture: "Neue Veranstaltung"
     topic: "Neues Thema"
+    post: "Antworten"
     forums: "Neues Forum"
     building: "Neues Gebäude anlegen"
     address: "Neue Adresse"
@@ -191,6 +238,11 @@ de:
     companies: "Alle Firmen"
     users: "Alle Personen"
     jobs: "Alle Jobs"
+    professors: "Professoren"
+    theses: "Thesisarbeiten"
+
+  manage:
+    courses: "Kursverwaltung"
 
   application:
     profile: "Profil"
@@ -209,6 +261,9 @@ de:
     
   blog:
     header: "Fakultätsblog"
+    article: "Artikel"
+    author: "Autor"
+    archives: Archiv
 
   forums:
     forums: "Foren"

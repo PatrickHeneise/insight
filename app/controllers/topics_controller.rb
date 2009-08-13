@@ -80,17 +80,17 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.xml
   def create
-    @topic = Topic.new(params[:topic])
-		@post = Post.new(params[:posts])
-		@topic.user = current_user
-		@topic.forum = @forum
-		@post.user = current_user
-		@post.topic = @topic
-		
+    topic = Topic.new(params[:topic])
+		post = Post.new(params[:posts])
+		topic.user = current_user
+		topic.forum = @forum
+		post.user = current_user
+		post.topic = topic
+
     respond_to do |format|
-      if @topic.save
-				@post.save
-        flash[:notice] = 'Topic was successfully created.'
+      if topic.save
+				post.save
+        flash[:success] = 'Topic was successfully created.'
         format.html { redirect_to([@forum, @topic]) }
       else
         format.html { render :action => "new" }
@@ -105,7 +105,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
-        flash[:notice] = 'Topic was successfully updated.'
+        flash[:success] = 'Topic was successfully updated.'
         format.html { redirect_to(@forum) }
       else
         format.html { render :action => "edit" }

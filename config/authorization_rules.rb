@@ -1,5 +1,6 @@
 authorization do
-  role :guest do
+	role :guest do
+    has_permission_on :users, :to => [:create, :update]
   end
   
   role :Student do
@@ -25,12 +26,14 @@ authorization do
 		has_permission_on :administration, :to => :manage
 		has_permission_on :courses, :to => :manage
 		has_permission_on :course_modules, :to => :manage
+		has_permission_on :topics, :to => :manage
+		has_permission_on :posts, :to => :manage
   end
 	
 	role :Developer do
 		includes :Administrator
-    has_permission_on :authorization_rules, :to => :read
-    has_permission_on :authorization_usages, :to => :read
+    has_permission_on :authorization_rules, :to => :manage
+    has_permission_on :authorization_usages, :to => :manage
 	end
 end
 

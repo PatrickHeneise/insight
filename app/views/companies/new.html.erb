@@ -1,24 +1,5 @@
 <h1>New company</h1>
 
-<% form_for(@company) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <%= render :partial => 'addresses/selector', :locals => { :f => f } %>
-  <p>
-    <%= f.label :industry %><br />
-    <%= f.text_field :industry %>
-  </p>
-	<p>
-		<%= f.label :tag_list %>
-		<%= f.text_field :tag_list, :size => 80 %>
-	</p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+<%= render :partial => 'company', :locals => { :button_name => "Create" } %>
 
 <%= link_to 'Back', companies_path %>

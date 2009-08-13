@@ -1,6 +1,8 @@
 class Admin::DataItemsController < ApplicationController
 	before_filter :load_folder
-	
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
+
   # GET /data_items/new
   def new
     @data_item = DataItem.new

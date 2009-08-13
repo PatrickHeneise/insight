@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+	using_access_control
+	
 	validates_presence_of :room
 	validates_presence_of :title
 	validates_length_of :title, :within => 3..255

@@ -1,4 +1,6 @@
 class Company < ActiveRecord::Base
+	using_access_control
+	
 	acts_as_taggable
   belongs_to :address
 	

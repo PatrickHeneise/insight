@@ -1,18 +1,34 @@
-<p>
-  <b>Title:</b>
-  <%=h @department.title %>
-</p>
+<div class="span-4">
+	<div class="<%= @department.short.downcase %> brick">
+		<h1><%= @department.short.upcase %></h1>
+	</div>
 
-<p>
-  <b>Description:</b>
-  <%=h @department.description %>
-</p>
+</div>
+<div class="span-14">
+	<h2><%= t 'blog.header' %></h2>
+	<% unless @department.blog.articles.last.nil? %>
+	<h3><%= link_to @department.blog.articles.last.title, blog_article_path(@department.blog.articles.last.blog, @department.blog.articles.last) %></h3>
+	<div class="article_meta">
+		<%=link_to @department.blog.articles.last.user.fullname, @department.blog.articles.last.user %>, <%=t 'support.at' %> <%=h @department.blog.articles.last.updated_at.to_s(:date) %>
+	</div>	<div class="article_content">
+		<%= Sanitize.clean(@department.blog.articles.last.content, Sanitize::Config::BASIC) %>
+	</div>
+	<% end %>
 
-<p>
-  <b>Organization:</b>
-  <%=h @department.organization %>
-</p>
+	<h2><%= t 'list.professors' %></h2>
+	<table>
+		<thead>
+		</thead>
+		<tfoot>
+		</tfoot>
+		<tbody>
+			<% @department.users.professors.each do |user| -%>
+			<tr>
+				<td><%= mail_to user.email, user.fullname %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
 
-
-<%= link_to 'Edit', edit_department_path(@department) %> |
-<%= link_to 'Back', departments_path %>
+<div class="span-2 last">&nbsp;</div>

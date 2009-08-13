@@ -1,4 +1,6 @@
 class Thesis < ActiveRecord::Base
+	using_access_control
+	
 	include AASM
 	acts_as_taggable
 	

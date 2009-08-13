@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	before_filter :require_user
+	before_filter :require_user, :set_current_user
 	
   helper :all # include all helpers, all the time
 	helper_method :current_user_session, :current_user
@@ -29,7 +29,14 @@ class ApplicationController < ActionController::Base
 	def numeric?(object)
 		true if Float(object) rescue false
 	end
-	
+	protected
+		# set_current_user sets the global current user for this request.  This
+		# is used by model security that does not have access to the
+		# controller#current_user method.  It is called as a before_filter.
+		def set_current_user
+			Authorization.current_user = current_user
+		end
+		
 	private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)

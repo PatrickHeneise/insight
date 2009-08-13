@@ -1,6 +1,8 @@
 class Admin::EnrollmentsController < ApplicationController
 	layout "admin"
 	before_filter :load_lecture
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
 
   # GET /enrollment
   def index

@@ -1,19 +1,9 @@
-<p>
-  <b>Title:</b>
-  <%=h @topic.title %>
-</p>
+<% content_for :logo do -%>
+	<%=h "#{@topic.forum.title} (#{@topic.forum.department.short})" %>
+<% end %>
 
-<p>
-  <b>Forum:</b>
-  <%=h @topic.forum %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%=h @topic.user %>
-</p>
+<h2><%=h @topic.title %></h2>
 
 <%= render :partial => 'posts/list' %>
 
-<%= link_to 'New post', new_forum_topic_post_path(@forum, @topic) %>
-<%= link_to 'Back', [@forum] %>
+<%= link_to t('new.post'), new_forum_topic_post_path(@forum, @topic) %>

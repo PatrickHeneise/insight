@@ -1,4 +1,6 @@
 class Board < ActiveRecord::Base
+	using_access_control
+	
   belongs_to :lecture
 
 	has_many :bullets, :order => "replied_at desc, created_at desc", :dependent => :destroy do

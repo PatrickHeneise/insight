@@ -1,5 +1,7 @@
 class Admin::LecturesController < ApplicationController
 	layout "admin"
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
 
   # GET /lectures
   def index

@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
 	layout "admin"
+	filter_access_to :all
+  filter_access_to :edit, :update, :attribute_check => true
 	
   def index
 		@users = User.find(:all)

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 	current_tab :forums
 	before_filter :load_forum_topic
+	filter_access_to :edit, :update, :attribute_check => true
 	
 	def load_forum_topic
 		@topic =  Topic.find(params[:topic_id])

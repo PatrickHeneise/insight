@@ -1,4 +1,6 @@
 class Enrollment < ActiveRecord::Base
+	using_access_control
+	
 	include AASM
 	
   belongs_to :user
@@ -28,6 +30,4 @@ class Enrollment < ActiveRecord::Base
 	named_scope :forced, :conditions => {:level => "force"}
 	named_scope :representatives, :conditions => {:level => "represent"}
 	named_scope :managers, :conditions => {:level => "manage"}
-	
-	named_scope :lectures, lambda { |at_day| {:conditions => ['lecture.at_block = ?', ] }}
 end

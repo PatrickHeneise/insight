@@ -6,9 +6,8 @@
 	Willkommen im neuen Intranet der Hochschule Furtwangen
 <% end %>
 
-<div id="page_left_col" class="span-12">
-	<div id="page_courses" class="page span-12">
-	<h2><%= t 'lectures.lectures' %></h2>
+<div id="page_left_col" class="span-10 prepend-1 append-1">
+	<div id="page_courses" class="page span-10">
 	<table>
 			<thead>
 				<tr>
@@ -30,8 +29,7 @@
 		</table>
 	</div>
 	
-	<div id="page_forums" class="page span-12">
-	<h2><%= t 'forums.forums' %></h2>
+	<div id="page_forums" class="page span-10 prepend-top">
 		<table>
 			<thead>
 				<tr>
@@ -58,8 +56,8 @@
 		</table>
 	</div>
 	
-	<div id="weather" class="page span-12">
-		<h2><%= t 'weather.weather' %></h2>
+	<div id="weather" class="page span-10 prepend-top">
+		<h3><%= t 'weather.weather' %></h3>
 		<div id="weather_c" class="weather_day">
 			<div class="weather_day_img code_<%=h @response.condition.code %>">&nbsp;</div>
 			<div class="weather_day_info">
@@ -85,21 +83,21 @@
 	</div>
 </div>
 
-<div id="page_right_col" class="span-12 last">
-	<div id="page_photos" class="page span-12">
-	<h2><%= t 'photos.recent' %></h2>
+<div id="page_right_col" class="span-10 prepend-1 append-1 last">
+	<div id="page_photos" class="page span-10">
+	<h3><%= t 'photos.recent' %></h3>
 		<% @photos.each do |photo| -%>
 				<%= link_to(image_tag(photo.url(:square), :alt =>  photo.title),photo.url_photopage) %>
 		<% end %>
 	</div>
 
-	<div id="page_webcam" class="page span-12">
-	<h2><%= t 'webcam' %></h2>
-		<%= image_tag("webcam.jpg", :style => "margin-left: 75px") %>
+	<div id="page_webcam" class="page span-10 prepend-top">
+	<h3><%= t 'webcam' %></h3>
+		<%= image_tag("webcam.jpg") %>
 	</div>
 	
-	<div id="page_mensa_rss" class="page span-12">
-		<h2><%= t 'rss.mensa' %></h2>
+	<div id="page_mensa_rss" class="page span-10 prepend-top">
+		<h3><%= t 'rss.mensa' %></h3>
 		<%= @mensa %>
 	</div>
 </div>

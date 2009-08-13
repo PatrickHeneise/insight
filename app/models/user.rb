@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	using_access_control
+	
 	acts_as_authentic
 	validate
 
@@ -46,6 +48,10 @@ class User < ActiveRecord::Base
 	
 	def list_roles
 		(roles || []).map { |r| I18n.translate('roles.' + r.title.downcase) }.join('<br />')
+	end
+	
+	def show_roles
+		(roles || []).map { |r| I18n.translate('roles.' + r.title.downcase) }.join(', ')
 	end
 	
 	def list_roles_detail

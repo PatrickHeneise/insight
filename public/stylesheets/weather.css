@@ -1,5 +1,5 @@
 div.weather_day {
-	width: 156px;
+	width: 130px;
 	float: left;
 }
 div.weather_day_img {
@@ -9,8 +9,9 @@ div.weather_day_img {
 	margin-right: 10px;
 }
 div.weather_day_info {
-	width: 81px;
+	width: 55px;
 	float: left;
+	font-size: 0.9em;
 }
 div.wl {
 	clear: both;
@@ -30,7 +31,7 @@ div.code_0, div.code_1, div.code_2, div.code_3, div.code_4 {
 div.code_5, div.code_6, div.code_7, div.code_8, div.code_18, div.code_35, div.code_40, div.code_41, div.code_43 {
 	background: url(../images/weather/7.png) no-repeat;
 }
-div.code_9, div.code_10, div.code_11, div.code_12, div.code_42, div.code_46 {
+div.code_9, div.code_10, div.code_42, div.code_46 {
 	background: url(../images/weather/8.png) no-repeat;
 }
 div.code_13, div.code_14, div.code_15, div.code_16, div.code_17 {
@@ -51,7 +52,7 @@ div.code_31, div.code_33 {
 div.code_32, div.code_34, div.code_36 {
 	background: url(../images/weather/1.png) no-repeat;
 }
-div.code_37, div.code_38, div.code_39, div.code_45, div.code_47 {
+div.code_37, div.code_38, div.code_39, div.code_45, div.code_47, div.code_11, div.code_12 {
 	background: url(../images/weather/5.png) no-repeat;
 }
 div.code_44 {

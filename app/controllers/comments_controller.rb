@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	current_tab :blog
+	current_tab :blogs
 	before_filter :load_article
 	
 	def load_article

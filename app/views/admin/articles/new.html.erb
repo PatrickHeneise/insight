@@ -1,5 +1,3 @@
-<h1>New article</h1>
+<h1><%=t 'new.article' %></h1>
 
-<%= render :partial => 'article', :locals => {:button_name => "Create"} %>
-
-<%= link_to 'Back', articles_path %>
+<%= render :partial => 'article', :locals => {:button_name => t('create')} %>
